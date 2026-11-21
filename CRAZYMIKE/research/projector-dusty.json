@@ -1,0 +1,36 @@
+{
+  "id": "projector-dusty",
+  "file": "images/projector-dusty.png",
+  "generatedAt": "2026-11-21",
+  "origin": "ai-generated-illustration",
+  "method": "Built-in image_gen.imagegen; reference-guided compositing/edit. Output copied unchanged from the generated image into the project.",
+  "tool": "image_gen.imagegen",
+  "model": "not-reported-by-tool",
+  "intendedUse": "Fictional one-month-later unused-projector scenario for the hackathon demo.",
+  "disclosure": "AI 生成的闲置积灰情境示意图，不是真实使用记录或用户测评。",
+  "width": 1254,
+  "height": 1254,
+  "bytes": 2789237,
+  "sha256": "079981aec57bed632d8c9e2deffd658d3ba0b98bfe95ff9181289d8eb0e0f0f1",
+  "transparentBackground": false,
+  "reference": {
+    "file": "images/projector.png",
+    "product": "米家投影仪青春版2",
+    "role": "Product identity reference and edit target; inspected before generation.",
+    "url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1598754467.99858512.png",
+    "sourcePage": "https://www.mi.com/shop/buy/detail?product_id=12752",
+    "capturedAt": "2026-11-21",
+    "sha256": "ba5c868fe768f2f4132911e009fcc40ac3d6b358cb365e5464706d42b77845b6",
+    "license": "not-specified-by-source",
+    "provenanceRecord": "sources/images.json#projector"
+  },
+  "originalGeneratedFile": "/Users/linziwei/.codex/generated_images/01a1fcab-c6a0-7360-be38-ad99510615b7/exec-2c23de69-0455-49c9-9484-3616bbc5a6eb.png",
+  "postProcessing": "none",
+  "visualReview": {
+    "completed": true,
+    "retained": "White upright rounded body, gray fabric front, upper-right front lens, small lower sensor window, and perforated white side.",
+    "scene": "Powered-off projector on a dark wood cabinet, visible top dust, coiled disconnected cable, natural side light.",
+    "excluded": "No captions, added logos, watermarks, people, projected beam, mold, cobwebs, broken parts or exaggerated damage."
+  },
+  "prompt": "Use case: compositing\nAsset type: square photographic illustration for a Chinese demo app's \"one month later, gathering dust\" product comparison.\nInput image: the local projector.png is the exact product identity reference and edit target. Preserve its recognizable white rounded rectangular upright body, gray woven fabric front panel, black round lens in the upper-right of the front panel, small lower-front sensor window, and perforated ventilation on the lower white side.\nPrimary request: Place this same projector in a believable household corner after one month of non-use, switched off, sitting on a dark wooden cabinet. Replace the transparent background with a complete realistic interior scene. Add a clearly visible but plausible thin layer of fine gray dust on the top, some light dust caught along upper edges, and a neatly coiled disconnected black power cable beside it.\nComposition: square 1:1, a close natural three-quarter view matching the reference front-and-right-side view, full device visible with comfortable margins, projector filling roughly 60 percent of the frame. Keep the body proportions, front lens position, fabrics, side perforations and overall silhouette faithful to the reference.\nLighting: natural soft side window light that catches the dusty top; quiet unused corner with a muted off-white wall, dark wood surface, subtle realistic shadows and photographic texture. Powered-off dark lens, no beam.\nStyle: photorealistic domestic editorial photograph, subdued believable materials; visually clear enough to read as the after-image at small mobile size.\nConstraints: This is an AI-generated imagined scenario, not a real user review or documentary evidence. No humans, no extra products, no visible captions, no added typography or watermarks, no invented logos, no stickers. Do not exaggerate dust into dirt, mold, cobwebs or damage; no broken parts, no yellowing, no scratches. Preserve the product design rather than substituting another projector."
+}

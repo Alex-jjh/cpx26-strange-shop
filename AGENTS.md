@@ -35,8 +35,10 @@ npm run lint     # oxlint
 5. **Device APIs only via `src/device/`.** Screens never call `navigator.vibrate`, Capacitor plugins,
    or `devicemotion` directly. Unsupported = silent no-op.
 6. **Nothing real happens.** No real payment, no shipping, no real shop APIs. Receipts say "模拟".
-7. **Product data**: `src/data/products.json`. `source: null` = placeholder. Real data must set
-   `source.url` and `source.capturedAt`. No scrapers — data is collected by hand.
+7. **Product data** is generated, not hand-edited. Source of truth is `CRAZYMIKE/` (research
+   inputs, evidence, `scripts/build_package.py`). The app copies `src/data/products.json`,
+   `src/data/product-details.json` and `public/products/*` must match it byte-for-byte;
+   CI runs `python3 CRAZYMIKE/validate.py`. Never invent prices or rental terms: unknown stays null.
 8. **One state machine.** All navigation goes through `Screen` in `src/flow.ts` and `render()` in
    `src/App.tsx`. New screen = new `Screen` variant + a case in `render()`.
 

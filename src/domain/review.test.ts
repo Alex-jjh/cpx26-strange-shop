@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { findProduct, products } from '../data/catalog'
-import { totalCost } from './cost'
+import { formatYuan, totalCost } from './cost'
 import { review } from './review'
 import type { Application, Decision } from './types'
 
@@ -55,7 +55,7 @@ describe('no free pass', () => {
     vsRent: '没人给我',
     vsBorrow: '没人给我',
     vsExisting: '没有东西触碰到我的背部。我需要使用这个设备进行身体上的放松。',
-    declaredTotal: 399,
+    declaredTotal: massageGun.price,
   }
 
   it('rejects a short purpose and copy-pasted short answers', () => {
@@ -116,7 +116,8 @@ describe('catalog', () => {
   })
 
   it('total cost = price + required accessories + shipping', () => {
-    expect(totalCost(projector)).toBe(2499 + 129 + 39 + 0)
+    // 2699 + HDMI cable 29.90, free shipping. Changing this changes the pitch demo (README).
+    expect(totalCost(projector)).toBe(2728.9)
   })
 })
 
@@ -124,5 +125,18 @@ describe('citations', () => {
   it('rule messages cite their article of 《个人钱包管理暂行办法》', () => {
     const d = review({ ...firstSubmission, purpose: '看球' }, projector, 'normal', TODAY, 1)
     expect(d.kind === 'rejected' && d.findings[0].message).toMatch(/^依据第二条（用途）：/)
+  })
+})
+
+describe('money', () => {
+  it('formats whole and fractional yuan', () => {
+    expect(formatYuan(2699)).toBe('2699')
+    expect(formatYuan(2728.9)).toBe('2728.90')
+    expect(formatYuan(0.1 + 0.2)).toBe('0.30')
+  })
+
+  it('accepts the decimal total the user types for the demo', () => {
+    const d = review({ ...resubmission, declaredTotal: 2728.9 }, projector, 'normal', TODAY, 2)
+    expect(d).toEqual({ kind: 'approved' })
   })
 })

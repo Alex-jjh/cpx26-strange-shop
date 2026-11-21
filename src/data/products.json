@@ -1,142 +1,557 @@
 [
   {
     "id": "projector",
-    "name": "家用投影仪（示例）",
+    "name": "米家投影仪 青春版2（白色）",
     "category": "影音",
-    "price": 2499,
-    "images": { "unboxed": "/products/projector.png", "dusty": "/products/projector-dusty.png" },
+    "price": 2699,
+    "images": {
+      "unboxed": "/products/projector.png",
+      "dusty": "/products/projector-dusty.png"
+    },
     "accessories": [
-      { "name": "支架", "price": 129, "required": true },
-      { "name": "HDMI 线", "price": 39, "required": true },
-      { "name": "幕布", "price": 299, "required": false }
+      {
+        "name": "小米高清HDMI数据线3米",
+        "price": 29.9,
+        "required": true
+      }
     ],
     "shipping": 0,
     "alternatives": {
-      "rent": { "pricePerDay": 59, "where": "租赁平台" },
       "borrow": "同事或朋友可能有",
-      "existing": "家里的电视、笔记本"
+      "existing": "家里的电视、笔记本",
+      "rent": {
+        "pricePerDay": 10,
+        "where": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      }
     },
     "typicalUsage": "前两周常用，之后月均 1 次",
-    "source": null
+    "source": {
+      "url": "https://www.mi.com/shop/buy/detail?product_id=12752",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "massage-gun",
-    "name": "筋膜枪（示例）",
+    "name": "米家筋膜枪Pro（浅锖色）",
     "category": "健身",
-    "price": 399,
-    "images": { "unboxed": "/products/massage-gun.png" },
-    "accessories": [{ "name": "替换按摩头", "price": 59, "required": false }],
+    "price": 899,
+    "images": {
+      "unboxed": "/products/massage-gun.png"
+    },
+    "accessories": [],
     "shipping": 0,
-    "alternatives": { "borrow": "健身房常备", "existing": "泡沫轴" },
+    "alternatives": {
+      "borrow": "健身房常备",
+      "existing": "泡沫轴"
+    },
     "typicalUsage": "第一周天天用，一个月后放抽屉",
-    "source": null
+    "source": {
+      "url": "https://www.mi.com/shop/buy/detail?product_id=18424",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "treadmill",
-    "name": "家用跑步机（示例）",
+    "name": "金史密斯 WalkingPad R2 折叠跑步机",
     "category": "健身",
-    "price": 1999,
-    "images": { "unboxed": "/products/treadmill.png" },
-    "accessories": [
-      { "name": "减震垫", "price": 89, "required": true },
-      { "name": "上楼费", "price": 100, "required": true }
-    ],
+    "price": 3999,
+    "images": {
+      "unboxed": "/products/treadmill.webp"
+    },
+    "accessories": [],
     "shipping": 0,
-    "alternatives": { "rent": { "pricePerDay": 15, "where": "租赁平台" }, "existing": "小区跑道、健身房月卡" },
+    "alternatives": {
+      "existing": "小区跑道、健身房月卡",
+      "rent": {
+        "pricePerDay": 7.33,
+        "where": "替代方案：汉臣 OMEGA T200eco 家用跑步机。展示¥7.33/天，365天起；页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。 押金¥0。可见正文显示无需押金，SKU deposit=0；最终资格和合同仍以平台订单为准。 广东省广州市天河区；寄出包邮、归还自付；仅公开服务区内。搬运上楼、安装及回收的实际收费未披露。"
+      }
+    },
     "typicalUsage": "最常见用途：晾衣架",
-    "source": null
+    "source": {
+      "url": "https://www.taouq.com/id-3MzxAzztAtYeGwq7zgF004S9tJ-NeRBBoczbyAQBM8hG/",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "air-fryer",
-    "name": "空气炸锅（示例）",
+    "name": "米家空气炸锅P1 6.5L（白色）",
     "category": "厨房",
-    "price": 299,
-    "images": { "unboxed": "/products/air-fryer.png" },
-    "accessories": [{ "name": "烘焙纸", "price": 19, "required": false }],
+    "price": 369,
+    "images": {
+      "unboxed": "/products/air-fryer.png"
+    },
+    "accessories": [],
     "shipping": 0,
-    "alternatives": { "existing": "烤箱、平底锅" },
+    "alternatives": {
+      "existing": "烤箱、平底锅"
+    },
     "typicalUsage": "新鲜期一个月",
-    "source": null
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230809728",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "coffee-machine",
-    "name": "半自动咖啡机（示例）",
+    "name": "米家智能意式半自动咖啡机 Pro（白色）",
     "category": "厨房",
-    "price": 1599,
-    "images": { "unboxed": "/products/coffee-machine.png" },
+    "price": 3884,
+    "images": {
+      "unboxed": "/products/coffee-machine.png"
+    },
     "accessories": [
-      { "name": "磨豆机", "price": 499, "required": true },
-      { "name": "咖啡豆（首包）", "price": 89, "required": true }
+      {
+        "name": "GridCoffee耶加雪菲深烘意式咖啡豆250g",
+        "price": 118,
+        "required": true
+      }
     ],
     "shipping": 0,
-    "alternatives": { "existing": "楼下咖啡店、挂耳咖啡" },
+    "alternatives": {
+      "existing": "楼下咖啡店、挂耳咖啡",
+      "rent": {
+        "pricePerDay": 16.67,
+        "where": "替代方案：Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）。展示¥16.67/天，30天起；正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。 押金¥0.01。正文及公开SKU均列每件0.01元押金，不能自行四舍五入成免押；公开JSON-LD写信用达标或企业认证可免押，但未核验具体资格。 全国（正文与同页公开JSON-LD声明；需核验实际收货地址）；正文显示寄出到付、归还自付；公开SKU同样写承租方承担往返运费。具体金额、搬运及安装费未披露。"
+      }
+    },
     "typicalUsage": "清洗太麻烦，逐渐回归挂耳",
-    "source": null
+    "source": {
+      "url": "https://www.mi.com/shop/buy/detail?product_id=25497",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "instant-camera",
-    "name": "拍立得（示例）",
+    "name": "富士 instax mini12（海外版）",
     "category": "数码",
-    "price": 599,
-    "images": { "unboxed": "/products/instant-camera.png" },
-    "accessories": [{ "name": "相纸 20 张", "price": 99, "required": true }],
+    "price": 629,
+    "images": {
+      "unboxed": "/products/instant-camera.webp"
+    },
+    "accessories": [
+      {
+        "name": "富士mini白边相纸20张＋相册组合",
+        "price": 138,
+        "required": true
+      }
+    ],
     "shipping": 0,
-    "alternatives": { "rent": { "pricePerDay": 25, "where": "租赁平台" }, "existing": "手机相机" },
+    "alternatives": {
+      "existing": "手机相机",
+      "rent": {
+        "pricePerDay": 30,
+        "where": "同型号：富士 instax mini12。展示¥30/天，1天起；详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。 押金¥700。公开押金700元，页面显示芝麻分650+可免押金；未为本用户核验资格。 全国（商家公开字段）；寄出包邮、归还自付；页面公开服务区为全国，偏远地址及目标日期仍需订单核验。"
+      }
+    },
     "typicalUsage": "旅行时用，一年两三次",
-    "source": null
+    "source": {
+      "url": "https://www.taouq.com/id-8g8k7adhnt9NGBDQDMCgq0Sbt8-DokRR8I6989jp6diM/",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "e-drum",
-    "name": "电子鼓（示例）",
+    "name": "Roland TD-02K 电子鼓",
     "category": "乐器",
-    "price": 2299,
-    "images": { "unboxed": "/products/e-drum.png" },
+    "price": 3180,
+    "images": {
+      "unboxed": "/products/e-drum.jpg"
+    },
     "accessories": [
-      { "name": "鼓凳", "price": 129, "required": true },
-      { "name": "耳机", "price": 199, "required": true }
+      {
+        "name": "RANGE音域五档可调鼓凳",
+        "price": 65,
+        "required": true
+      },
+      {
+        "name": "AKG K52有线监听耳机",
+        "price": 380,
+        "required": true
+      },
+      {
+        "name": "Vic Firth 5A山核桃木鼓棒",
+        "price": 120,
+        "required": true
+      }
     ],
-    "shipping": 50,
-    "alternatives": { "rent": { "pricePerDay": 30, "where": "琴行" }, "borrow": "琴行体验课" },
+    "shipping": 0,
+    "alternatives": {
+      "borrow": "琴行体验课",
+      "existing": "先评估已有设备是否已经满足需求"
+    },
     "typicalUsage": "三分钟热度",
-    "source": null
+    "source": {
+      "url": "https://www.taouq.com/id-5qOMrY8fxtywzoOdNoS70OIMtV-WkRwwpuN4weQAQ9Fd3/",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "tent",
-    "name": "露营帐篷（示例）",
+    "name": "迪卡侬双人双层搭建式露营帐篷（ODCT）",
     "category": "户外",
-    "price": 699,
-    "images": { "unboxed": "/products/tent.png" },
-    "accessories": [
-      { "name": "地垫", "price": 79, "required": true },
-      { "name": "天幕", "price": 259, "required": false }
-    ],
+    "price": 199.9,
+    "images": {
+      "unboxed": "/products/tent.webp"
+    },
+    "accessories": [],
     "shipping": 0,
-    "alternatives": { "rent": { "pricePerDay": 40, "where": "营地" }, "borrow": "露营群友" },
+    "alternatives": {
+      "borrow": "露营群友",
+      "existing": "先评估已有设备是否已经满足需求"
+    },
     "typicalUsage": "一年一次",
-    "source": null
+    "source": {
+      "url": "https://www.taouq.com/id-a4dPmDwsotMJrxOPjBTQz9Ujty-RWRNNzu4QZGWnTg/",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "fitness-ring",
-    "name": "体感健身环（示例）",
+    "name": "任天堂 Switch 健身环大冒险（日版环＋绑带＋游戏卡）",
     "category": "游戏",
-    "price": 499,
-    "images": { "unboxed": "/products/fitness-ring.png" },
-    "accessories": [{ "name": "游戏主机（如没有）", "price": 2099, "required": true }],
+    "price": 368,
+    "images": {
+      "unboxed": "/products/fitness-ring.jpg"
+    },
+    "accessories": [
+      {
+        "name": "港版Nintendo Switch OLED标准主机套装",
+        "price": 3199,
+        "required": true
+      }
+    ],
     "shipping": 0,
-    "alternatives": { "borrow": "朋友家有主机" },
+    "alternatives": {
+      "borrow": "朋友家有主机",
+      "existing": "先评估已有设备是否已经满足需求"
+    },
     "typicalUsage": "前三天每天 30 分钟",
-    "source": null
+    "source": {
+      "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+      "capturedAt": "2026-11-21"
+    }
   },
   {
     "id": "blender",
-    "name": "破壁机（示例）",
+    "name": "米家智能轻音破壁机S2（白色）",
     "category": "厨房",
-    "price": 459,
-    "images": { "unboxed": "/products/blender.png" },
+    "price": 399,
+    "images": {
+      "unboxed": "/products/blender.png"
+    },
     "accessories": [],
     "shipping": 0,
-    "alternatives": { "existing": "榨汁杯" },
+    "alternatives": {
+      "existing": "榨汁杯"
+    },
     "typicalUsage": "噪音太大，用过两次",
-    "source": null
+    "source": {
+      "url": "https://www.mi.com/shop/buy/detail?product_id=20546",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "redmi-projector-5-pro",
+    "name": "REDMI投影仪5 Pro（白色）",
+    "category": "影音",
+    "price": 1799,
+    "images": {
+      "unboxed": "/products/redmi-projector-5-pro.jpg"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求",
+      "rent": {
+        "pricePerDay": 10,
+        "where": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      }
+    },
+    "typicalUsage": "电影清单越攒越长，开机次数越来越少",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230808670",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "redmi-projector-3-pro",
+    "name": "Redmi投影仪3 Pro（深灰色）",
+    "category": "影音",
+    "price": 999,
+    "images": {
+      "unboxed": "/products/redmi-projector-3-pro.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求",
+      "rent": {
+        "pricePerDay": 10,
+        "where": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      }
+    },
+    "typicalUsage": "把客厅改成影院，最后还是刷手机",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230802847",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "projector-mini",
+    "name": "小米投影仪mini（白色）",
+    "category": "影音",
+    "price": 699,
+    "images": {
+      "unboxed": "/products/projector-mini.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求",
+      "rent": {
+        "pricePerDay": 10,
+        "where": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      }
+    },
+    "typicalUsage": "为露营买的，露营计划还没排上",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1223600007",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "massage-multihead-3c",
+    "name": "米家多头筋膜枪3 C（深空灰）",
+    "category": "健身",
+    "price": 199,
+    "images": {
+      "unboxed": "/products/massage-multihead-3c.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "恢复装备齐全了，运动还没开始",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230809825",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "massage-mini-3",
+    "name": "米家筋膜枪3迷你版（浅沙色）",
+    "category": "健身",
+    "price": 219,
+    "images": {
+      "unboxed": "/products/massage-mini-3.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "出门总忘带，回家想不起用",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230803500",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "massage-heat-h3-mini",
+    "name": "米家热敷筋膜枪H3迷你版（金属灰）",
+    "category": "健身",
+    "price": 349,
+    "images": {
+      "unboxed": "/products/massage-heat-h3-mini.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "想好好放松，先找一找充电线",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230803768",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "capsule-coffee-s1",
+    "name": "米家胶囊咖啡机S1（黑色）",
+    "category": "厨房",
+    "price": 424,
+    "images": {
+      "unboxed": "/products/capsule-coffee-s1.png"
+    },
+    "accessories": [
+      {
+        "name": "Café Royal胶囊咖啡30粒 意式浓缩",
+        "price": 99,
+        "required": true
+      }
+    ],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "胶囊用完之后，重新爱上速溶",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230803536",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "portable-coffee",
+    "name": "米家便携咖啡机（白色）",
+    "category": "厨房",
+    "price": 699,
+    "images": {
+      "unboxed": "/products/portable-coffee.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "随时随地喝咖啡，清洗时想回家",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230808268",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "air-fryer-n1",
+    "name": "米家空气炸锅N1 5L（米白色）",
+    "category": "厨房",
+    "price": 199,
+    "images": {
+      "unboxed": "/products/air-fryer-n1.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "菜谱收藏了五十份，做过两份",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230802183",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "air-fryer-steam-pro",
+    "name": "米家智能空气炸锅Pro蒸烤版6.5L（黑色）",
+    "category": "厨房",
+    "price": 699,
+    "images": {
+      "unboxed": "/products/air-fryer-steam-pro.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "功能越多，选择晚饭越困难",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230806842",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "air-fryer-s1",
+    "name": "米家空气炸锅S1 6L（白色）",
+    "category": "厨房",
+    "price": 269,
+    "images": {
+      "unboxed": "/products/air-fryer-s1.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "大容量买回家，还是只炸一份薯条",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230809726",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "blender-n1",
+    "name": "米家破壁机N1（白色）",
+    "category": "厨房",
+    "price": 299,
+    "images": {
+      "unboxed": "/products/blender-n1.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "健康早餐计划，卡在早起这一步",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230802675",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "blender-p1",
+    "name": "米家智能轻音变频破壁机P1（白色）",
+    "category": "厨房",
+    "price": 699,
+    "images": {
+      "unboxed": "/products/blender-p1.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "研究完转速，忘了买食材",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230802855",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "soy-milk-maker",
+    "name": "米家豆浆机（纯白色）",
+    "category": "厨房",
+    "price": 199,
+    "images": {
+      "unboxed": "/products/soy-milk-maker.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "豆子泡好了，第二天出门买早餐",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230808971",
+      "capturedAt": "2026-11-21"
+    }
+  },
+  {
+    "id": "portable-juicer-2",
+    "name": "米家随行便携榨汁杯2（白色）",
+    "category": "厨房",
+    "price": 99,
+    "images": {
+      "unboxed": "/products/portable-juicer-2.png"
+    },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": {
+      "existing": "先评估已有设备是否已经满足需求"
+    },
+    "typicalUsage": "便携的是杯子，不是洗杯子的耐心",
+    "source": {
+      "url": "https://www.mi.com/shop/buy?product_id=1230802537",
+      "capturedAt": "2026-11-21"
+    }
   }
 ]

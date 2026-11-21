@@ -1,4 +1,4 @@
-import { totalCost } from '../domain/cost'
+import { formatYuan, totalCost } from '../domain/cost'
 import type { Product } from '../domain/types'
 
 // Friction #3: rejection and re-review. The user can revise, switch product, or withdraw.
@@ -52,7 +52,7 @@ export function Approved({ product, onCheckout }: { product: Product; onCheckout
       <div className="banner approve">审批通过</div>
       <h1>{product.name}</h1>
       <p>
-        应付总额 <strong className="price">¥{totalCost(product)}</strong>（含必需配件与运费）
+        应付总额 <strong className="price">¥{formatYuan(totalCost(product))}</strong>（含必需配件与运费）
       </p>
       <button className="primary" onClick={onCheckout}>
         模拟下单

@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-21",
+  "currency": "CNY",
+  "scope": "non-xiaomi-current-quotes-and-accessories-handoff",
+  "mergeInstructions": "products为按id合并的局部更新；未列字段例如租赁由其他研究结果保留。sources为追加源。不要以此覆盖其他并行工作。",
+  "sourcePolicy": "优先尝试原商家和品牌网页；京东/小米/迪卡侬实时交易字段无法公开取得的条目使用直接HTTP读取的淘优券商品详情，并明确标注聚合证据。事实日期是采集日；未下单、未联系商家。",
+  "products": [
+    {
+      "id": "treadmill",
+      "name": "金史密斯 WalkingPad R2 折叠跑步机",
+      "price": {
+        "amount": 3999,
+        "currency": "CNY",
+        "kind": "aggregator-listed",
+        "sourceId": "taouq-treadmill-r2",
+        "url": "https://www.taouq.com/id-3MzxAzztAtYeGwq7zgF004S9tJ-NeRBBoczbyAQBM8hG/",
+        "capturedAt": "2026-11-21",
+        "note": "采用未减补贴在售价；页面补贴后2999元另作优惠线索。"
+      },
+      "shipping": {
+        "amount": 0,
+        "currency": "CNY",
+        "status": "conditional-listing",
+        "sourceId": "taouq-treadmill-r2",
+        "condition": "商品文字标包邮，主图标送货上楼、免安装。仅适用于卖家承诺覆盖的配送地址及楼层；页面未展开地域、楼层、电梯限制，实际结算应复核。"
+      },
+      "accessories": [],
+      "image": "research/images/kingsmith-list-8-0.jpg",
+      "source": {
+        "url": "https://www.taouq.com/id-3MzxAzztAtYeGwq7zgF004S9tJ-NeRBBoczbyAQBM8hG/",
+        "capturedAt": "2026-11-21"
+      },
+      "replacement": {
+        "previousName": "米家跑步机（原款，非M2）",
+        "reason": "原款无可核验当前卖价；唯一精确M2低价链接为二手店，排除。改用同类品牌全新在售R2，不能沿用旧米家图片。"
+      },
+      "purchaseScenario": "基础采购假设位于商家包邮和送货上楼承诺范围、已有适用硬质平整地面；主图所示赠垫需晒单，不在基础包内无条件计入。",
+      "excludedAccessories": [
+        {
+          "name": "减震垫",
+          "reason": "场景选配，当前基础采购条件为地面已适用；不继续保留无型号、无价格占位项。"
+        },
+        {
+          "name": "上楼或安装服务",
+          "reason": "主图承诺送货上楼、免安装；在承诺覆盖的地址和楼层中不另购该项，超范围搬运费用未公开，不沿用旧100元。"
+        }
+      ],
+      "specSourceIds": [
+        "walkingpad-r2-assembly"
+      ],
+      "notes": [
+        "当前价格证据是实时聚合页，非商家结算页。",
+        "已目视核对主图上的送货上楼、免安装与晒单送垫文字；晒单赠品不当作已获得。"
+      ]
+    },
+    {
+      "id": "instant-camera",
+      "name": "富士 instax mini12（海外版）",
+      "price": {
+        "amount": 629,
+        "currency": "CNY",
+        "kind": "aggregator-active-promotion",
+        "sourceId": "taouq-camera-current",
+        "url": "https://www.taouq.com/id-8g8k7adhnt9NGBDQDMCgq0Sbt8-DokRR8I6989jp6diM/",
+        "capturedAt": "2026-11-21",
+        "note": "喵速达直降670元：2026-10-24至2026-11-22；基础在售1299元，不使用淘金币及凑单价。"
+      },
+      "shipping": {
+        "amount": 0,
+        "currency": "CNY",
+        "status": "conditional-listing",
+        "sourceId": "taouq-camera-current",
+        "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+      },
+      "accessories": [
+        {
+          "name": "富士mini白边相纸20张＋相册组合",
+          "necessity": "consumable",
+          "quote": {
+            "amount": 138,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-film-current",
+            "url": "https://www.taouq.com/id-zeyJPzRUetaV8q4KerCvd4idt4-jdZqqnCXMqymP7OFK/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-film-current",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "拍照且没有现成mini相纸时需要；已含相纸的机身套餐不重复购买。",
+          "note": "138元包含20张相纸和一本相册，不能写成纯20张相纸的单品价。",
+          "specSourceIds": []
+        }
+      ],
+      "image": "research/images/camera-list-21-0.jpg",
+      "source": {
+        "url": "https://www.taouq.com/id-8g8k7adhnt9NGBDQDMCgq0Sbt8-DokRR8I6989jp6diM/",
+        "capturedAt": "2026-11-21"
+      },
+      "notes": [
+        "保留mini12型号；不保证特定配色、国行保修或额外赠品。旧759元仅是参考价，已被当前活动替换。"
+      ]
+    },
+    {
+      "id": "coffee-machine",
+      "accessories": [
+        {
+          "name": "内置研磨组件",
+          "necessity": "included",
+          "quote": {
+            "amount": 0,
+            "currency": "CNY",
+            "kind": "included-no-extra-purchase",
+            "sourceId": "mi-coffee",
+            "note": "整机已内置，0表示不再单独采购，不是独立磨豆机市场价格。"
+          },
+          "note": "基础场景不另购磨豆机。"
+        },
+        {
+          "name": "GridCoffee耶加雪菲深烘意式咖啡豆250g",
+          "necessity": "consumable",
+          "quote": {
+            "amount": 118,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-beans-current",
+            "url": "https://www.taouq.com/id-jGjpdo7wF0tJ75BeYXZUBBotJte-3RZ770FXgGMnyYKT7/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-beans-current",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "没有现成咖啡豆、需要制作咖啡时购买；已备豆可不重复购买。",
+          "note": "明确口味、烘焙度、250g包装；替换过期Lavazza罗萨250g历史价。",
+          "specSourceIds": []
+        }
+      ]
+    },
+    {
+      "id": "e-drum",
+      "name": "Roland TD-02K 电子鼓",
+      "price": {
+        "amount": 3180,
+        "currency": "CNY",
+        "kind": "aggregator-listed",
+        "sourceId": "taouq-drum-current",
+        "url": "https://www.taouq.com/id-5qOMrY8fxtywzoOdNoS70OIMtV-WkRwwpuN4weQAQ9Fd3/",
+        "capturedAt": "2026-11-21",
+        "note": "采用基础在售价；2026-11-19至11-27满1件9折2862元另列，不重复扣折扣。"
+      },
+      "shipping": {
+        "amount": 0,
+        "currency": "CNY",
+        "status": "conditional-listing",
+        "sourceId": "taouq-drum-current",
+        "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+      },
+      "accessories": [
+        {
+          "name": "RANGE音域五档可调鼓凳",
+          "necessity": "conditional",
+          "quote": {
+            "amount": 65,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-drum-stool",
+            "url": "https://www.taouq.com/id-rX93do9xhOtVeKbaQJQH66mtqtZ-2RmPPyFMNm6yAbzcY/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-drum-stool",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "无适用稳固座椅、且所购商家套餐未送鼓凳时。",
+          "note": "已有适用座椅可复用。",
+          "specSourceIds": [
+            "roland-td02k-package"
+          ]
+        },
+        {
+          "name": "AKG K52有线监听耳机",
+          "necessity": "conditional",
+          "quote": {
+            "amount": 380,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-drum-headphones",
+            "url": "https://www.taouq.com/id-oKQkMmj3TrtK9Pg78q0tD9kSntN-KaykkBHjeyKy9b2HP/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-drum-headphones",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "无兼容有线耳机或监听音箱时，按安静练习场景选择耳机。",
+          "note": "3.5mm TRS接头，附6.3mm转接；无线蓝牙耳机不替代本项。",
+          "specSourceIds": [
+            "akg-k52-spec",
+            "roland-td02k-package"
+          ]
+        },
+        {
+          "name": "Vic Firth 5A山核桃木鼓棒",
+          "necessity": "conditional",
+          "quote": {
+            "amount": 120,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-drum-sticks",
+            "url": "https://www.taouq.com/id-BAmZvoKnh6t85vW2dOxcpMZTrte-NeRBBocz0xkkOw2Tg/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-drum-sticks",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "无现成鼓棒、且商家套餐未赠送鼓棒时。",
+          "note": "采用单型号5A页；页面限时补贴75元另记，基础采购价不叠加。",
+          "specSourceIds": [
+            "roland-td02k-package"
+          ]
+        }
+      ],
+      "image": "images/e-drum.jpg",
+      "source": {
+        "url": "https://www.taouq.com/id-5qOMrY8fxtywzoOdNoS70OIMtV-WkRwwpuN4weQAQ9Fd3/",
+        "capturedAt": "2026-11-21"
+      },
+      "notes": [
+        "耳机、凳、鼓棒基础新增总额565元；官方标配清单不含这些项目。若商家赠品确实覆盖，应删除相应新增采购，不能重复计算。",
+        "蓝牙扩展不是本采购场景的必需配件；没有依据把宣传标题当作全部功能已装配。"
+      ]
+    },
+    {
+      "id": "tent",
+      "name": "迪卡侬双人双层搭建式露营帐篷（ODCT）",
+      "price": {
+        "amount": 199.9,
+        "currency": "CNY",
+        "kind": "aggregator-listed",
+        "sourceId": "taouq-tent-current",
+        "url": "https://www.taouq.com/id-a4dPmDwsotMJrxOPjBTQz9Ujty-RWRNNzu4QZGWnTg/",
+        "capturedAt": "2026-11-21",
+        "note": ""
+      },
+      "shipping": {
+        "amount": 0,
+        "currency": "CNY",
+        "status": "conditional-listing",
+        "sourceId": "taouq-tent-current",
+        "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+      },
+      "accessories": [],
+      "image": "research/images/tent-exact-list-7-0.jpg",
+      "source": {
+        "url": "https://www.taouq.com/id-a4dPmDwsotMJrxOPjBTQz9Ujty-RWRNNzu4QZGWnTg/",
+        "capturedAt": "2026-11-21"
+      },
+      "replacement": {
+        "previousName": "迪卡侬 MH100 双人双层帐篷（2467687）",
+        "reason": "当前店铺链接有明确双人双层描述与199.9元标价；未把历史2467687编码强行映射，改用当前在售名称及匹配图片。"
+      },
+      "purchaseScenario": "作为帐篷单品采购，使用已有睡眠装备、选择不需要额外地面保护的适用营地；不把整套露营生活用品计为帐篷必买硬件。",
+      "excludedAccessories": [
+        {
+          "name": "外铺地垫",
+          "reason": "额外保护用途，基础场景不采购；已有帐底不等于所有地面都无需保护。"
+        },
+        {
+          "name": "天幕",
+          "reason": "额外遮阳活动空间，非该双层帐篷基础使用必需；从采购包删除而非虚构报价。"
+        }
+      ],
+      "notes": [
+        "替换10月7日249.9元历史爆料。"
+      ]
+    },
+    {
+      "id": "fitness-ring",
+      "name": "任天堂 Switch 健身环大冒险（日版环＋绑带＋游戏卡）",
+      "price": {
+        "amount": 368,
+        "currency": "CNY",
+        "kind": "merchant-listed",
+        "sourceId": "jd-fitness-current",
+        "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+        "capturedAt": "2026-11-21",
+        "note": "直接读取商品页自身公开标价，未登录、未扣优惠券；不是看了又看推荐区价格。"
+      },
+      "shipping": {
+        "amount": 0,
+        "currency": "CNY",
+        "status": "conditional-merchant-listing",
+        "sourceId": "jd-fitness-current",
+        "condition": "同一京东商品页详情图明确承诺包邮包税，标题为全新原装日版完整套装；默认展示北京朝阳地址。仅按商家承诺覆盖的正常配送场景计0，超配送范围或特殊服务须结算复核；未将其他店铺的包邮政策移用。"
+      },
+      "accessories": [
+        {
+          "name": "港版Nintendo Switch OLED标准主机套装",
+          "necessity": "conditional",
+          "quote": {
+            "amount": 3199,
+            "currency": "CNY",
+            "kind": "aggregator-listed",
+            "sourceId": "taouq-console-current",
+            "url": "https://www.taouq.com/id-4B6W2o6fgtNRKMownbtwwKSNtg-nMYPPWFxnOKyVdmtZ/",
+            "capturedAt": "2026-11-21",
+            "note": ""
+          },
+          "shipping": {
+            "amount": 0,
+            "currency": "CNY",
+            "status": "conditional-listing",
+            "sourceId": "taouq-console-current",
+            "condition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。"
+          },
+          "requiredWhen": "没有兼容Switch主机及一代Joy-Con左右手柄时购买。",
+          "note": "标准盒装包含左右Joy-Con；仅缺手柄的用户不应直接购整机；Switch Lite不是本选型。",
+          "specSourceIds": [
+            "nintendo-oled-package",
+            "nintendo-ring-package"
+          ]
+        }
+      ],
+      "image": "research/images/jd-ring-original-3.jpg",
+      "source": {
+        "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+        "capturedAt": "2026-11-21"
+      },
+      "notes": [
+        "同页商品图明确列出绑腿、健身环、游戏卡带；页面标题说明不含Joy-Con手柄。",
+        "当前采用京东直接页面368元，替代此前天猫聚合499元。主机配件仅对没有兼容Switch及Joy-Con的采购场景必需。",
+        "包邮包税来自该商品自身详情图，现已闭合价格、配件、运费证据。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "taouq-treadmill-r2",
+      "title": "金史密斯WalkingPad跑步机R2_走跑一体 对折收纳 脚感控速-walkingpad旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-3MzxAzztAtYeGwq7zgF004S9tJ-NeRBBoczbyAQBM8hG/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "walkingpad旗舰店：R2在售3999元；补贴1000元后2999元（页面活动2025-06-21至2028-07-31）；标记包邮。未披露上楼服务。 主图文字另承诺送货上楼、免安装；赠垫条件为晒单，非无条件标配。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i1/3993820747/O1CN01ST4nFUXqnTB2vH2e_!!4611686018427387467-0-item_pic.jpg",
+      "visualEvidence": "research/images/kingsmith-list-8-0.jpg"
+    },
+    {
+      "id": "taouq-camera-current",
+      "title": "【自营】INSTAX富士instax mini12拍立得海外版一次成像相机 202_-天猫数码家电自营旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-8g8k7adhnt9NGBDQDMCgq0Sbt8-DokRR8I6989jp6diM/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "天猫数码家电自营旗舰店：mini12海外版在售1299元；喵速达直降670元后629元，2026-10-24至11-22；标记包邮。颜色和赠品未按特定选项核验。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2213856588863/O1CN01in4hiX2FLJSwr14U5_!!4611686018427384895-0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-film-current",
+      "title": "富士instax拍立得相纸_3寸20张 白边相纸 快递随机-富士官方旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-zeyJPzRUetaV8q4KerCvd4idt4-jdZqqnCXMqymP7OFK/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "富士官方旗舰店：mini白边3寸相纸20张+甜心牛仔或美拉德相册组合138元；包邮、快递随机。没有把相册拆成独立价格。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/1019803011/O1CN01qhozMO6ddsB1chua_!!4611686018427385219-0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-beans-current",
+      "title": "【门店同款】GridCoffee埃塞俄比亚耶加雪菲深烘意式咖啡豆250g_-GridCoffee官方旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-jGjpdo7wF0tJ75BeYXZUBBotJte-3RZ770FXgGMnyYKT7/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "GridCoffee官方旗舰店：埃塞俄比亚耶加雪菲深烘意式咖啡豆250g，118元，标记包邮；未扣淘金币0.59元。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i1/2221268225014/O1CN018QalQ11DHuJ2vH2e_!!4611686018427382774-0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-drum-current",
+      "title": "roland罗兰电子专业级演出_2年质保 紧凑小巧 静音踏板底鼓 蓝牙音频-roland罗兰旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-5qOMrY8fxtywzoOdNoS70OIMtV-WkRwwpuN4weQAQ9Fd3/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "roland罗兰旗舰店：TD-02K在售3180元；2026-11-19至11-27满1件9折2862元；标记包邮。未把图中座椅、耳机视为赠品，蓝牙扩展另核。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i2/4179164642/O1CN010xNX55vIFyI1chua_!!4179164642.jpg"
+    },
+    {
+      "id": "taouq-drum-stool",
+      "title": "架子鼓鼓凳爵士鼓电子鼓鼓凳成人儿童鼓凳琴凳可调节高度加厚通用_加粗加高 五档可调节 成人儿童通用-音域旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-rX93do9xhOtVeKbaQJQH66mtqtZ-2RmPPyFMNm6yAbzcY/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "音域旗舰店：RANGE音域成人儿童通用五档可调鼓凳，在售65元；9折58.5元另列；标记包邮。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2208520742284/O1CN01HZ6eCk1Sk7N3xHoSy_!!0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-drum-headphones",
+      "title": "AKG/爱科技K52有线耳机_专业监听耳机-akg爱科技至舜专卖店 - 淘优券",
+      "url": "https://www.taouq.com/id-oKQkMmj3TrtK9Pg78q0tD9kSntN-KaykkBHjeyKy9b2HP/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "akg爱科技至舜专卖店：AKG K52单型号有线监听耳机，380元，包邮；未使用含K72/K92的混合型号链接。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/3234796979/O1CN01OW4gEI21QR7exxOzA_!!0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-drum-sticks",
+      "title": "Vic Firth鼓棒5A美产山核桃木架子鼓鼓槌专业防滑演出_-野格乐器 - 淘优券",
+      "url": "https://www.taouq.com/id-BAmZvoKnh6t85vW2dOxcpMZTrte-NeRBBocz0xkkOw2Tg/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "野格乐器：Vic Firth 5A美产山核桃木鼓棒，在售120元；2026-11-19至11-27补贴45元后75元；标记包邮。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i4/813021400/O1CN01MF2BCy0N4RG1chua_!!813021400.jpg"
+    },
+    {
+      "id": "taouq-tent-current",
+      "title": "迪卡侬官方店休闲odct野营帐篷_快速搭建 方便携带 三季可用-迪卡侬旗舰店 - 淘优券",
+      "url": "https://www.taouq.com/id-a4dPmDwsotMJrxOPjBTQz9Ujty-RWRNNzu4QZGWnTg/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "迪卡侬旗舰店：双人双层防雨搭建式露营帐篷ODCT，199.9元，包邮；当前标题没有2467687型号编码，不把同款外观当作编码证明。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i4/352469034/O1CN01jprYmx2Gbd2s41bNX_!!0-item_pic.jpg"
+    },
+    {
+      "id": "taouq-fitness-current",
+      "title": "方向盘Nintendo/任天堂_-天猫国际自营全球超级店 - 淘优券",
+      "url": "https://www.taouq.com/id-Q3b5XbptQtB0R9z3oYSXXXtatQ-2RmPPyFM7a4G6Z3Cv/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "天猫国际自营全球超级店：日版全新健身环体感套装在售499元；2026-11-20至11-27直降150元，88VIP另95折331.55元；图0明确环+腿带+游戏本体，未披露运费。 已目视核对详情图明确写本品不含图示Joy-Con。四张详情图均无运费说明。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2549841410/O1CN01yGwvgJJKtyJ1chua_!!2549841410-0-tmg_sticker.jpg",
+      "visualEvidence": [
+        "research/images/fitness-list-7-1.jpg",
+        "research/images/fitness-list-7-4.jpg"
+      ]
+    },
+    {
+      "id": "taouq-console-current",
+      "title": "港版任天堂SwitchOLED游戏机_全新正品 | 外出游玩 | 掌上模式-天猫超市 - 淘优券",
+      "url": "https://www.taouq.com/id-4B6W2o6fgtNRKMownbtwwKSNtg-nMYPPWFxnOKyVdmtZ/",
+      "capturedAt": "2026-11-21",
+      "method": "live-public-html-aggregator",
+      "evidenceTier": "aggregator-not-merchant-checkout",
+      "facts": "天猫超市：港版Nintendo Switch OLED主机在售3199元；补贴320元后2879元另列；标记包邮。原装标准套装内容由任天堂官方资料交叉核对。",
+      "imageUrl": "https://img.alicdn.com/bao/uploaded/i2/6000000002015/O1CN01jdD9UiCfiWE1chua_!!6000000002015-0-sm.jpg"
+    },
+    {
+      "id": "nintendo-oled-package",
+      "title": "任天堂香港：Nintendo Switch OLED白色组合内容",
+      "url": "https://www.nintendo.com/hk/hardware/switch/modal/lineup_oled_white.html",
+      "capturedAt": "2026-11-21",
+      "method": "official-web",
+      "facts": "标准套装包括OLED主机、Joy-Con左右各一、腕带、底座、握把、AC变压器、HDMI线。"
+    },
+    {
+      "id": "nintendo-ring-package",
+      "title": "任天堂日本：Ring Fit Adventure商品信息",
+      "url": "https://www.nintendo.com/jp/ring/index.html",
+      "capturedAt": "2026-11-21",
+      "method": "official-web",
+      "facts": "实体套装包含Ring-Con、腿部固定带、游戏软件。Switch Lite不能游玩；Switch 2需要另备一代Joy-Con。"
+    },
+    {
+      "id": "akg-k52-spec",
+      "title": "AKG K52官方规格",
+      "url": "https://global.akg.com/K52.html?cgid=Professional+Headphones&dwvar_K52_color=Black-GLOBAL-Current",
+      "capturedAt": "2026-11-21",
+      "method": "official-web",
+      "facts": "K52是3.5mm TRS有线耳机，随附6.3mm适配头。"
+    },
+    {
+      "id": "roland-td02k-package",
+      "title": "Roland TD-02K官方装配清单",
+      "url": "https://static.roland.com/assets/media/pdf/TD-02K_eng01_W.pdf",
+      "capturedAt": "2026-11-21",
+      "method": "official-pdf",
+      "facts": "基础箱内清单包含鼓架、鼓盘、镲片、FD-1、KT-1、TD-02音源、线材、电源与鼓钥匙；鼓凳、鼓棒及耳机不在列。"
+    },
+    {
+      "id": "walkingpad-r2-assembly",
+      "title": "WalkingPad R2官方产品说明",
+      "url": "https://www.walkingpad.com/products/walkingpad-r2-foldable-treadmill",
+      "capturedAt": "2026-11-21",
+      "method": "official-web",
+      "facts": "R2可折叠走跑两用、整机已组装。此页为美国区域版本；不将美元价格、美国运费或110V参数应用于国内报价。"
+    },
+    {
+      "id": "jd-fitness-current",
+      "title": "京东：全新原装日版Switch健身环大冒险体感游戏套装",
+      "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+      "capturedAt": "2026-11-21",
+      "method": "live-merchant-public-html-and-product-images",
+      "evidenceTier": "merchant-listing-not-checkout",
+      "facts": "直接HTTP读取京东商品自身价格区域（位于收藏后、登录查看到手价前）为368.00元，默认地址北京市朝阳区麦子街道。该页图2文字承诺全新原装日版、包邮包税；图3文字列出绑腿、健身环、游戏卡带。页面标题明示不含手柄。不是推荐区价格，未使用网页搜索缓存的369元。",
+      "visualEvidence": [
+        "research/images/jd-ring-original-2.jpg",
+        "research/images/jd-ring-original-3.jpg"
+      ],
+      "evidenceFile": "research/jd-fitness-quote-evidence.json",
+      "imageUrl": "https://img12.360buyimg.com/img/jfs/t1/248100/13/3865/123538/65b0c612F53987fe5/b39d506897dedf1d.jpg"
+    }
+  ],
+  "remainingUnresolved": [],
+  "excludedRejectedLeads": [
+    {
+      "name": "米家跑步机M2 1768/券后1268",
+      "url": "https://www.taouq.com/id-k3yYNAniYtaYPZ5OROiG6AHPtJ-gQXnn3sA5XapzJ2Co/",
+      "reason": "卖家名为健身器材2手店；不能当全新米家商城现货。"
+    },
+    {
+      "name": "富士mini相纸20张单品107",
+      "url": "https://www.taouq.com/id-jyGZo9nI0tJ7Y0rvr2FBKpuJte-mOZQQNuWrpgeJP3Sg/",
+      "reason": "单品价格已核验但运费未披露；主采购包选择138元明确包邮的20张加相册套餐。"
+    },
+    {
+      "name": "Lavazza城市250g 91",
+      "url": "https://www.taouq.com/id-p0Za2wvUxt6pKgJrdwUee3Tptm-mOZQQNu7eAo9xY3uBe/",
+      "reason": "浅中深烘混合链接缺具体口味选项；主采购包改用单一GridCoffee耶加雪菲深烘250g 118元。"
+    }
+  ],
+  "optionalAccessoryExclusions": [
+    {
+      "productId": "projector",
+      "names": [
+        "投影支架",
+        "幕布"
+      ],
+      "reason": "当前基础采购场景使用已有稳定桌面和适用白墙，故不单独采购；不保留虚构或未查价的可选条目。"
+    },
+    {
+      "productId": "massage-gun",
+      "names": [
+        "额外替换按摩头"
+      ],
+      "reason": "以包装内按摩头基础使用，不另购替换头。"
+    },
+    {
+      "productId": "air-fryer",
+      "names": [
+        "烘焙纸"
+      ],
+      "reason": "可选清洁耗材，基础使用无需另购。"
+    }
+  ]
+}

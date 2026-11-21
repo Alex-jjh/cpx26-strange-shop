@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import catalog from '../src/data/products.json' with { type: 'json' }
-import type { Product } from '../src/domain/types.ts'
-import { buildMessages, MAX_FIELD_CHARS, parseBody, type FormSnapshot } from './leader-voice.ts'
+import details from '../src/data/product-details.json' with { type: 'json' }
+import type { Product, ProductDetails } from '../src/domain/types.ts'
+import { rentalLine } from '../src/domain/rental.ts'
+import { buildMessages, MAX_FIELD_CHARS, parseBody, rentalFact, type FormSnapshot } from './leader-voice.ts'
 
 const projector = (catalog as Product[]).find((p) => p.id === 'projector')!
 const form: FormSnapshot = {
@@ -21,9 +23,16 @@ describe('leader prompt', () => {
   })
 
   it('names required accessories but not optional ones', () => {
-    expect(user.content).toContain('支架')
-    expect(user.content).toContain('HDMI 线')
-    expect(user.content).not.toContain('幕布')
+    const withOptional: Product = {
+      ...projector,
+      accessories: [
+        { name: 'HDMI 线', price: 29.9, required: true },
+        { name: '幕布', price: 299, required: false },
+      ],
+    }
+    const content = buildMessages(withOptional, ['total-mismatch'], 1, form)[1].content
+    expect(content).toContain('HDMI 线')
+    expect(content).not.toContain('幕布')
   })
 
   it('passes the user answers inside a data block, with the purpose length', () => {
@@ -37,7 +46,7 @@ describe('leader prompt', () => {
   })
 
   it('gives the model rent price and typical usage to roast with', () => {
-    expect(user.content).toContain('每天 59 元')
+    expect(user.content).toContain('可以租同类款（极米 NEW Z6X）：每天 10 元，3 天起租。')
     expect(user.content).toContain(projector.typicalUsage)
   })
 })
@@ -80,5 +89,30 @@ describe('difficulty', () => {
     expect(normal).toContain('本档至少 1 项')
     expect(hard).toContain('本档至少 2 项')
     expect(hard).toContain('难缠领导')
+  })
+})
+
+describe('rental wording', () => {
+  const all = details as unknown as Record<string, ProductDetails>
+
+  it('server prompt and product page say the same thing for every product', () => {
+    for (const [id, d] of Object.entries(all)) {
+      expect(rentalFact(d.rental)?.replace(/。$/, '') ?? null, id).toBe(rentalLine(d.rental))
+    }
+  })
+
+  it('covers per-day with minimum days, packages and hourly rooms', () => {
+    expect(rentalFact(all.tent.rental)).toContain('50 元包 7 天，超期每天 10 元')
+    expect(rentalFact(all['e-drum'].rental)).toContain('每小时 50 元，到店使用，不外借')
+    expect(rentalFact(all.treadmill.rental)).toContain('365 天起租')
+    expect(rentalFact(all['instant-camera'].rental)).toBe('可以租同款：每天 30 元。')
+    expect(rentalFact(all['massage-gun'].rental)).toBeNull()
+  })
+
+  it('keeps every prompt short (no long evidence text from the data files)', () => {
+    for (const p of catalog as Product[]) {
+      const user = buildMessages(p, ['why-not-rent'], 1, form)[1].content
+      expect(user.length, p.id).toBeLessThan(900)
+    }
   })
 })

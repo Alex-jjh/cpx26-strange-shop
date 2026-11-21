@@ -1,0 +1,10 @@
+﻿商品ID,配件或耗材,必要性,报价_CNY,来源,适用条件
+projector,小米高清HDMI数据线3米,conditional,29.9,https://www.mi.com/shop/buy?product_id=1190200015,本演示使用有线HDMI输入，且没有现成线材；与机器同单满足免邮门槛。
+coffee-machine,内置研磨组件,included,0,,基础场景不另购磨豆机。
+coffee-machine,GridCoffee耶加雪菲深烘意式咖啡豆250g,consumable,118,https://www.taouq.com/id-jGjpdo7wF0tJ75BeYXZUBBotJte-3RZ770FXgGMnyYKT7/,没有现成咖啡豆、需要制作咖啡时购买；已备豆可不重复购买。
+instant-camera,富士mini白边相纸20张＋相册组合,consumable,138,https://www.taouq.com/id-zeyJPzRUetaV8q4KerCvd4idt4-jdZqqnCXMqymP7OFK/,拍照且没有现成mini相纸时需要；已含相纸的机身套餐不重复购买。
+e-drum,RANGE音域五档可调鼓凳,conditional,65,https://www.taouq.com/id-rX93do9xhOtVeKbaQJQH66mtqtZ-2RmPPyFMNm6yAbzcY/,无适用稳固座椅、且所购商家套餐未送鼓凳时。
+e-drum,AKG K52有线监听耳机,conditional,380,https://www.taouq.com/id-oKQkMmj3TrtK9Pg78q0tD9kSntN-KaykkBHjeyKy9b2HP/,无兼容有线耳机或监听音箱时，按安静练习场景选择耳机。
+e-drum,Vic Firth 5A山核桃木鼓棒,conditional,120,https://www.taouq.com/id-BAmZvoKnh6t85vW2dOxcpMZTrte-NeRBBocz0xkkOw2Tg/,无现成鼓棒、且商家套餐未赠送鼓棒时。
+fitness-ring,港版Nintendo Switch OLED标准主机套装,conditional,3199,https://www.taouq.com/id-4B6W2o6fgtNRKMownbtwwKSNtg-nMYPPWFxnOKyVdmtZ/,没有兼容Switch主机及一代Joy-Con左右手柄时购买。
+capsule-coffee-s1,Café Royal胶囊咖啡30粒 意式浓缩,consumable,99,https://www.mi.com/shop/buy?product_id=1230805544&cfrom=search,米家胶囊咖啡机S1耗材；用户没有现成兼容胶囊时购买。

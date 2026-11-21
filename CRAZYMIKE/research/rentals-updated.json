@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-21",
+  "currency": "CNY",
+  "scope": "原五类可租商品的公开设备租赁或明确区分的服务替代",
+  "interpretation": [
+    "本文件记录公开挂牌条件，未下单、未联系商户，不代表目标日期可履约。",
+    "替代型号的租价不是原商品租价；场地服务不是设备外借。",
+    "日均价格、最低租期、押金、往返配送必须同时展示；押金不是不可退租金。",
+    "未知值使用null，不能转成免费。当地服务不得推广为全国通用。",
+    "本文中的派送条件属于租赁报价，不能覆盖购买商品的shipping字段。"
+  ],
+  "products": [
+    {
+      "productId": "projector",
+      "requestedModel": "米家投影仪青春版2",
+      "status": "verified-alternative-offer",
+      "rental": {
+        "kind": "equipment-rental",
+        "model": "极米 NEW Z6X",
+        "modelMatch": false,
+        "modelMatchNote": "家用智能投影仪替代型号，不是米家青春版2。",
+        "merchant": "一品租数码租赁（人人租店铺15272）",
+        "pricePerDay": 10,
+        "currency": "CNY",
+        "minimumDays": 3,
+        "minimumHours": null,
+        "priceBasis": "merchant-store-card-per-day",
+        "priceCondition": "店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。",
+        "deposit": 3000,
+        "depositCondition": "店铺卡片列押金3000元；未取得该商品个人免押门槛。",
+        "shipping": {
+          "outboundAmount": 0,
+          "returnAmount": null,
+          "status": "conditional-merchant-claim",
+          "condition": "商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+        },
+        "serviceArea": "店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验",
+        "sourceId": "rrzu-z6x-store",
+        "source": {
+          "url": "https://www.rrzu.com/shop-page/15272",
+          "capturedAt": "2026-11-21"
+        },
+        "productUrl": "https://www.rrzu.com/item/166775",
+        "evidenceLevel": "primary-merchant-store-page-opened",
+        "limitations": [
+          "详情链接返回405，已独立打开商家店铺页核验型号、日租、起租及押金；无目标日期最终结算。",
+          "租金可能随套餐、时间及商户活动变化，不能保证3天最终租金为30元。",
+          "配件清单、包邮地域例外、归还运费未披露。"
+        ]
+      },
+      "sameModelLead": {
+        "model": "米家投影仪青春版2",
+        "displayedPricePerDay": 4.52,
+        "minimumDays": 3,
+        "deposit": 2499,
+        "sourceId": "rrzu-mijia-home-lead",
+        "url": "https://www.rrzu.com/home/index",
+        "listingUrl": "https://m.rrzu.com/list/office-jiaxing",
+        "productUrl": "https://m.rrzu.com/item/84105",
+        "capturedAt": "2026-11-21",
+        "evidenceLevel": "listing-opened-minimum-term-search-index-only",
+        "status": "not-ready-as-complete-quote",
+        "note": "分类页已打开，确认4.52元/天、押金2499元；三天最低租期只在主页搜索索引可见，主页405、单品页被站点拦截，未绕过。具体租期档位与运费不能确认；不将4.52元直接当作任意三天的短租成交价。"
+      },
+      "secondaryServiceAlternative": {
+        "kind": "equipment-and-installation-service",
+        "model": "2500流明投影机+84寸幕布套餐，品牌型号未披露",
+        "modelMatch": false,
+        "merchant": "快捷租赁网",
+        "pricePerDay": 300,
+        "currency": "CNY",
+        "minimumDays": null,
+        "deposit": null,
+        "serviceArea": "上海市区",
+        "shipping": {
+          "outboundAmount": 0,
+          "returnAmount": 0,
+          "installationAmount": 0,
+          "condition": "官网热门套餐价包含上海市区来回取送及安装调试，至少提前约2天预约；非全国包邮。"
+        },
+        "sourceId": "qzulin-projector-service",
+        "source": {
+          "url": "https://www.qzulin.com/price.html",
+          "capturedAt": "2026-11-21"
+        },
+        "note": "商务会议服务场景，不能代替米家家用机器同SKU日租。按天报价，但最低租期与押金未披露。"
+      }
+    },
+    {
+      "productId": "treadmill",
+      "requestedModel": "米家跑步机（原款）",
+      "status": "verified-alternative-offer",
+      "rental": {
+        "kind": "equipment-rental",
+        "model": "汉臣 OMEGA T200eco 家用跑步机",
+        "modelMatch": false,
+        "modelMatchNote": "同品类替代型号，不是米家跑步机。",
+        "merchant": "汉臣健康科技（广州）有限公司（零距离租赁网）",
+        "pricePerDay": 7.33,
+        "currency": "CNY",
+        "minimumDays": 365,
+        "minimumHours": null,
+        "priceBasis": "fixed-365-day-plan-daily-rate",
+        "priceCondition": "页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。",
+        "derivedMinimumRent": 2675.45,
+        "derivedMinimumRentFormula": "7.33 × 365；算术估算，不是结算确认金额，不含归还运费",
+        "deposit": 0,
+        "depositCondition": "可见正文显示无需押金，SKU deposit=0；最终资格和合同仍以平台订单为准。",
+        "shipping": {
+          "outboundAmount": 0,
+          "returnAmount": null,
+          "installationAmount": null,
+          "status": "published-conditional-policy",
+          "condition": "寄出包邮、归还自付；仅公开服务区内。搬运上楼、安装及回收的实际收费未披露。"
+        },
+        "serviceArea": "广东省广州市天河区",
+        "serviceAreaEvidence": "同页公开JSON-LD areaServed及serviceAreaName字段；非全国配送承诺",
+        "sourceId": "zulin-t200eco-detail",
+        "source": {
+          "url": "https://m.zulin.com/product/1861221672103710722.html",
+          "capturedAt": "2026-11-21"
+        },
+        "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+        "limitations": [
+          "这是年租方案，尤其不适合拿7.33元与单次运动作费用比较。",
+          "目标地址、日期、上楼条件与安装未输入，未核实实际履约。"
+        ]
+      }
+    },
+    {
+      "productId": "instant-camera",
+      "requestedModel": "富士 instax mini12",
+      "status": "verified-same-model-offer",
+      "rental": {
+        "kind": "equipment-rental",
+        "model": "富士 instax mini12",
+        "modelMatch": true,
+        "modelMatchNote": "同型号；具体颜色、成色与随附配件未保证。",
+        "merchant": "峰行科技（零距离租赁网，武汉）",
+        "pricePerDay": 30,
+        "currency": "CNY",
+        "minimumDays": 1,
+        "minimumHours": null,
+        "priceBasis": "published-one-day-sku",
+        "priceCondition": "详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。",
+        "deposit": 700,
+        "depositCondition": "公开押金700元，页面显示芝麻分650+可免押金；未为本用户核验资格。",
+        "shipping": {
+          "outboundAmount": 0,
+          "returnAmount": null,
+          "status": "published-conditional-policy",
+          "condition": "寄出包邮、归还自付；页面公开服务区为全国，偏远地址及目标日期仍需订单核验。"
+        },
+        "serviceArea": "全国（商家公开字段）",
+        "sourceId": "zulin-mini12-detail",
+        "source": {
+          "url": "https://m.zulin.com/product/2010913474523684865.html",
+          "capturedAt": "2026-11-21"
+        },
+        "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+        "limitations": [
+          "相纸包含数量未披露，不能视为租金已含拍摄耗材。",
+          "归还运费、租期起止是否包含运输日、颜色及目标日期库存未在本次核验中确定。"
+        ]
+      }
+    },
+    {
+      "productId": "e-drum",
+      "requestedModel": "Roland TD-02K",
+      "status": "verified-different-service-alternative",
+      "rental": {
+        "kind": "onsite-practice-room",
+        "model": "单人独立琴房，包含店内电鼓使用；鼓型号未披露",
+        "modelMatch": false,
+        "modelMatchNote": "到店练鼓服务，不是Roland TD-02K设备出租，不可带走。",
+        "merchant": "上海维音琴行",
+        "pricePerDay": null,
+        "pricePerHour": 50,
+        "currency": "CNY",
+        "minimumDays": null,
+        "minimumHours": null,
+        "priceBasis": "published-hourly-room-tariff",
+        "priceCondition": "官网琴房练琴栏目50元/小时，仅供单人；品牌立式钢琴、吉他、古筝、电鼓及尤克里里使用包含在场地费中。最低可预订时长、半小时进位规则未披露。",
+        "deposit": null,
+        "depositCondition": "公开价目未披露押金，不能当成0。",
+        "shipping": {
+          "outboundAmount": null,
+          "returnAmount": null,
+          "status": "not-applicable",
+          "condition": "到店使用，不发生设备邮寄；个人出行成本不包含在场地费中。"
+        },
+        "serviceArea": "上海市静安区西康路757号5楼",
+        "sourceId": "weiyin-practice-room",
+        "source": {
+          "url": "http://www.wyshopping.cn/rent",
+          "capturedAt": "2026-11-21"
+        },
+        "httpsUrl": "https://www.wyshopping.cn/rent",
+        "evidenceLevel": "primary-merchant-visible-html",
+        "limitations": [
+          "官网HTTPS证书域名不匹配，HTTP返回的页面正文已读取；传输在20秒后超时，但完整目标价目及店址已返回。",
+          "型号、可预约时间、最短时长、鼓棒或耳机是否需自带未公开。",
+          "不可换算50×24为设备日租，也不能写成TD-02K日租50元。"
+        ]
+      },
+      "equipmentRentalLead": {
+        "model": "Roland TD17 / TD25 / TD11，多型号租赁链接",
+        "modelMatch": false,
+        "merchant": "KM乐器销售中心（上海淘宝店）",
+        "displayedAmount": 80,
+        "currency": "CNY",
+        "pricePerDay": null,
+        "minimumDays": null,
+        "sourceId": "hooos-drum-lead",
+        "url": "https://tao.hooos.com/goods_670628480614.html",
+        "capturedAt": "2026-11-21",
+        "status": "amount-unit-not-verified",
+        "note": "聚合页完整打开，显示租赁商品80元，但不说明型号套餐、租期或计价单位；9月16日至27日的70.4元活动已过。不可把80元填入日租价。图片仅为产品宣传，亦无租期。"
+      }
+    },
+    {
+      "productId": "tent",
+      "requestedModel": "迪卡侬 MH100 双人双层帐篷",
+      "status": "verified-alternative-package-offer",
+      "rental": {
+        "kind": "equipment-rental",
+        "model": "喜马拉雅 轻云2玻杆 双人帐篷（绿/蓝）",
+        "modelMatch": false,
+        "modelMatchNote": "双人露营帐篷替代款，不是迪卡侬MH100。",
+        "merchant": "南京U玩户外",
+        "pricePerDay": null,
+        "currency": "CNY",
+        "minimumDays": null,
+        "minimumHours": null,
+        "priceBasis": "flat-price-up-to-seven-days",
+        "packagePrice": 50,
+        "packageDaysIncluded": 7,
+        "minimumCharge": 50,
+        "extraDayPrice": 10,
+        "priceCondition": "每顶50元，7天以内可自由使用；超过7天按10元/天另计。不是日租50元，也不是最低必须租7天。最短交接时长未披露。",
+        "deposit": 200,
+        "depositCondition": "每顶200元押金；商家说明损坏须照价赔偿。",
+        "shipping": {
+          "pickupAmount": 0,
+          "outboundAmount": null,
+          "returnAmount": null,
+          "status": "pickup-or-paid-delivery",
+          "condition": "页面要求自提；如需送货，配送费另付，未公开金额或配送范围。个人取还交通成本未包含。"
+        },
+        "serviceArea": "南京商家自提；配送需另约",
+        "sourceId": "uwanu-qingyun2-tent",
+        "source": {
+          "url": "http://www.uwanu.com/m/product?id=29152",
+          "capturedAt": "2026-11-21"
+        },
+        "httpsUrl": "https://www.uwanu.com/m/product?id=29152",
+        "evidenceLevel": "primary-merchant-visible-html",
+        "limitations": [
+          "官网HTTPS证书域名不匹配；HTTP正文及受限TLS只读正文均确认相同价目，无凭证发送。",
+          "只含帐篷，不包括睡袋、地垫、天幕或营地门票。",
+          "商品库存值为未渲染模板，不能把历史成交17笔视为当前有货。"
+        ],
+        "costFormula": "rent(d) = 50 + 10 × max(d - 7, 0)，d为双方确认的计费天数；不含可退押金、配送与损坏赔偿",
+        "exampleRentalOnly": [
+          { "days": 1, "amount": 50 },
+          { "days": 3, "amount": 50 },
+          { "days": 7, "amount": 50 },
+          { "days": 8, "amount": 60 }
+        ]
+      }
+    }
+  ]
+}

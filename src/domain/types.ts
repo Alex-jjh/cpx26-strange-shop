@@ -70,3 +70,30 @@ export interface Article {
   /** The review rule this article backs. Absent = decorative, quotable for flavour. */
   rule?: RuleId
 }
+
+/**
+ * Collected purchase/rental conditions per product (src/data/product-details.json, owned by role A).
+ * Only the fields the app reads are typed; the JSON carries more evidence fields.
+ */
+export interface RentalOffer {
+  kind: 'equipment-rental' | 'onsite-practice-room' | null
+  model: string | null
+  /** false = a comparable model, not the same product. */
+  modelMatch: boolean | null
+  merchant: string | null
+  pricePerDay: number | null
+  minimumDays: number | null
+  packagePrice: number | null
+  packageDaysIncluded: number | null
+  extraDayPrice: number | null
+  pricePerHour: number | null
+}
+
+export interface ProductDetails {
+  quoteLabel: string
+  priceNote: string
+  scenario: string
+  shippingCondition: string
+  imageNote?: string
+  rental: RentalOffer | null
+}

@@ -74,6 +74,8 @@ export function ProcurementForm({ product, initial, attempt, onSubmit }: Props) 
         <input
           type="number"
           inputMode="decimal"
+          step="0.01"
+          min="0"
           value={draft.declaredTotal ?? ''}
           onChange={(e) => set('declaredTotal', e.target.value === '' ? null : Number(e.target.value))}
         />

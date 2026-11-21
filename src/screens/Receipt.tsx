@@ -1,4 +1,4 @@
-import { totalCost } from '../domain/cost'
+import { formatYuan, totalCost } from '../domain/cost'
 import type { Product } from '../domain/types'
 
 interface Props {
@@ -18,7 +18,7 @@ export function Receipt({ product, orderNo, attempt, onDone }: Props) {
         <dt>物品</dt>
         <dd>{product.name}</dd>
         <dt>金额</dt>
-        <dd>¥{totalCost(product)}</dd>
+        <dd>¥{formatYuan(totalCost(product))}</dd>
         <dt>提交次数</dt>
         <dd>{attempt}</dd>
         <dt>审批意见</dt>

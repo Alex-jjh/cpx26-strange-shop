@@ -6,7 +6,7 @@
 
 | 角色 | 成员 | 负责什么 | 主要改动的文件 | 分支前缀 |
 |---|---|---|---|---|---|
-| **A 数据与素材** | CrazyMike | 10 个商品的真实价格、配件、运费、日租价；用 OneclickAMD 生成商品图和投影仪"吃灰"图 | `src/data/products.json`、`public/products/` | `data/` |
+| **A 数据与素材** | CrazyMike | 10 个商品的真实价格、配件、运费、日租价；用 OneclickAMD 生成商品图和投影仪"吃灰"图 | `CRAZYMIKE/`（研究输入与生成脚本）→ 生成 `src/data/products.json`、`src/data/product-details.json`、`public/products/` | `data/` |
 | **B 摩擦与小游戏** | mAw（ricoalyssa） | 打磨摇一摇验证；做第 4 处摩擦（如"领导出差中"排队、冷静期倒计时）；在 iPhone 和微信里实测 | `src/screens/ShakeGate.tsx`、新摩擦的页面文件、`src/device/` | `feat/` |
 | **C AI 领导与部署** | Alex | 审批规则和难度；领导话术提示词；Vercel 部署和国内访问测试；可选的驳回排行榜 | `src/domain/`、`src/llm/`、`api/` | `feat/` |
 | **D 视觉、海报与路演** | Helen | 页面视觉、回执和印章；用 Dify 的 AMD 插件做海报；路演稿和演示彩排 | `src/index.css`、`src/screens/Decision.tsx`、`Receipt.tsx`、`docs/pitch.md` | `ui/`、`docs/` |

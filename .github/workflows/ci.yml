@@ -18,3 +18,5 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run lint
+      - name: Product data matches the CRAZYMIKE package
+        run: python3 -I CRAZYMIKE/validate.py

@@ -1,0 +1,400 @@
+{
+  "reviewedAt": "2026-11-21",
+  "scope": "15 additional product images and portable-coffee capsule compatibility; no main application data or original image was modified.",
+  "method": {
+    "visual": "Every image individually opened using view_image and visually compared with its recorded name, category, color and product-image association.",
+    "technical": "Read-only sips format/dimension inspection plus SHA-256, byte-count, source URL and SKU-to-source-page checks.",
+    "identityLimit": "Visual review confirms category, color and visible form. Exact model identity relies on the official image URL and SKU mapping in new-products.json/new-images.json; hidden specifications are not inferred from photographs."
+  },
+  "summary": {
+    "reviewed": 15,
+    "visualPass": 15,
+    "technicalIntegrityPass": 15,
+    "extensionWarnings": 1,
+    "originalImagesChanged": false
+  },
+  "assets": [
+    {
+      "id": "redmi-projector-5-pro",
+      "name": "REDMI投影仪5 Pro（白色）",
+      "file": "images/redmi-projector-5-pro.png",
+      "visualStatus": "pass",
+      "observation": "白色横置投影仪，正面镜头和传感器，侧面通风孔及一体旋转支架，底座可见 REDMI 标识。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230808670",
+      "sha256": "46806686f8f8757372811c1c4ba10dfd58e2c70326062f9dc1f4b124a6a1ab0f",
+      "technical": {
+        "id": "redmi-projector-5-pro",
+        "format": "jpeg",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      },
+      "warning": "原始下载内容为 JPEG，文件扩展名为 .png。当前可被图像解码器识别，但建议接入时提供 .jpg 副本并同步 manifest；保留原始下载文件。"
+    },
+    {
+      "id": "redmi-projector-3-pro",
+      "name": "Redmi投影仪3 Pro（深灰色）",
+      "file": "images/redmi-projector-3-pro.png",
+      "visualStatus": "pass",
+      "observation": "深灰色横置投影仪，左上大镜头、右侧传感器，正面可见 Redmi 标识。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230802847",
+      "sha256": "e040a2b1813fb8800301733bb2a7ea4d78229ac6e5827613250a45d00adc1bc2",
+      "technical": {
+        "id": "redmi-projector-3-pro",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "projector-mini",
+      "name": "小米投影仪mini（白色）",
+      "file": "images/projector-mini.png",
+      "visualStatus": "pass",
+      "observation": "白色小型直立投影仪，灰色织物正面、前镜头、侧面通风孔。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1223600007",
+      "sha256": "793fd35d3085f054b0f9841e51a5463affb97dd3ec00421d9234c0c19ca7a2ac",
+      "technical": {
+        "id": "projector-mini",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "massage-multihead-3c",
+      "name": "米家多头筋膜枪3 C（深空灰）",
+      "file": "images/massage-multihead-3c.png",
+      "visualStatus": "pass",
+      "observation": "深灰色手持多头按摩设备，两端把手及多个球形按摩头，与多头筋膜枪品类一致。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230809825",
+      "sha256": "11eadb6dfef2873874b4a875a07c1496163c3fefa28a6d7574f28075f2a2c59e",
+      "technical": {
+        "id": "massage-multihead-3c",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "massage-mini-3",
+      "name": "米家筋膜枪3迷你版（浅沙色）",
+      "file": "images/massage-mini-3.png",
+      "visualStatus": "pass",
+      "observation": "浅沙色紧凑 T 形筋膜枪，单个球形按摩头。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230803500",
+      "sha256": "5e3f6fc44eed6f776a73282b6991b770c46846255170ff3f1fd6c1e711959879",
+      "technical": {
+        "id": "massage-mini-3",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "massage-heat-h3-mini",
+      "name": "米家热敷筋膜枪H3迷你版（金属灰）",
+      "file": "images/massage-heat-h3-mini.png",
+      "visualStatus": "pass",
+      "observation": "金属灰色 T 形筋膜枪，圆盘状按摩头带橙色边缘，机身带加热图标和显示区。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230803768",
+      "sha256": "411e67f8fbab148ecfa1d970f007936efd0522ab528b08abbf3e55f012c582f7",
+      "technical": {
+        "id": "massage-heat-h3-mini",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "capsule-coffee-s1",
+      "name": "米家胶囊咖啡机S1（黑色）",
+      "file": "images/capsule-coffee-s1.png",
+      "visualStatus": "pass",
+      "observation": "黑色台式咖啡机，正面出液口和滴水盘，侧面透明水箱。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230803536",
+      "sha256": "98c8b61f3051056c4ff4e69c6b12a7c5602d34ba7e8911feb42a3501a2ffbd4a",
+      "technical": {
+        "id": "capsule-coffee-s1",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "portable-coffee",
+      "name": "米家便携咖啡机（白色）",
+      "file": "images/portable-coffee.png",
+      "visualStatus": "pass",
+      "observation": "白色圆柱形便携设备，前置电源按钮、米家标识和金属底杯，外观符合便携咖啡机。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230808268",
+      "sha256": "57b77fc3d7ca367bac9e65f8aff8a3c2111434356e03013305e3248d343118de",
+      "technical": {
+        "id": "portable-coffee",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "air-fryer-n1",
+      "name": "米家空气炸锅N1 5L（米白色）",
+      "file": "images/air-fryer-n1.png",
+      "visualStatus": "pass",
+      "observation": "米白色抽屉式空气炸锅，机械时间及温度双旋钮、前置把手与可视窗。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230802183",
+      "sha256": "f08c353e2e49516ee6117386874ee75f712ed41da7eca1ab27975ea9f9fc742c",
+      "technical": {
+        "id": "air-fryer-n1",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "air-fryer-steam-pro",
+      "name": "米家智能空气炸锅Pro蒸烤版6.5L（黑色）",
+      "file": "images/air-fryer-steam-pro.png",
+      "visualStatus": "pass",
+      "observation": "黑色抽屉式空气炸锅，圆形控制旋钮、前置把手与可视窗；蒸汽能力和容量不能仅凭图片确认。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230806842",
+      "sha256": "0b4ddf4fce20ac6a84ba17eab890ca000cd1d02d828b2e918ab8fc7d0857f03e",
+      "technical": {
+        "id": "air-fryer-steam-pro",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "air-fryer-s1",
+      "name": "米家空气炸锅S1 6L（白色）",
+      "file": "images/air-fryer-s1.png",
+      "visualStatus": "pass",
+      "observation": "白色抽屉式空气炸锅，圆形数字控制区、前置把手及可视窗。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230809726",
+      "sha256": "41ac0fb0d0bc43d3a02fa240339d38f1ef9646f405a946dfab0725a1a851d110",
+      "technical": {
+        "id": "air-fryer-s1",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "blender-n1",
+      "name": "米家破壁机N1（白色）",
+      "file": "images/blender-n1.png",
+      "visualStatus": "pass",
+      "observation": "白色破壁机，透明搅拌杯、杯盖与把手，底座带圆形控制区。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230802675",
+      "sha256": "16a987c8fddb8fa67a3af65088d579964c03dd16bb7633b6810bdc0c496f6b34",
+      "technical": {
+        "id": "blender-n1",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "blender-p1",
+      "name": "米家智能轻音变频破壁机P1（白色）",
+      "file": "images/blender-p1.png",
+      "visualStatus": "pass",
+      "observation": "白色搅拌设备，透明杯体和可见刀片、包围式外壳、扁平底座及旋钮；静音和变频属性不能凭图确认。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230802855",
+      "sha256": "a6e756fe43442390353a08443a1dcab95d02df3a7147b803f4576b1ee0ad8463",
+      "technical": {
+        "id": "blender-p1",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "soy-milk-maker",
+      "name": "米家豆浆机（纯白色）",
+      "file": "images/soy-milk-maker.png",
+      "visualStatus": "pass",
+      "observation": "纯白色壶式豆浆机，盖、壶嘴、把手及底部圆形显示区。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230808971",
+      "sha256": "e3dca1ce5fb68b0ba2461ef62f35ca7df27bcf643d1096d6ad5586857b88ac67",
+      "technical": {
+        "id": "soy-milk-maker",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    },
+    {
+      "id": "portable-juicer-2",
+      "name": "米家随行便携榨汁杯2（白色）",
+      "file": "images/portable-juicer-2.png",
+      "visualStatus": "pass",
+      "observation": "白色便携榨汁杯，透明杯体、上部电机外壳和米家标识。",
+      "sourcePage": "https://www.mi.com/shop/buy?product_id=1230802537",
+      "sha256": "4d878ed2fe6a237def06e3c420b3149d49a641b8e85662dbf00bc8d8bc52995e",
+      "technical": {
+        "id": "portable-juicer-2",
+        "format": "png",
+        "dimensions": [
+          800,
+          800
+        ],
+        "dimensionsMatch": true,
+        "bytesMatch": true,
+        "sha256Match": true,
+        "urlMatch": true,
+        "skuMatch": true
+      }
+    }
+  ],
+  "portableCoffeeCompatibility": {
+    "productId": "1230808268",
+    "productName": "米家便携咖啡机（白色）",
+    "status": "unverified-specific-capsule-system",
+    "confirmed": "小米官方众筹页面搜索索引明确记载可使用咖啡胶囊或咖啡粉。",
+    "notConfirmed": [
+      "Nespresso Original 制式兼容",
+      "Café Royal 意式浓缩 30 粒（product_id=1230805544）的具体适配"
+    ],
+    "conclusion": "本轮未取得可核验的官方胶囊制式或具体耗材适配说明；不能从 20Bar、温控、续航或囊粉两用推断指定胶囊兼容。未确认不等于不兼容。",
+    "baseScenario": {
+      "label": "已有适配耗材，耗材另选",
+      "assumption": "演示假设用户已持有已确认适配的咖啡粉或胶囊；本轮不新增耗材购买项。",
+      "defaultAccessoryIds": [],
+      "costNote": "不把耗材标成免费或设备随附，也不把 Café Royal 默认加入本机费用。"
+    },
+    "evidence": [
+      {
+        "url": "https://m.mi.com/crowdfunding/proddetail/1001021",
+        "publisher": "Xiaomi",
+        "type": "official-crowdfunding-page-search-index",
+        "supports": "Coffee capsules and coffee powder are both supported.",
+        "doesNotSupport": "No named capsule standard or Café Royal SKU compatibility in retrieved text.",
+        "access": "Official search-index text retrieved; direct opened page had no readable content."
+      },
+      {
+        "url": "https://www.mi.com/shop/buy?product_id=1230808268",
+        "publisher": "Xiaomi",
+        "type": "official-product-page",
+        "supports": "Recorded source SKU for this product.",
+        "access": "web open returned inaccessible; direct HTML request failed DNS in the shell environment. No compatibility claim extracted."
+      }
+    ],
+    "rejectedAsProof": [
+      {
+        "url": "https://post.smzdm.com/p/ak8xmz2e/",
+        "reason": "Third-party AI-generated summary claiming Nespresso suitability; not an official technical statement and not sufficient to prove Original/Café Royal compatibility for the exact SKU."
+      },
+      {
+        "url": "https://www.jd.com/xinkuan/73729596dca6db9ada6.html",
+        "reason": "Search listing shows bundles pairing a portable coffee machine with Café Royal, but the exact Xiaomi SKU and a manufacturer compatibility statement were not verified."
+      }
+    ],
+    "queries": [
+      "米家便携咖啡机 Nespresso",
+      "米家便携咖啡机 说明书",
+      "米家便携咖啡机 兼容 site:mi.com",
+      "米家便携咖啡机 适用 site:mi.com",
+      "米家便携咖啡机 Café Royal (mi.com/xiaomiyoupin.com/xiaomi.com)"
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 import { products } from '../data/catalog'
+import { formatYuan } from '../domain/cost'
 import { ProductImage } from './ProductImage'
 
 export function Shop({ onOpen }: { onOpen: (productId: string) => void }) {
@@ -12,7 +13,7 @@ export function Shop({ onOpen }: { onOpen: (productId: string) => void }) {
             <button className="card" onClick={() => onOpen(p.id)}>
               <ProductImage src={p.images.unboxed} label={p.category} />
               <span className="name">{p.name}</span>
-              <span className="price">¥{p.price}</span>
+              <span className="price">¥{formatYuan(p.price)}</span>
             </button>
           </li>
         ))}

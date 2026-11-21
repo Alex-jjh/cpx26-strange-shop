@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-21",
+  "currency": "CNY",
+  "scope": "原十品类中其余五项租赁补充核验；1条可用商家替代报价，其余4项精确记录公开证据缺口。",
+  "interpretation": [
+    "仅rental非null且status为verified-alternative-offer的记录可用作已核验公开挂牌方案。",
+    "rentalLeads是证据线索，禁止自动转成产品租赁报价或全局日租；未知不是0。",
+    "月租方案保留最低租期；商用替代型号不能说成原商品同SKU或普遍适用于个人。",
+    "未联系商家、未下单、未登录；未确认当前库存及最终结算。",
+    "采集日期是本次读取日期，不代表历史聚合信息已重新被原商家确认。"
+  ],
+  "products": [
+    {
+      "productId": "coffee-machine",
+      "requestedModel": "米家智能意式半自动咖啡机 Pro（白色）",
+      "status": "verified-alternative-offer",
+      "rental": {
+        "kind": "equipment-rental",
+        "model": "Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）",
+        "modelMatch": false,
+        "modelMatchNote": "企业商用全自动咖啡机方案，不是米家半自动家用机；操作方式、体积与使用场景不同。",
+        "merchant": "优睿客咖啡机（零距离租赁网）",
+        "pricePerDay": 16.67,
+        "currency": "CNY",
+        "minimumDays": 30,
+        "minimumHours": null,
+        "priceBasis": "monthly-plan-published-daily-rate",
+        "priceCondition": "正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。",
+        "derivedMinimumRent": 500.1,
+        "derivedMinimumRentFormula": "16.67 × 30；挂牌日均价的算术估算，非已确认账单，不含往返运费和耗材。",
+        "deposit": 0.01,
+        "depositCondition": "正文及公开SKU均列每件0.01元押金，不能自行四舍五入成免押；公开JSON-LD写信用达标或企业认证可免押，但未核验具体资格。",
+        "shipping": {
+          "outboundAmount": null,
+          "returnAmount": null,
+          "installationAmount": null,
+          "status": "renter-pays-both-ways",
+          "condition": "正文显示寄出到付、归还自付；公开SKU同样写承租方承担往返运费。具体金额、搬运及安装费未披露。"
+        },
+        "serviceArea": "全国（正文与同页公开JSON-LD声明；需核验实际收货地址）",
+        "sourceId": "zulin-drcoffee-f200-detail",
+        "source": {
+          "url": "https://wap.zulin.com/product/2076870310858579970.html",
+          "capturedAt": "2026-11-21"
+        },
+        "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+        "limitations": [
+          "这是商家公开挂牌条件，未下单、未核验目标日期库存。",
+          "企业长租资格与个人能否承租未进一步确认；不能直接作为任何个人用户均可获得的方案。",
+          "咖啡豆、牛奶、滤芯、清洗剂、维护和安装包含范围未披露，不能认为租金含每杯成本。",
+          "最低30天及套餐日价来自该商品同页公开JSON-LD与SKU；可见正文只写按月。",
+          "未把推荐商品区、分类FAQ或网站通用说明当成此商品专属条款。"
+        ]
+      }
+    },
+    {
+      "productId": "massage-gun",
+      "requestedModel": "米家筋膜枪Pro（浅锖色）",
+      "status": "no-complete-public-quote-verified",
+      "rental": null,
+      "fallback": "已有设备或向熟人借用；不设未经核验的租金。",
+      "verifiedNonPricedAlternative": {
+        "kind": "shared-equipment-service",
+        "model": "筋摩鸟共享筋膜枪，型号未披露",
+        "merchant": "杭州柿子树科技有限公司／筋摩鸟",
+        "source": {
+          "url": "https://www.jinmokeji.cn/",
+          "capturedAt": "2026-11-21"
+        },
+        "evidenceLevel": "primary-service-page-opened",
+        "pricePerDay": null,
+        "minimumDays": null,
+        "deposit": null,
+        "serviceArea": "已投放的酒店、景区、健身房；官网未给可租点位名单",
+        "note": "官网可确认存在扫码租借、使用和归还服务，但公开网页没有价格、计费时长、押金或具体可用点位。它是即时使用服务线索，不是米家Pro外借报价。"
+      },
+      "rentalLeads": [
+        {
+          "model": "米家筋膜枪Pro／HYPERICE Hypervolt Go 2",
+          "url": "https://m.rrzu.com/list/medical-cd",
+          "capturedAt": "2026-11-21",
+          "evidenceLevel": "search-index-only-open-failed",
+          "displayedPricePerDay": {
+            "mijiaPro": 2.74,
+            "hypervoltGo2": 2.78
+          },
+          "displayedDeposit": {
+            "mijiaPro": 1250,
+            "hypervoltGo2": 1281
+          },
+          "status": "not-ready-as-complete-quote",
+          "note": "检索索引显示标价，但公开分类页和商详访问未获可读正文（405）；不能确认最低租期、对应SKU、商家及运费。索引金额禁止导入有效rental。"
+        }
+      ]
+    },
+    {
+      "productId": "air-fryer",
+      "requestedModel": "米家空气炸锅P1 6.5L（白色）",
+      "status": "no-complete-public-quote-verified",
+      "rental": null,
+      "fallback": "已有设备或借用；没有证据支持统一日租价。",
+      "rentalLeads": [
+        {
+          "model": "全新小米空气炸锅系列（未明确P1 6.5L）",
+          "url": "https://m.rrzu.com/list/appliance-nj",
+          "capturedAt": "2026-11-21",
+          "displayedPricePerDay": 0.68,
+          "displayedDeposit": 309,
+          "evidenceLevel": "search-index-only-open-failed",
+          "status": "not-ready-as-complete-quote",
+          "note": "索引可见0.68元/天、押金309元、标题声称包邮寄出。分类页web打开失败，curl返回站点阻断页；不能核实型号、报价对应时长、起租、商家或返程运费。未绕过访问限制，不作为已验证短租报价。"
+        }
+      ]
+    },
+    {
+      "productId": "fitness-ring",
+      "requestedModel": "任天堂 Switch 健身环大冒险（日版环＋绑带＋游戏卡）",
+      "status": "no-complete-primary-quote-verified",
+      "rental": null,
+      "fallback": "已有Switch及健身环或借用；聚合页面报价不自动升级为现行商家方案。",
+      "rentalLeads": [
+        {
+          "model": "Switch OLED主机套餐＋健身环加租",
+          "modelMatch": false,
+          "merchant": "趣租电玩（聚合页标称）",
+          "url": "https://www.dazhe.com/ershou/8588.html",
+          "productUrl": "https://www.goofish.com/item?categoryId=126856327&id=978397782038",
+          "capturedAt": "2026-11-21",
+          "listingPublishedAt": "2026-03-27",
+          "evidenceLevel": "secondary-aggregation-page-opened-primary-item-not-readable",
+          "status": "primary-offer-not-verified",
+          "pricePerDay": null,
+          "minimumDays": 7,
+          "packages": [
+            {
+              "days": 7,
+              "consolePackagePrice": 79
+            },
+            {
+              "days": 15,
+              "consolePackagePrice": 99
+            },
+            {
+              "days": 30,
+              "consolePackagePrice": 189
+            }
+          ],
+          "ringAddonDisplayedAmount": 30,
+          "ringAddonPeriod": null,
+          "deposit": null,
+          "shipping": {
+            "outboundAmount": 0,
+            "returnAmount": null,
+            "condition": "聚合页称京东包邮、归还自付、签收次日起算；范围及原商家当前条款未核实。"
+          },
+          "serviceArea": "聚合页卖家位置福建宁德，未公开配送地域边界",
+          "note": "已打开全文，套餐金额及30元/套加租均来自闲鱼二手信息聚合；原闲鱼链接仅返回登录/首页壳，未取得商品正文。30元加环适用哪个租期不明确；109元页面总标价不能推定为已核验的7天整套报价。信用免押门槛、押金额、绑带/游戏卡包含范围及当前有效性未核实。"
+        },
+        {
+          "model": "99新日版Switch OLED／塞尔达／健身环大冒险，多配置链接",
+          "merchant": "稳稳电玩商城（人人租店铺16973）",
+          "url": "https://www.rrzu.com/shop-scheme-list/16973",
+          "capturedAt": "2026-11-21",
+          "displayedAmount": 0.82,
+          "displayedDeposit": 350,
+          "pricePerDay": null,
+          "minimumDays": null,
+          "evidenceLevel": "search-index-only-open-405",
+          "status": "not-ready-as-complete-quote",
+          "note": "索引仅显示租金0.82元、押金350元，完整店铺及详情未取得可读正文；无法确认单位、期限或最低配置是否包含健身环，因此不填日价。"
+        }
+      ]
+    },
+    {
+      "productId": "blender",
+      "requestedModel": "米家智能轻音破壁机S2（白色）",
+      "status": "no-complete-public-quote-verified",
+      "rental": null,
+      "fallback": "已有设备或借用；保留价格为空。",
+      "rentalLeads": [
+        {
+          "model": "九阳 L18-Y33D 破壁机",
+          "modelMatch": false,
+          "url": "https://m.rrzu.com/list/appliance-nj",
+          "capturedAt": "2026-11-21",
+          "displayedPricePerDay": 4.65,
+          "displayedDeposit": 2599,
+          "evidenceLevel": "search-index-only-open-failed",
+          "status": "not-ready-as-complete-quote",
+          "note": "检索分类索引有同类设备日价和押金，但页面无法完整打开，未核实最低租期、配置、商家、运费及地区；不是米家S2报价，不导入有效rental。"
+        }
+      ]
+    }
+  ]
+}

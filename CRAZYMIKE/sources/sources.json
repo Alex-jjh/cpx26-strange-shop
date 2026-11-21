@@ -1,0 +1,532 @@
+[
+  {
+    "id": "mi-projector",
+    "title": "小米商城：米家投影仪 青春版2",
+    "url": "https://www.mi.com/shop/buy/detail?product_id=12752",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser",
+    "facts": "白色页面标价2699元；默认北京地址暂时缺货。"
+  },
+  {
+    "id": "mi-massage",
+    "title": "小米商城：米家筋膜枪Pro",
+    "url": "https://www.mi.com/shop/buy/detail?product_id=18424",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser",
+    "facts": "浅锖色页面标价899元，划线999元；默认北京地址有货。"
+  },
+  {
+    "id": "zol-treadmill",
+    "title": "中关村在线：米家跑步机",
+    "url": "https://detail.zol.com.cn/treadmill/index1389750.shtml",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "参考报价2299元，另有天猫入口1999元；仅采用明确的参考报价。"
+  },
+  {
+    "id": "mi-air-fryer",
+    "title": "小米商城：米家空气炸锅P1 6.5L",
+    "url": "https://www.mi.com/shop/buy?product_id=1230809728",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser",
+    "facts": "白色页面标价369元，划线399元；默认北京地址有货。"
+  },
+  {
+    "id": "mi-coffee",
+    "title": "小米商城：米家智能意式半自动咖啡机 Pro",
+    "url": "https://www.mi.com/shop/buy/detail?product_id=25497",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser",
+    "facts": "白色页面标价3884元，划线4999元；研磨、萃取、奶泡一体。礼盒及敲渣桶赠完即止。"
+  },
+  {
+    "id": "zol-camera",
+    "title": "中关村在线：富士instax mini12",
+    "url": "https://detail.zol.com.cn/polaroid/index1467207.shtml",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "参考报价759元；不同商家报价及配色另列，未核验交易库存。"
+  },
+  {
+    "id": "taouq-drum",
+    "title": "淘优券：Roland TD-02K / roland罗兰旗舰店",
+    "url": "https://www.taouq.com/id-9zGqZgK8SBtODQ6jbJah23GtQt6-WkRwwpuN4weQAQ9Fd3/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "聚合页在售价3180元；9折2862元活动标注2026-11-19至11-27；页面宣称包邮，具体套餐未展开。"
+  },
+  {
+    "id": "roland-drum",
+    "title": "Roland 中国：TD-02K",
+    "url": "https://www.roland-china.com/products/td-02k/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "官方型号及产品图片；展示配件不保证全部随主机附送。未从官网获得人民币售价。"
+  },
+  {
+    "id": "smzdm-tent",
+    "title": "什么值得买：迪卡侬 MH100 2人帐篷2467687",
+    "url": "https://www.smzdm.com/p/183563821/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "10月7日爆料249.9元；页面明确提醒发布时间较久、价格可能过期。"
+  },
+  {
+    "id": "smzdm-fitness",
+    "title": "什么值得买：日版健身环大冒险套装",
+    "url": "https://www.smzdm.com/p/180636394/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "8月18日爆料页面价399元，叠券337元；页面明确标记过期或售罄。仅保留399元历史参考。"
+  },
+  {
+    "id": "jd-fitness",
+    "title": "京东：日版健身环大冒险商品图片",
+    "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "下载日版环、绑带、游戏卡套装商品图。照片内手柄为示意，未作为随包商品。未获得该页面自身实时价格。"
+  },
+  {
+    "id": "mi-blender",
+    "title": "小米商城：米家智能轻音破壁机S2",
+    "url": "https://www.mi.com/shop/buy/detail?product_id=20546",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser",
+    "facts": "白色页面标价399元，划线449元；默认北京地址有货。"
+  },
+  {
+    "id": "mi-shipping",
+    "title": "小米商城运费说明",
+    "url": "https://www.mi.com/service/buy/Postal%20policy",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-tooltip",
+    "facts": "小米发货非有品商品单笔满69元免普通运费；特殊商品另计，门店闪送另计。来自商城商品页运费提示。"
+  },
+  {
+    "id": "mi-hdmi",
+    "title": "小米商城：小米高清数据线3米",
+    "url": "https://www.mi.com/shop/buy?product_id=1190200015",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-search",
+    "facts": "商城搜索结果显示29.9元、划线49元。仅有线HDMI连接且无现成线材时需要。"
+  },
+  {
+    "id": "mi-knock-box",
+    "title": "小米商城：米家咖啡机敲渣桶黑色",
+    "url": "https://www.mi.com/shop/buy?product_id=1230809828",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-search",
+    "facts": "商城搜索结果显示69元、划线99元；咖啡机当前赠品标注赠完即止。"
+  },
+  {
+    "id": "smzdm-beans",
+    "title": "什么值得买：Lavazza 罗萨咖啡豆250g",
+    "url": "https://www.smzdm.com/p/182751337/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "9月21日爆料页面价39元、券后36元，标注2027年1月到期；页面提示价格可能过期。"
+  },
+  {
+    "id": "smzdm-film",
+    "title": "什么值得买：instax mini 白边相纸20张",
+    "url": "https://www.smzdm.com/p/173483128/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "5月4日相纸20张促销价79元；直接读取页面明确标注过期或售罄，不能作为当前成交价。"
+  },
+  {
+    "id": "taouq-console",
+    "title": "淘优券：港版Nintendo Switch OLED主机 / 天猫超市",
+    "url": "https://www.taouq.com/id-4B6W2o6fgtNRKMownbtwwKSNtg-nMYPPWFxnOKyVdmtZ/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "聚合页在售价格3199元，另列补贴2879元。使用未减补贴的3199元参考值；需核对原装Joy-Con配套。"
+  },
+  {
+    "id": "zulin-camera",
+    "title": "零距离租赁网：峰行科技 mini12",
+    "url": "https://wap.zulin.com/mall/2006895282763587585.html",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "武汉门店列表显示mini12为30元/天、1天起租、标注免押；免押条件、相纸和往返运费未披露。"
+  },
+  {
+    "id": "rrzu-projector",
+    "title": "人人租首页：米家青春版2投影仪",
+    "url": "https://www.rrzu.com/home/index",
+    "capturedAt": "2026-11-21",
+    "method": "search-index-only-live-http-405",
+    "facts": "搜索收录低至4.52元/天、3天起租、押金2499元。直接访问返回405，未确认低价适用租期。"
+  },
+  {
+    "id": "zulin-treadmill",
+    "title": "零距离租赁网：汉臣 OMEGA T200eco 跑步机",
+    "url": "https://www.zulin.com/category/",
+    "capturedAt": "2026-11-21",
+    "method": "search-index",
+    "facts": "不同型号备选：7.33元/天，365天起租。不得作为米家跑步机日租报价。"
+  },
+  {
+    "id": "sina-projector-scene",
+    "title": "新浪众测：宅男双十二采购记之米家投影仪青春版2",
+    "url": "https://zhongce.sina.com.cn/article/view/74063",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html",
+    "facts": "作者宅家爱撕机，2020-12-16文章；仅提取一张新品实拍参考，图片没有可见积灰。"
+  },
+  {
+    "id": "taouq-treadmill-r2",
+    "title": "金史密斯WalkingPad跑步机R2_走跑一体 对折收纳 脚感控速-walkingpad旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-3MzxAzztAtYeGwq7zgF004S9tJ-NeRBBoczbyAQBM8hG/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "walkingpad旗舰店：R2在售3999元；补贴1000元后2999元（页面活动2025-06-21至2028-07-31）；标记包邮。未披露上楼服务。 主图文字另承诺送货上楼、免安装；赠垫条件为晒单，非无条件标配。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i1/3993820747/O1CN01ST4nFUXqnTB2vH2e_!!4611686018427387467-0-item_pic.jpg",
+    "visualEvidence": "research/images/kingsmith-list-8-0.jpg"
+  },
+  {
+    "id": "taouq-camera-current",
+    "title": "【自营】INSTAX富士instax mini12拍立得海外版一次成像相机 202_-天猫数码家电自营旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-8g8k7adhnt9NGBDQDMCgq0Sbt8-DokRR8I6989jp6diM/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "天猫数码家电自营旗舰店：mini12海外版在售1299元；喵速达直降670元后629元，2026-10-24至11-22；标记包邮。颜色和赠品未按特定选项核验。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2213856588863/O1CN01in4hiX2FLJSwr14U5_!!4611686018427384895-0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-film-current",
+    "title": "富士instax拍立得相纸_3寸20张 白边相纸 快递随机-富士官方旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-zeyJPzRUetaV8q4KerCvd4idt4-jdZqqnCXMqymP7OFK/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "富士官方旗舰店：mini白边3寸相纸20张+甜心牛仔或美拉德相册组合138元；包邮、快递随机。没有把相册拆成独立价格。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/1019803011/O1CN01qhozMO6ddsB1chua_!!4611686018427385219-0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-beans-current",
+    "title": "【门店同款】GridCoffee埃塞俄比亚耶加雪菲深烘意式咖啡豆250g_-GridCoffee官方旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-jGjpdo7wF0tJ75BeYXZUBBotJte-3RZ770FXgGMnyYKT7/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "GridCoffee官方旗舰店：埃塞俄比亚耶加雪菲深烘意式咖啡豆250g，118元，标记包邮；未扣淘金币0.59元。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i1/2221268225014/O1CN018QalQ11DHuJ2vH2e_!!4611686018427382774-0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-drum-current",
+    "title": "roland罗兰电子专业级演出_2年质保 紧凑小巧 静音踏板底鼓 蓝牙音频-roland罗兰旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-5qOMrY8fxtywzoOdNoS70OIMtV-WkRwwpuN4weQAQ9Fd3/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "roland罗兰旗舰店：TD-02K在售3180元；2026-11-19至11-27满1件9折2862元；标记包邮。未把图中座椅、耳机视为赠品，蓝牙扩展另核。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i2/4179164642/O1CN010xNX55vIFyI1chua_!!4179164642.jpg"
+  },
+  {
+    "id": "taouq-drum-stool",
+    "title": "架子鼓鼓凳爵士鼓电子鼓鼓凳成人儿童鼓凳琴凳可调节高度加厚通用_加粗加高 五档可调节 成人儿童通用-音域旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-rX93do9xhOtVeKbaQJQH66mtqtZ-2RmPPyFMNm6yAbzcY/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "音域旗舰店：RANGE音域成人儿童通用五档可调鼓凳，在售65元；9折58.5元另列；标记包邮。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2208520742284/O1CN01HZ6eCk1Sk7N3xHoSy_!!0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-drum-headphones",
+    "title": "AKG/爱科技K52有线耳机_专业监听耳机-akg爱科技至舜专卖店 - 淘优券",
+    "url": "https://www.taouq.com/id-oKQkMmj3TrtK9Pg78q0tD9kSntN-KaykkBHjeyKy9b2HP/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "akg爱科技至舜专卖店：AKG K52单型号有线监听耳机，380元，包邮；未使用含K72/K92的混合型号链接。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/3234796979/O1CN01OW4gEI21QR7exxOzA_!!0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-drum-sticks",
+    "title": "Vic Firth鼓棒5A美产山核桃木架子鼓鼓槌专业防滑演出_-野格乐器 - 淘优券",
+    "url": "https://www.taouq.com/id-BAmZvoKnh6t85vW2dOxcpMZTrte-NeRBBocz0xkkOw2Tg/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "野格乐器：Vic Firth 5A美产山核桃木鼓棒，在售120元；2026-11-19至11-27补贴45元后75元；标记包邮。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i4/813021400/O1CN01MF2BCy0N4RG1chua_!!813021400.jpg"
+  },
+  {
+    "id": "taouq-tent-current",
+    "title": "迪卡侬官方店休闲odct野营帐篷_快速搭建 方便携带 三季可用-迪卡侬旗舰店 - 淘优券",
+    "url": "https://www.taouq.com/id-a4dPmDwsotMJrxOPjBTQz9Ujty-RWRNNzu4QZGWnTg/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "迪卡侬旗舰店：双人双层防雨搭建式露营帐篷ODCT，199.9元，包邮；当前标题没有2467687型号编码，不把同款外观当作编码证明。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i4/352469034/O1CN01jprYmx2Gbd2s41bNX_!!0-item_pic.jpg"
+  },
+  {
+    "id": "taouq-fitness-current",
+    "title": "方向盘Nintendo/任天堂_-天猫国际自营全球超级店 - 淘优券",
+    "url": "https://www.taouq.com/id-Q3b5XbptQtB0R9z3oYSXXXtatQ-2RmPPyFM7a4G6Z3Cv/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "天猫国际自营全球超级店：日版全新健身环体感套装在售499元；2026-11-20至11-27直降150元，88VIP另95折331.55元；图0明确环+腿带+游戏本体，未披露运费。 已目视核对详情图明确写本品不含图示Joy-Con。四张详情图均无运费说明。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i3/2549841410/O1CN01yGwvgJJKtyJ1chua_!!2549841410-0-tmg_sticker.jpg",
+    "visualEvidence": [
+      "research/images/fitness-list-7-1.jpg",
+      "research/images/fitness-list-7-4.jpg"
+    ]
+  },
+  {
+    "id": "taouq-console-current",
+    "title": "港版任天堂SwitchOLED游戏机_全新正品 | 外出游玩 | 掌上模式-天猫超市 - 淘优券",
+    "url": "https://www.taouq.com/id-4B6W2o6fgtNRKMownbtwwKSNtg-nMYPPWFxnOKyVdmtZ/",
+    "capturedAt": "2026-11-21",
+    "method": "live-public-html-aggregator",
+    "evidenceTier": "aggregator-not-merchant-checkout",
+    "facts": "天猫超市：港版Nintendo Switch OLED主机在售3199元；补贴320元后2879元另列；标记包邮。原装标准套装内容由任天堂官方资料交叉核对。",
+    "imageUrl": "https://img.alicdn.com/bao/uploaded/i2/6000000002015/O1CN01jdD9UiCfiWE1chua_!!6000000002015-0-sm.jpg"
+  },
+  {
+    "id": "nintendo-oled-package",
+    "title": "任天堂香港：Nintendo Switch OLED白色组合内容",
+    "url": "https://www.nintendo.com/hk/hardware/switch/modal/lineup_oled_white.html",
+    "capturedAt": "2026-11-21",
+    "method": "official-web",
+    "facts": "标准套装包括OLED主机、Joy-Con左右各一、腕带、底座、握把、AC变压器、HDMI线。"
+  },
+  {
+    "id": "nintendo-ring-package",
+    "title": "任天堂日本：Ring Fit Adventure商品信息",
+    "url": "https://www.nintendo.com/jp/ring/index.html",
+    "capturedAt": "2026-11-21",
+    "method": "official-web",
+    "facts": "实体套装包含Ring-Con、腿部固定带、游戏软件。Switch Lite不能游玩；Switch 2需要另备一代Joy-Con。"
+  },
+  {
+    "id": "akg-k52-spec",
+    "title": "AKG K52官方规格",
+    "url": "https://global.akg.com/K52.html?cgid=Professional+Headphones&dwvar_K52_color=Black-GLOBAL-Current",
+    "capturedAt": "2026-11-21",
+    "method": "official-web",
+    "facts": "K52是3.5mm TRS有线耳机，随附6.3mm适配头。"
+  },
+  {
+    "id": "roland-td02k-package",
+    "title": "Roland TD-02K官方装配清单",
+    "url": "https://static.roland.com/assets/media/pdf/TD-02K_eng01_W.pdf",
+    "capturedAt": "2026-11-21",
+    "method": "official-pdf",
+    "facts": "基础箱内清单包含鼓架、鼓盘、镲片、FD-1、KT-1、TD-02音源、线材、电源与鼓钥匙；鼓凳、鼓棒及耳机不在列。"
+  },
+  {
+    "id": "walkingpad-r2-assembly",
+    "title": "WalkingPad R2官方产品说明",
+    "url": "https://www.walkingpad.com/products/walkingpad-r2-foldable-treadmill",
+    "capturedAt": "2026-11-21",
+    "method": "official-web",
+    "facts": "R2可折叠走跑两用、整机已组装。此页为美国区域版本；不将美元价格、美国运费或110V参数应用于国内报价。"
+  },
+  {
+    "id": "jd-fitness-current",
+    "title": "京东：全新原装日版Switch健身环大冒险体感游戏套装",
+    "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+    "capturedAt": "2026-11-21",
+    "method": "live-merchant-public-html-and-product-images",
+    "evidenceTier": "merchant-listing-not-checkout",
+    "facts": "直接HTTP读取京东商品自身价格区域（位于收藏后、登录查看到手价前）为368.00元，默认地址北京市朝阳区麦子街道。该页图2文字承诺全新原装日版、包邮包税；图3文字列出绑腿、健身环、游戏卡带。页面标题明示不含手柄。不是推荐区价格，未使用网页搜索缓存的369元。",
+    "visualEvidence": [
+      "research/images/jd-ring-original-2.jpg",
+      "research/images/jd-ring-original-3.jpg"
+    ],
+    "evidenceFile": "research/jd-fitness-quote-evidence.json",
+    "imageUrl": "https://img12.360buyimg.com/img/jfs/t1/248100/13/3865/123538/65b0c612F53987fe5/b39d506897dedf1d.jpg"
+  },
+  {
+    "id": "mi-redmi-projector-5-pro",
+    "title": "小米商城：REDMI投影仪5 Pro（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230808670",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价1799元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-redmi-projector-3-pro",
+    "title": "小米商城：Redmi投影仪3 Pro（深灰色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230802847",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价999元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-projector-mini",
+    "title": "小米商城：小米投影仪mini（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1223600007",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价699元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-massage-multihead-3c",
+    "title": "小米商城：米家多头筋膜枪3 C（深空灰）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230809825",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价199元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-massage-mini-3",
+    "title": "小米商城：米家筋膜枪3迷你版（浅沙色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230803500",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价219元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-massage-heat-h3-mini",
+    "title": "小米商城：米家热敷筋膜枪H3迷你版（金属灰）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230803768",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价349元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-capsule-coffee-s1",
+    "title": "小米商城：米家胶囊咖啡机S1（黑色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230803536",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价424元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-portable-coffee",
+    "title": "小米商城：米家便携咖啡机（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230808268",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价699元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-air-fryer-n1",
+    "title": "小米商城：米家空气炸锅N1 5L（米白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230802183",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价199元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-air-fryer-steam-pro",
+    "title": "小米商城：米家智能空气炸锅Pro蒸烤版6.5L（黑色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230806842",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价699元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-air-fryer-s1",
+    "title": "小米商城：米家空气炸锅S1 6L（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230809726",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价269元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-blender-n1",
+    "title": "小米商城：米家破壁机N1（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230802675",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价299元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-blender-p1",
+    "title": "小米商城：米家智能轻音变频破壁机P1（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230802855",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价699元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-soy-milk-maker",
+    "title": "小米商城：米家豆浆机（纯白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230808971",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价199元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-portable-juicer-2",
+    "title": "小米商城：米家随行便携榨汁杯2（白色）",
+    "url": "https://www.mi.com/shop/buy?product_id=1230802537",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "当前选定规格搜索报价99元；未叠加领券或划线价。库存及具体配送地区按订单确认。"
+  },
+  {
+    "id": "mi-cafe-royal-30",
+    "title": "Café Royal胶囊咖啡30粒 意式浓缩",
+    "url": "https://www.mi.com/shop/buy?product_id=1230805544&cfrom=search",
+    "capturedAt": "2026-11-21",
+    "method": "live-browser-official-search",
+    "facts": "30粒意式浓缩胶囊，页面报价99元；与S1按兼容胶囊采购场景搭配。"
+  },
+  {
+    "id": "jd-mi-capsule-compatibility",
+    "title": "京东自营：米家咖啡机与Café Royal 30粒组合",
+    "url": "https://www.jd.com/zuozhe/61966c2c781b8299d558.html",
+    "capturedAt": "2026-11-21",
+    "method": "primary-retailer-category-page-opened",
+    "facts": "自营分类页列出米家胶囊咖啡机S1＋Cafe Royal意式浓缩30粒组合，以及米家便携咖啡机白/灰色＋同款胶囊组合。用于组合适配证据，不作为99元单独胶囊价格来源。"
+  },
+  {
+    "id": "rrzu-z6x-store",
+    "title": "一品租数码租赁（人人租店铺15272）：极米 NEW Z6X",
+    "url": "https://www.rrzu.com/shop-page/15272",
+    "capturedAt": "2026-11-21",
+    "method": "primary-merchant-store-page-opened",
+    "facts": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。 店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。"
+  },
+  {
+    "id": "zulin-t200eco-detail",
+    "title": "汉臣健康科技（广州）有限公司（零距离租赁网）：汉臣 OMEGA T200eco 家用跑步机",
+    "url": "https://m.zulin.com/product/1861221672103710722.html",
+    "capturedAt": "2026-11-21",
+    "method": "primary-product-html-visible-text-and-jsonld",
+    "facts": "替代方案：汉臣 OMEGA T200eco 家用跑步机。展示¥7.33/天，365天起；页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。 押金¥0。可见正文显示无需押金，SKU deposit=0；最终资格和合同仍以平台订单为准。 广东省广州市天河区；寄出包邮、归还自付；仅公开服务区内。搬运上楼、安装及回收的实际收费未披露。 页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。"
+  },
+  {
+    "id": "zulin-mini12-detail",
+    "title": "峰行科技（零距离租赁网，武汉）：富士 instax mini12",
+    "url": "https://m.zulin.com/product/2010913474523684865.html",
+    "capturedAt": "2026-11-21",
+    "method": "primary-product-html-visible-text-and-jsonld",
+    "facts": "同型号：富士 instax mini12。展示¥30/天，1天起；详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。 押金¥700。公开押金700元，页面显示芝麻分650+可免押金；未为本用户核验资格。 全国（商家公开字段）；寄出包邮、归还自付；页面公开服务区为全国，偏远地址及目标日期仍需订单核验。 详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。"
+  },
+  {
+    "id": "weiyin-practice-room",
+    "title": "上海维音琴行：单人独立琴房，包含店内电鼓使用；鼓型号未披露",
+    "url": "http://www.wyshopping.cn/rent",
+    "capturedAt": "2026-11-21",
+    "method": "primary-merchant-visible-html",
+    "facts": "替代方案：单人独立琴房，包含店内电鼓使用；鼓型号未披露。到店练习¥50/小时，不是设备外借；上海市静安区西康路757号5楼。 官网琴房练琴栏目50元/小时，仅供单人；品牌立式钢琴、吉他、古筝、电鼓及尤克里里使用包含在场地费中。最低可预订时长、半小时进位规则未披露。"
+  },
+  {
+    "id": "uwanu-qingyun2-tent",
+    "title": "南京U玩户外：喜马拉雅 轻云2玻杆 双人帐篷（绿/蓝）",
+    "url": "http://www.uwanu.com/m/product?id=29152",
+    "capturedAt": "2026-11-21",
+    "method": "primary-merchant-visible-html",
+    "facts": "替代方案：喜马拉雅 轻云2玻杆 双人帐篷（绿/蓝）。¥50包含7天以内，超期¥10/天；押金¥200；页面要求自提；如需送货，配送费另付，未公开金额或配送范围。个人取还交通成本未包含。 每顶50元，7天以内可自由使用；超过7天按10元/天另计。不是日租50元，也不是最低必须租7天。最短交接时长未披露。"
+  },
+  {
+    "id": "zulin-drcoffee-f200-detail",
+    "title": "优睿客咖啡机（零距离租赁网）：Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）",
+    "url": "https://wap.zulin.com/product/2076870310858579970.html",
+    "capturedAt": "2026-11-21",
+    "method": "primary-product-html-visible-text-and-jsonld",
+    "facts": "替代方案：Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）。展示¥16.67/天，30天起；正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。 押金¥0.01。正文及公开SKU均列每件0.01元押金，不能自行四舍五入成免押；公开JSON-LD写信用达标或企业认证可免押，但未核验具体资格。 全国（正文与同页公开JSON-LD声明；需核验实际收货地址）；正文显示寄出到付、归还自付；公开SKU同样写承租方承担往返运费。具体金额、搬运及安装费未披露。 正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。"
+  }
+]

@@ -10,11 +10,33 @@
 //      ALLOWED_ORIGINS (comma-separated, for the Capacitor app / preview URLs).
 
 import catalog from '../src/data/products.json' with { type: 'json' }
+import productDetails from '../src/data/product-details.json' with { type: 'json' }
 import regulations from '../src/domain/regulations.json' with { type: 'json' }
-import type { Article, Difficulty, Product, RuleId, UsageFrequency } from '../src/domain/types.ts'
+import type { Article, Difficulty, Product, ProductDetails, RentalOffer, RuleId, UsageFrequency } from '../src/domain/types.ts'
 
 const products = catalog as Product[]
 const articles = regulations.articles as Article[]
+const details = productDetails as unknown as Record<string, ProductDetails>
+
+// Same wording as src/domain/rental.ts (app code cannot be imported here at runtime).
+// Keeps the prompt short: the JSON's long evidence text stays out of every LLM call.
+export function rentalFact(r: RentalOffer | null | undefined): string | null {
+  if (!r) return null
+  const what = r.modelMatch ? '同款' : `同类款（${(r.model ?? '').split('（')[0].trim()}）`
+  if (r.kind === 'onsite-practice-room' && r.pricePerHour) {
+    return `可以去琴房练：每小时 ${r.pricePerHour} 元，到店使用，不外借。`
+  }
+  if (r.kind !== 'equipment-rental') return null
+  if (r.packagePrice && r.packageDaysIncluded) {
+    const extra = r.extraDayPrice ? `，超期每天 ${r.extraDayPrice} 元` : ''
+    return `可以租${what}：${r.packagePrice} 元包 ${r.packageDaysIncluded} 天${extra}。`
+  }
+  if (r.pricePerDay) {
+    const min = r.minimumDays && r.minimumDays > 1 ? `，${r.minimumDays} 天起租` : ''
+    return `可以租${what}：每天 ${r.pricePerDay} 元${min}。`
+  }
+  return null
+}
 
 // --- Prompt ---
 // Framing: PERSONAL shopping. There is no company — the app borrows the tone of a corporate OA
@@ -85,7 +107,7 @@ const SYSTEM_PROMPT = `你是"个人钱包审批办公室"的 AI 领导，审批
 ${REGULATIONS_TEXT}
 
 示例（投影仪，用途写「看球」，只用一次，没写为什么不租）：
-经研究，你的需求可以概括为「看球」二字，言简意赅到本领导一时无法判断你是要看球还是要买球场。依据《个人钱包管理暂行办法》第四条，只用一次的物品先租后议，租一天才 59 元。请把「采购用途」写满 10 个字，并在「为什么不租？」里给出一个能说服本领导的理由。`
+经研究，你的需求可以概括为「看球」二字，言简意赅到本领导一时无法判断你是要看球还是要买球场。依据《个人钱包管理暂行办法》第四条，只用一次的物品先租后议，同类款租一天才 10 元。请把「采购用途」写满 10 个字，并在「为什么不租？」里给出一个能说服本领导的理由。`
 
 const clip = (s: string) => s.trim().slice(0, MAX_FIELD_CHARS)
 
@@ -98,11 +120,11 @@ export function buildMessages(
 ): { role: 'system' | 'user'; content: string }[] {
   const required = product.accessories.filter((a) => a.required)
   const facts = [
-    `商品：${product.name}，标价 ${product.price} 元。`,
+    `商品：${product.name}，标价 ${product.price} 元。${details[product.id]?.scenario ? `核算场景：${details[product.id]!.scenario}` : ''}`,
     required.length
       ? `必需配件：${required.map((a) => a.name).join('、')}；运费 ${product.shipping} 元。可选配件不计入总价。`
       : `没有必需配件；运费 ${product.shipping} 元。`,
-    product.alternatives.rent ? `可以租：${product.alternatives.rent.where}，每天 ${product.alternatives.rent.pricePerDay} 元。` : '',
+    rentalFact(details[product.id]?.rental) ?? '',
     `这类商品的典型使用情况：${product.typicalUsage}`,
   ].filter(Boolean)
 

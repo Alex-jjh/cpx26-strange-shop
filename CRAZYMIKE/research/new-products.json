@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-11-21",
+  "method": "Live browser; Xiaomi official search cards. Product detail self-operated delivery policy checked where loaded. Search prices are not order confirmations.",
+  "products": [
+    {"id":"redmi-projector-5-pro","name":"REDMI投影仪5 Pro（白色）","category":"影音","family":"projector","price":1799,"sku":"1230808670","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/DCE6762418034433B4B6F6F2C6096DC3_1785395713162.png","usage":"电影清单越攒越长，开机次数越来越少"},
+    {"id":"redmi-projector-3-pro","name":"Redmi投影仪3 Pro（深灰色）","category":"影音","family":"projector","price":999,"sku":"1230802847","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202410151052_2141eeaab404183e4b38f8a71fb24184.png","usage":"把客厅改成影院，最后还是刷手机"},
+    {"id":"projector-mini","name":"小米投影仪mini（白色）","category":"影音","family":"projector","price":699,"sku":"1223600007","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209071047_7d87bed2731bbb85db19b9c51a1e44f0.png","usage":"为露营买的，露营计划还没排上"},
+    {"id":"massage-multihead-3c","name":"米家多头筋膜枪3 C（深空灰）","category":"健身","family":"massage-gun","price":199,"sku":"1230809825","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/6723F24DCA0D9C42D5BE30F6B85625DF_1792751368147.png","usage":"恢复装备齐全了，运动还没开始"},
+    {"id":"massage-mini-3","name":"米家筋膜枪3迷你版（浅沙色）","category":"健身","family":"massage-gun","price":219,"sku":"1230803500","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202502071422_040a6c5ea774d6506419379f49c5e34a.png","usage":"出门总忘带，回家想不起用"},
+    {"id":"massage-heat-h3-mini","name":"米家热敷筋膜枪H3迷你版（金属灰）","category":"健身","family":"massage-gun","price":349,"sku":"1230803768","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202504071455_1fabfb8f8324715f07da0c19dff21a0f.png","usage":"想好好放松，先找一找充电线"},
+    {"id":"capsule-coffee-s1","name":"米家胶囊咖啡机S1（黑色）","category":"厨房","family":"coffee-machine","price":424,"sku":"1230803536","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202502181125_1bed4f66df35da5327e6df11900537c1.png","usage":"胶囊用完之后，重新爱上速溶"},
+    {"id":"portable-coffee","name":"米家便携咖啡机（白色）","category":"厨房","family":"coffee-machine","price":699,"sku":"1230808268","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/2FC96B2704B05D6A9F299C442573EE77_1792570209500.png","usage":"随时随地喝咖啡，清洗时想回家"},
+    {"id":"air-fryer-n1","name":"米家空气炸锅N1 5L（米白色）","category":"厨房","family":"air-fryer","price":199,"sku":"1230802183","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/EB89DD0787C5EA02DCAE858B121C2921_1791528037249.png","usage":"菜谱收藏了五十份，做过两份"},
+    {"id":"air-fryer-steam-pro","name":"米家智能空气炸锅Pro蒸烤版6.5L（黑色）","category":"厨房","family":"air-fryer","price":699,"sku":"1230806842","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/268C37F955C24B8B57212BEFF6D8F770_1774616529792.png","usage":"功能越多，选择晚饭越困难"},
+    {"id":"air-fryer-s1","name":"米家空气炸锅S1 6L（白色）","category":"厨房","family":"air-fryer","price":269,"sku":"1230809726","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/0069D282DFD6884022F2AEF74D02B247_1792399991565.png","usage":"大容量买回家，还是只炸一份薯条"},
+    {"id":"blender-n1","name":"米家破壁机N1（白色）","category":"厨房","family":"blender","price":299,"sku":"1230802675","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202409091519_f69e622c24f441890aa7c8f5c81aa1ab.png","usage":"健康早餐计划，卡在早起这一步"},
+    {"id":"blender-p1","name":"米家智能轻音变频破壁机P1（白色）","category":"厨房","family":"blender","price":699,"sku":"1230802855","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202410112114_89cb52c5660848b45b619f84a8a0cc18.png","usage":"研究完转速，忘了买食材"},
+    {"id":"soy-milk-maker","name":"米家豆浆机（纯白色）","category":"厨房","family":"blender","price":199,"sku":"1230808971","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/EF525ED1C0A6F1BF933246B625EFDC7C_1788265915211.png","usage":"豆子泡好了，第二天出门买早餐"},
+    {"id":"portable-juicer-2","name":"米家随行便携榨汁杯2（白色）","category":"厨房","family":"blender","price":99,"sku":"1230802537","image":"https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202408161012_f6d07b360b360131b65f5f9770f618bd.png","usage":"便携的是杯子，不是洗杯子的耐心"}
+  ],
+  "accessories": [
+    {"id":"cafe-royal-30","name":"Café Royal胶囊咖啡30粒 意式浓缩","price":99,"sku":"1230805544","condition":"米家胶囊咖啡机S1耗材；用户没有现成兼容胶囊时购买。","source":"https://www.mi.com/shop/buy?product_id=1230805544&cfrom=search"}
+  ],
+  "shipping": {"amount":0,"status":"conditional-policy","source":"https://www.mi.com/service/buy/Postal%20policy","condition":"小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。"},
+  "editorialUsageIsMeasured": false
+}

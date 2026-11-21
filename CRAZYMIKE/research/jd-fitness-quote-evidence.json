@@ -1,0 +1,25 @@
+{
+  "sourceId": "jd-fitness-current",
+  "url": "https://item.jd.com/product/WZR0uQdsXRyl4IjHocd2mQ.html",
+  "capturedAt": "2026-11-21",
+  "method": "direct-curl-public-html-plus-visual-inspection",
+  "priceRegion": "任天堂（Nintendo）健身环大冒险 体感游戏套装 全新原装日版Switch游戏卡带（不含手柄 支持中文）\n收藏\n¥\n368.00\n登录查看到手价\n送至\n北京市 朝阳区 麦子街道\n服务\n温馨提示\n图片仅供参考，请以实际到货为准\n登录查看全部信息\n加入购物车\n立即购买",
+  "price": 368,
+  "currency": "CNY",
+  "images": [
+    {
+      "role": "shipping",
+      "localPath": "research/images/jd-ring-original-2.jpg",
+      "url": "https://img12.360buyimg.com/img/jfs/t1/210091/28/51626/86024/6756569dF5694b379/b04ab0aed5b0c73d.jpg",
+      "observedText": "任天堂全新原装日版；包邮包税；原装进口。"
+    },
+    {
+      "role": "package-contents",
+      "localPath": "research/images/jd-ring-original-3.jpg",
+      "url": "https://img12.360buyimg.com/img/jfs/t1/248100/13/3865/123538/65b0c612F53987fe5/b39d506897dedf1d.jpg",
+      "observedText": "日版健身环大冒险；绑腿、健身环、游戏卡带。"
+    }
+  ],
+  "cacheDifference": "web搜索/打开缓存显示369；直接HTTP当前页为368，采用368。",
+  "packageCondition": "全新原装日版，含绑腿、Ring-Con、游戏卡带，不含Joy-Con。"
+}

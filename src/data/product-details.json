@@ -1,0 +1,780 @@
+{
+  "projector": {
+    "quoteLabel": "官网标价（缺货）",
+    "priceNote": "",
+    "scenario": "已有稳固桌面、白墙及HDMI播放设备，本次按有线连接且没有现成HDMI线核算。",
+    "shippingCondition": "小米自营普通配送、订单满69元；默认北京地址。特殊配送、闪送及实际收货地需重新核验。",
+    "rentalSummary": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "极米 NEW Z6X",
+      "modelMatch": false,
+      "modelMatchNote": "家用智能投影仪替代型号，不是米家青春版2。",
+      "merchant": "一品租数码租赁（人人租店铺15272）",
+      "pricePerDay": 10,
+      "currency": "CNY",
+      "minimumDays": 3,
+      "minimumHours": null,
+      "priceBasis": "merchant-store-card-per-day",
+      "priceCondition": "店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。",
+      "deposit": 3000,
+      "depositCondition": "店铺卡片列押金3000元；未取得该商品个人免押门槛。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "status": "conditional-merchant-claim",
+        "condition": "商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      },
+      "serviceArea": "店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验",
+      "sourceId": "rrzu-z6x-store",
+      "source": {
+        "url": "https://www.rrzu.com/shop-page/15272",
+        "capturedAt": "2026-11-21"
+      },
+      "productUrl": "https://www.rrzu.com/item/166775",
+      "evidenceLevel": "primary-merchant-store-page-opened",
+      "limitations": [
+        "详情链接返回405，已独立打开商家店铺页核验型号、日租、起租及押金；无目标日期最终结算。",
+        "租金可能随套餐、时间及商户活动变化，不能保证3天最终租金为30元。",
+        "配件清单、包邮地域例外、归还运费未披露。"
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "AI生成的闲置情境示意，不是真实测评。",
+    "sourceIds": [
+      "mi-projector",
+      "mi-shipping"
+    ]
+  },
+  "massage-gun": {
+    "quoteLabel": "官网页面价",
+    "priceNote": "",
+    "scenario": "采用标准整机及随附按摩头，不另外采购替换头。",
+    "shippingCondition": "小米自营普通配送、订单满69元；默认北京地址。特殊配送、闪送及实际收货地需重新核验。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-massage",
+      "mi-shipping"
+    ]
+  },
+  "treadmill": {
+    "quoteLabel": "商家报价聚合",
+    "priceNote": "采用未减补贴在售价；页面补贴后2999元另作优惠线索。",
+    "scenario": "基础采购假设位于商家包邮和送货上楼承诺范围、已有适用硬质平整地面；主图所示赠垫需晒单，不在基础包内无条件计入。",
+    "shippingCondition": "商品文字标包邮，主图标送货上楼、免安装。仅适用于卖家承诺覆盖的配送地址及楼层；页面未展开地域、楼层、电梯限制，实际结算应复核。",
+    "rentalSummary": "替代方案：汉臣 OMEGA T200eco 家用跑步机。展示¥7.33/天，365天起；页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。 押金¥0。可见正文显示无需押金，SKU deposit=0；最终资格和合同仍以平台订单为准。 广东省广州市天河区；寄出包邮、归还自付；仅公开服务区内。搬运上楼、安装及回收的实际收费未披露。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "汉臣 OMEGA T200eco 家用跑步机",
+      "modelMatch": false,
+      "modelMatchNote": "同品类替代型号，不是本次采购的金史密斯WalkingPad R2。",
+      "merchant": "汉臣健康科技（广州）有限公司（零距离租赁网）",
+      "pricePerDay": 7.33,
+      "currency": "CNY",
+      "minimumDays": 365,
+      "minimumHours": null,
+      "priceBasis": "fixed-365-day-plan-daily-rate",
+      "priceCondition": "页面仅提供365天套餐，7.33元为该长期方案挂牌日价，不能只租一天或按实际运动天数计费。",
+      "derivedMinimumRent": 2675.45,
+      "derivedMinimumRentFormula": "7.33 × 365；算术估算，不是结算确认金额，不含归还运费",
+      "deposit": 0,
+      "depositCondition": "可见正文显示无需押金，SKU deposit=0；最终资格和合同仍以平台订单为准。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "installationAmount": null,
+        "status": "published-conditional-policy",
+        "condition": "寄出包邮、归还自付；仅公开服务区内。搬运上楼、安装及回收的实际收费未披露。"
+      },
+      "serviceArea": "广东省广州市天河区",
+      "serviceAreaEvidence": "同页公开JSON-LD areaServed及serviceAreaName字段；非全国配送承诺",
+      "sourceId": "zulin-t200eco-detail",
+      "source": {
+        "url": "https://m.zulin.com/product/1861221672103710722.html",
+        "capturedAt": "2026-11-21"
+      },
+      "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+      "limitations": [
+        "这是年租方案，尤其不适合拿7.33元与单次运动作费用比较。",
+        "目标地址、日期、上楼条件与安装未输入，未核实实际履约。"
+      ],
+      "availablePlanDays": [
+        365
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "taouq-treadmill-r2"
+    ]
+  },
+  "air-fryer": {
+    "quoteLabel": "官网页面价",
+    "priceNote": "",
+    "scenario": "采用整机基础烹饪场景，已有食材；烘焙纸不属于必需硬件。",
+    "shippingCondition": "小米自营普通配送、订单满69元；默认北京地址。特殊配送、闪送及实际收货地需重新核验。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-air-fryer",
+      "mi-shipping"
+    ]
+  },
+  "coffee-machine": {
+    "quoteLabel": "官网页面价",
+    "priceNote": "",
+    "scenario": "没有现成咖啡豆，首包250g豆另购；整机内置研磨，不另买磨豆机。",
+    "shippingCondition": "小米自营普通配送、订单满69元；默认北京地址。特殊配送、闪送及实际收货地需重新核验。；GridCoffee耶加雪菲深烘意式咖啡豆250g：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。",
+    "rentalSummary": "替代方案：Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）。展示¥16.67/天，30天起；正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。 押金¥0.01。正文及公开SKU均列每件0.01元押金，不能自行四舍五入成免押；公开JSON-LD写信用达标或企业认证可免押，但未核验具体资格。 全国（正文与同页公开JSON-LD声明；需核验实际收货地址）；正文显示寄出到付、归还自付；公开SKU同样写承租方承担往返运费。具体金额、搬运及安装费未披露。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "Dr.coffee 咖博士 F200 全自动现磨奶咖商用咖啡机（9成新、黑色）",
+      "modelMatch": false,
+      "modelMatchNote": "企业商用全自动咖啡机方案，不是米家半自动家用机；操作方式、体积与使用场景不同。",
+      "merchant": "优睿客咖啡机（零距离租赁网）",
+      "pricePerDay": 16.67,
+      "currency": "CNY",
+      "minimumDays": 30,
+      "minimumHours": null,
+      "priceBasis": "monthly-plan-published-daily-rate",
+      "priceCondition": "正文限定企业长租、按月；公开套餐为30、60、90、120、180及365天，均显示16.67元/天，最短30天。不能按16.67元只租一天；不将挂牌日均价乘实际喝咖啡天数。",
+      "derivedMinimumRent": 500.1,
+      "derivedMinimumRentFormula": "16.67 × 30；挂牌日均价的算术估算，非已确认账单，不含往返运费和耗材。",
+      "deposit": 0.01,
+      "depositCondition": "正文及公开SKU均列每件0.01元押金，不能自行四舍五入成免押；公开JSON-LD写信用达标或企业认证可免押，但未核验具体资格。",
+      "shipping": {
+        "outboundAmount": null,
+        "returnAmount": null,
+        "installationAmount": null,
+        "status": "renter-pays-both-ways",
+        "condition": "正文显示寄出到付、归还自付；公开SKU同样写承租方承担往返运费。具体金额、搬运及安装费未披露。"
+      },
+      "serviceArea": "全国（正文与同页公开JSON-LD声明；需核验实际收货地址）",
+      "sourceId": "zulin-drcoffee-f200-detail",
+      "source": {
+        "url": "https://wap.zulin.com/product/2076870310858579970.html",
+        "capturedAt": "2026-11-21"
+      },
+      "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+      "limitations": [
+        "这是商家公开挂牌条件，未下单、未核验目标日期库存。",
+        "企业长租资格与个人能否承租未进一步确认；不能直接作为任何个人用户均可获得的方案。",
+        "咖啡豆、牛奶、滤芯、清洗剂、维护和安装包含范围未披露，不能认为租金含每杯成本。",
+        "最低30天及套餐日价来自该商品同页公开JSON-LD与SKU；可见正文只写按月。",
+        "未把推荐商品区、分类FAQ或网站通用说明当成此商品专属条款。"
+      ],
+      "availablePlanDays": [
+        30,
+        60,
+        90,
+        120,
+        180,
+        365
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-coffee",
+      "mi-shipping"
+    ]
+  },
+  "instant-camera": {
+    "quoteLabel": "有期限活动报价",
+    "priceNote": "喵速达直降670元：2026-10-24至2026-11-22；基础在售1299元，不使用淘金币及凑单价。",
+    "scenario": "按机身无相纸、尚未持有mini相纸核算，另购20张相纸加相册组合。",
+    "shippingCondition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。；富士mini白边相纸20张＋相册组合：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。",
+    "rentalSummary": "同型号：富士 instax mini12。展示¥30/天，1天起；详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。 押金¥700。公开押金700元，页面显示芝麻分650+可免押金；未为本用户核验资格。 全国（商家公开字段）；寄出包邮、归还自付；页面公开服务区为全国，偏远地址及目标日期仍需订单核验。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "富士 instax mini12",
+      "modelMatch": true,
+      "modelMatchNote": "同型号；具体颜色、成色与随附配件未保证。",
+      "merchant": "峰行科技（零距离租赁网，武汉）",
+      "pricePerDay": 30,
+      "currency": "CNY",
+      "minimumDays": 1,
+      "minimumHours": null,
+      "priceBasis": "published-one-day-sku",
+      "priceCondition": "详情页1天SKU（222814）公开30元/天；自选租期字段的0元是未选方案占位，不能用作免费租赁价。",
+      "deposit": 700,
+      "depositCondition": "公开押金700元，页面显示芝麻分650+可免押金；未为本用户核验资格。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "status": "published-conditional-policy",
+        "condition": "寄出包邮、归还自付；页面公开服务区为全国，偏远地址及目标日期仍需订单核验。"
+      },
+      "serviceArea": "全国（商家公开字段）",
+      "sourceId": "zulin-mini12-detail",
+      "source": {
+        "url": "https://m.zulin.com/product/2010913474523684865.html",
+        "capturedAt": "2026-11-21"
+      },
+      "evidenceLevel": "primary-product-html-visible-text-and-jsonld",
+      "limitations": [
+        "相纸包含数量未披露，不能视为租金已含拍摄耗材。",
+        "归还运费、租期起止是否包含运输日、颜色及目标日期库存未在本次核验中确定。"
+      ],
+      "status": "verified-same-model-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "taouq-camera-current"
+    ]
+  },
+  "e-drum": {
+    "quoteLabel": "商家报价聚合",
+    "priceNote": "采用基础在售价；2026-11-19至11-27满1件9折2862元另列，不重复扣折扣。",
+    "scenario": "按官方基础鼓组且没有适用鼓凳、耳机、鼓棒核算；商家赠品不默认已包含。",
+    "shippingCondition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。；RANGE音域五档可调鼓凳：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。；AKG K52有线监听耳机：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。；Vic Firth 5A山核桃木鼓棒：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。",
+    "rentalSummary": "替代方案：单人独立琴房，包含店内电鼓使用；鼓型号未披露。到店练习¥50/小时，不是设备外借；上海市静安区西康路757号5楼。",
+    "rental": {
+      "kind": "onsite-practice-room",
+      "model": "单人独立琴房，包含店内电鼓使用；鼓型号未披露",
+      "modelMatch": false,
+      "modelMatchNote": "到店练鼓服务，不是Roland TD-02K设备出租，不可带走。",
+      "merchant": "上海维音琴行",
+      "pricePerDay": null,
+      "pricePerHour": 50,
+      "currency": "CNY",
+      "minimumDays": null,
+      "minimumHours": null,
+      "priceBasis": "published-hourly-room-tariff",
+      "priceCondition": "官网琴房练琴栏目50元/小时，仅供单人；品牌立式钢琴、吉他、古筝、电鼓及尤克里里使用包含在场地费中。最低可预订时长、半小时进位规则未披露。",
+      "deposit": null,
+      "depositCondition": "公开价目未披露押金，不能当成0。",
+      "shipping": {
+        "outboundAmount": null,
+        "returnAmount": null,
+        "status": "not-applicable",
+        "condition": "到店使用，不发生设备邮寄；个人出行成本不包含在场地费中。"
+      },
+      "serviceArea": "上海市静安区西康路757号5楼",
+      "sourceId": "weiyin-practice-room",
+      "source": {
+        "url": "http://www.wyshopping.cn/rent",
+        "capturedAt": "2026-11-21"
+      },
+      "httpsUrl": "https://www.wyshopping.cn/rent",
+      "evidenceLevel": "primary-merchant-visible-html",
+      "limitations": [
+        "官网HTTPS证书域名不匹配，HTTP返回的页面正文已读取；传输在20秒后超时，但完整目标价目及店址已返回。",
+        "型号、可预约时间、最短时长、鼓棒或耳机是否需自带未公开。",
+        "不可换算50×24为设备日租，也不能写成TD-02K日租50元。"
+      ],
+      "status": "verified-different-service-alternative"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "taouq-drum-current"
+    ]
+  },
+  "tent": {
+    "quoteLabel": "商家报价聚合",
+    "priceNote": "",
+    "scenario": "作为帐篷单品采购，使用已有睡眠装备、选择不需要额外地面保护的适用营地；不把整套露营生活用品计为帐篷必买硬件。",
+    "shippingCondition": "仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。",
+    "rentalSummary": "替代方案：喜马拉雅 轻云2玻杆 双人帐篷（绿/蓝）。¥50包含7天以内，超期¥10/天；押金¥200；页面要求自提；如需送货，配送费另付，未公开金额或配送范围。个人取还交通成本未包含。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "喜马拉雅 轻云2玻杆 双人帐篷（绿/蓝）",
+      "modelMatch": false,
+      "modelMatchNote": "双人露营帐篷替代款，不是本次采购的迪卡侬搭建式帐篷。",
+      "merchant": "南京U玩户外",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "minimumDays": null,
+      "minimumHours": null,
+      "priceBasis": "flat-price-up-to-seven-days",
+      "packagePrice": 50,
+      "packageDaysIncluded": 7,
+      "minimumCharge": 50,
+      "extraDayPrice": 10,
+      "priceCondition": "每顶50元，7天以内可自由使用；超过7天按10元/天另计。不是日租50元，也不是最低必须租7天。最短交接时长未披露。",
+      "deposit": 200,
+      "depositCondition": "每顶200元押金；商家说明损坏须照价赔偿。",
+      "shipping": {
+        "pickupAmount": 0,
+        "outboundAmount": null,
+        "returnAmount": null,
+        "status": "pickup-or-paid-delivery",
+        "condition": "页面要求自提；如需送货，配送费另付，未公开金额或配送范围。个人取还交通成本未包含。"
+      },
+      "serviceArea": "南京商家自提；配送需另约",
+      "sourceId": "uwanu-qingyun2-tent",
+      "source": {
+        "url": "http://www.uwanu.com/m/product?id=29152",
+        "capturedAt": "2026-11-21"
+      },
+      "httpsUrl": "https://www.uwanu.com/m/product?id=29152",
+      "evidenceLevel": "primary-merchant-visible-html",
+      "limitations": [
+        "官网HTTPS证书域名不匹配；HTTP正文及受限TLS只读正文均确认相同价目，无凭证发送。",
+        "只含帐篷，不包括睡袋、地垫、天幕或营地门票。",
+        "商品库存值为未渲染模板，不能把历史成交17笔视为当前有货。"
+      ],
+      "costFormula": "rent(d) = 50 + 10 × max(d - 7, 0)，d为双方确认的计费天数；不含可退押金、配送与损坏赔偿",
+      "exampleRentalOnly": [
+        {
+          "days": 1,
+          "amount": 50
+        },
+        {
+          "days": 3,
+          "amount": 50
+        },
+        {
+          "days": 7,
+          "amount": 50
+        },
+        {
+          "days": 8,
+          "amount": 60
+        }
+      ],
+      "status": "verified-alternative-package-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "taouq-tent-current"
+    ]
+  },
+  "fitness-ring": {
+    "quoteLabel": "商家页面价",
+    "priceNote": "直接读取商品页自身公开标价，未登录、未扣优惠券；不是看了又看推荐区价格。",
+    "scenario": "按没有兼容Switch主机及Joy-Con核算；已有主机的用户可不新增主机采购。",
+    "shippingCondition": "同一京东商品页详情图明确承诺包邮包税，标题为全新原装日版完整套装；默认展示北京朝阳地址。仅按商家承诺覆盖的正常配送场景计0，超配送范围或特殊服务须结算复核；未将其他店铺的包邮政策移用。；港版Nintendo Switch OLED标准主机套装：仅在该商品标记的包邮配送范围和普通物流条件成立时计0元；页面未展开区域范围，指定地址须在实际结算复核。此条件不包含特殊配送或另收费的上楼服务。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "jd-fitness-current"
+    ]
+  },
+  "blender": {
+    "quoteLabel": "官网页面价",
+    "priceNote": "",
+    "scenario": "采用整机基础使用场景，已有食材和电源插座。",
+    "shippingCondition": "小米自营普通配送、订单满69元；默认北京地址。特殊配送、闪送及实际收货地需重新核验。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-blender",
+      "mi-shipping"
+    ]
+  },
+  "redmi-projector-5-pro": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "已有稳固桌面、适用墙面及可兼容无线投屏的设备，不另购支架、幕布或HDMI线。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "极米 NEW Z6X",
+      "modelMatch": false,
+      "modelMatchNote": "家用智能投影仪替代型号，不是米家青春版2。",
+      "merchant": "一品租数码租赁（人人租店铺15272）",
+      "pricePerDay": 10,
+      "currency": "CNY",
+      "minimumDays": 3,
+      "minimumHours": null,
+      "priceBasis": "merchant-store-card-per-day",
+      "priceCondition": "店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。",
+      "deposit": 3000,
+      "depositCondition": "店铺卡片列押金3000元；未取得该商品个人免押门槛。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "status": "conditional-merchant-claim",
+        "condition": "商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      },
+      "serviceArea": "店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验",
+      "sourceId": "rrzu-z6x-store",
+      "source": {
+        "url": "https://www.rrzu.com/shop-page/15272",
+        "capturedAt": "2026-11-21"
+      },
+      "productUrl": "https://www.rrzu.com/item/166775",
+      "evidenceLevel": "primary-merchant-store-page-opened",
+      "limitations": [
+        "详情链接返回405，已独立打开商家店铺页核验型号、日租、起租及押金；无目标日期最终结算。",
+        "租金可能随套餐、时间及商户活动变化，不能保证3天最终租金为30元。",
+        "配件清单、包邮地域例外、归还运费未披露。"
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-redmi-projector-5-pro",
+      "mi-shipping"
+    ]
+  },
+  "redmi-projector-3-pro": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "已有稳固桌面、适用墙面及可兼容无线投屏的设备，不另购支架、幕布或HDMI线。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "极米 NEW Z6X",
+      "modelMatch": false,
+      "modelMatchNote": "家用智能投影仪替代型号，不是米家青春版2。",
+      "merchant": "一品租数码租赁（人人租店铺15272）",
+      "pricePerDay": 10,
+      "currency": "CNY",
+      "minimumDays": 3,
+      "minimumHours": null,
+      "priceBasis": "merchant-store-card-per-day",
+      "priceCondition": "店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。",
+      "deposit": 3000,
+      "depositCondition": "店铺卡片列押金3000元；未取得该商品个人免押门槛。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "status": "conditional-merchant-claim",
+        "condition": "商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      },
+      "serviceArea": "店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验",
+      "sourceId": "rrzu-z6x-store",
+      "source": {
+        "url": "https://www.rrzu.com/shop-page/15272",
+        "capturedAt": "2026-11-21"
+      },
+      "productUrl": "https://www.rrzu.com/item/166775",
+      "evidenceLevel": "primary-merchant-store-page-opened",
+      "limitations": [
+        "详情链接返回405，已独立打开商家店铺页核验型号、日租、起租及押金；无目标日期最终结算。",
+        "租金可能随套餐、时间及商户活动变化，不能保证3天最终租金为30元。",
+        "配件清单、包邮地域例外、归还运费未披露。"
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-redmi-projector-3-pro",
+      "mi-shipping"
+    ]
+  },
+  "projector-mini": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "已有稳固桌面、适用墙面及可兼容无线投屏的设备，不另购支架、幕布或HDMI线。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "替代方案：极米 NEW Z6X。展示¥10/天，3天起；店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。 押金¥3000。店铺卡片列押金3000元；未取得该商品个人免押门槛。 店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验；商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。",
+    "rental": {
+      "kind": "equipment-rental",
+      "model": "极米 NEW Z6X",
+      "modelMatch": false,
+      "modelMatchNote": "家用智能投影仪替代型号，不是米家青春版2。",
+      "merchant": "一品租数码租赁（人人租店铺15272）",
+      "pricePerDay": 10,
+      "currency": "CNY",
+      "minimumDays": 3,
+      "minimumHours": null,
+      "priceBasis": "merchant-store-card-per-day",
+      "priceCondition": "店铺展示日租10元并在标题明确三天起租、包邮；多租赠天优惠未计入。具体日期及配置需在订单确认。",
+      "deposit": 3000,
+      "depositCondition": "店铺卡片列押金3000元；未取得该商品个人免押门槛。",
+      "shipping": {
+        "outboundAmount": 0,
+        "returnAmount": null,
+        "status": "conditional-merchant-claim",
+        "condition": "商品标题声明包邮；店铺声明全国一二线城市就近发货、北上广直发。未明确往返均包邮，归还费用不能记为0。"
+      },
+      "serviceArea": "店铺标注全国一二线城市；北上广就近发货，实际地址需订单核验",
+      "sourceId": "rrzu-z6x-store",
+      "source": {
+        "url": "https://www.rrzu.com/shop-page/15272",
+        "capturedAt": "2026-11-21"
+      },
+      "productUrl": "https://www.rrzu.com/item/166775",
+      "evidenceLevel": "primary-merchant-store-page-opened",
+      "limitations": [
+        "详情链接返回405，已独立打开商家店铺页核验型号、日租、起租及押金；无目标日期最终结算。",
+        "租金可能随套餐、时间及商户活动变化，不能保证3天最终租金为30元。",
+        "配件清单、包邮地域例外、归还运费未披露。"
+      ],
+      "status": "verified-alternative-offer"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-projector-mini",
+      "mi-shipping"
+    ]
+  },
+  "massage-multihead-3c": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-massage-multihead-3c",
+      "mi-shipping"
+    ]
+  },
+  "massage-mini-3": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-massage-mini-3",
+      "mi-shipping"
+    ]
+  },
+  "massage-heat-h3-mini": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-massage-heat-h3-mini",
+      "mi-shipping"
+    ]
+  },
+  "capsule-coffee-s1": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "没有现成兼容胶囊，另购Café Royal 30粒意式浓缩；设备及耗材均满足官网普通配送免邮门槛。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-capsule-coffee-s1",
+      "mi-shipping"
+    ]
+  },
+  "portable-coffee": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "已有与机器相适配的咖啡耗材；此条只核算整机，不假定任意胶囊均兼容。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-portable-coffee",
+      "mi-shipping"
+    ]
+  },
+  "air-fryer-n1": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-air-fryer-n1",
+      "mi-shipping"
+    ]
+  },
+  "air-fryer-steam-pro": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-air-fryer-steam-pro",
+      "mi-shipping"
+    ]
+  },
+  "air-fryer-s1": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-air-fryer-s1",
+      "mi-shipping"
+    ]
+  },
+  "blender-n1": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-blender-n1",
+      "mi-shipping"
+    ]
+  },
+  "blender-p1": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-blender-p1",
+      "mi-shipping"
+    ]
+  },
+  "soy-milk-maker": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-soy-milk-maker",
+      "mi-shipping"
+    ]
+  },
+  "portable-juicer-2": {
+    "quoteLabel": "官网搜索报价",
+    "priceNote": "官网实时搜索卡片报价，未承诺目标地址有货。",
+    "scenario": "基础整机采购，已有适用电源及日常耗材，不另购可选配件。",
+    "shippingCondition": "小米自营商品满69元普通配送免运费；特殊配送、闪送不包含，实际可达地区依结算页。",
+    "rentalSummary": "未选用已核验的租赁报价，可考虑借用或已有设备；不代表市场上不存在租赁。",
+    "rental": {
+      "kind": null,
+      "status": "no-offer-selected",
+      "pricePerDay": null,
+      "currency": "CNY",
+      "sourceId": null,
+      "note": "未配置已核验的租赁；使用借用或已有设备替代，不声称市场无租赁。"
+    },
+    "imageNote": "",
+    "sourceIds": [
+      "mi-portable-juicer-2",
+      "mi-shipping"
+    ]
+  }
+}
