@@ -41,3 +41,46 @@ export async function leaderVoice(
     return fallback
   }
 }
+
+export const DEFAULT_REMARK = '同意。请理性消费。'
+
+/**
+ * The AI leader's closing remark for the receipt, based on the application and the reflective
+ * answers from the 复核单. The order is already approved; this is wording only.
+ */
+export async function leaderRemark(
+  draft: Application,
+  attempt: number,
+  difficulty: Difficulty,
+  reflections: Record<string, string>,
+  quizRetries: number,
+): Promise<string> {
+  try {
+    const res = await fetch(`${API_BASE}/api/leader-voice`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        mode: 'remark',
+        productId: draft.productId,
+        attempt,
+        difficulty,
+        form: {
+          purpose: draft.purpose,
+          frequency: draft.frequency,
+          vsRent: draft.vsRent,
+          vsBorrow: draft.vsBorrow,
+          vsExisting: draft.vsExisting,
+          declaredTotal: draft.declaredTotal,
+        },
+        reflections,
+        quizRetries,
+      }),
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    })
+    if (!res.ok) return DEFAULT_REMARK
+    const { text } = (await res.json()) as { text?: string }
+    return text || DEFAULT_REMARK
+  } catch {
+    return DEFAULT_REMARK
+  }
+}

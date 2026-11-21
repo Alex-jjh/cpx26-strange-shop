@@ -18,8 +18,9 @@ npm run lint     # oxlint
 
 ## Invariants — do not break
 
-1. **Rules decide, the LLM only words.** Approve/reject is decided in `src/domain/review.ts`.
-   The LLM (`api/leader-voice.ts`) only rewrites findings. Never let model output change the decision.
+1. **Rules decide, the LLM only words.** Approve/reject is decided in `src/domain/review.ts`;
+   the 复核单 is built and graded in `src/domain/quiz.ts`. The LLM (`api/leader-voice.ts`) only
+   writes the rejection wording and the receipt remark. Never let model output change a decision.
 2. **The demo path stays green.** `src/domain/review.test.ts` encodes the pitch demo
    (first projector submission rejected with `total-mismatch` + `why-not-rent` + `alternatives-missing`,
    resubmission on attempt 2 approved).

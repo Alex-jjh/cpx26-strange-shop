@@ -1,19 +1,21 @@
 import { useState } from 'react'
-import { findProduct } from './data/catalog'
+import { findDetails, findProduct } from './data/catalog'
 import { notify, vibrate } from './device'
 import { review } from './domain/review'
 import type { Application, Difficulty } from './domain/types'
 import { emptyApplication, newOrderNo, todayIso, type Screen } from './flow'
-import { leaderVoice } from './llm/leaderVoice'
-import { Approved, Rejected, Reviewing, Withdrawn } from './screens/Decision'
+import { leaderRemark, leaderVoice } from './llm/leaderVoice'
+import { Approved, Rejected, Remarking, Reviewing, Withdrawn } from './screens/Decision'
 import { ProcurementForm } from './screens/ProcurementForm'
 import { ProductPage } from './screens/ProductPage'
+import { Quiz } from './screens/Quiz'
 import { Receipt } from './screens/Receipt'
 import { Regulations } from './screens/Regulations'
 import { ShakeGate } from './screens/ShakeGate'
 import { Shop } from './screens/Shop'
 
 const REVIEW_DELAY_MS = 2500 // "领导审阅中" — part of the friction
+const REMARK_DELAY_MS = 1500 // "领导批示中"
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'shop' })
@@ -35,6 +37,15 @@ export default function App() {
       void notify('采购申请已批准', `「${product.name}」已解锁下单`)
       setScreen({ name: 'approved', draft, attempt })
     }
+  }
+
+  async function finishQuiz(draft: Application, attempt: number, answers: Record<string, string>, retries: number) {
+    setScreen({ name: 'remarking', draft, attempt })
+    const [remark] = await Promise.all([
+      leaderRemark(draft, attempt, difficulty, answers, retries),
+      new Promise((r) => setTimeout(r, REMARK_DELAY_MS)),
+    ])
+    setScreen({ name: 'receipt', draft, attempt, orderNo: newOrderNo(), remark })
   }
 
   const home = () => setScreen({ name: 'shop' })
@@ -101,15 +112,28 @@ export default function App() {
         return (
           <Approved
             product={findProduct(screen.draft.productId)!}
-            onCheckout={() => setScreen({ ...screen, name: 'receipt', orderNo: newOrderNo() })}
+            onCheckout={() => setScreen({ name: 'quiz', draft: screen.draft, attempt: screen.attempt })}
           />
         )
+      case 'quiz':
+        return (
+          <Quiz
+            product={findProduct(screen.draft.productId)!}
+            details={findDetails(screen.draft.productId)}
+            draft={screen.draft}
+            difficulty={difficulty}
+            onPass={(answers, retries) => void finishQuiz(screen.draft, screen.attempt, answers, retries)}
+          />
+        )
+      case 'remarking':
+        return <Remarking />
       case 'receipt':
         return (
           <Receipt
             product={findProduct(screen.draft.productId)!}
             orderNo={screen.orderNo}
             attempt={screen.attempt}
+            remark={screen.remark}
             onDone={home}
           />
         )

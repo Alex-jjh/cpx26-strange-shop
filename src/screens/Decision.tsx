@@ -13,6 +13,16 @@ export function Reviewing({ attempt }: { attempt: number }) {
   )
 }
 
+export function Remarking() {
+  return (
+    <section className="center">
+      <div className="spinner" aria-hidden />
+      <h1>领导批示中</h1>
+      <p className="muted">复核单已提交，正在出具审批回执</p>
+    </section>
+  )
+}
+
 interface RejectedProps {
   text: string
   attempt: number
@@ -55,9 +65,9 @@ export function Approved({ product, onCheckout }: { product: Product; onCheckout
         应付总额 <strong className="price">¥{formatYuan(totalCost(product))}</strong>（含必需配件与运费）
       </p>
       <button className="primary" onClick={onCheckout}>
-        模拟下单
+        去下单
       </button>
-      <p className="fineprint">模拟订单，不会扣款，也不会发货。</p>
+      <p className="fineprint">下单前须完成复核单。模拟订单，不会扣款，也不会发货。</p>
     </section>
   )
 }

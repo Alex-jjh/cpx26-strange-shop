@@ -3,7 +3,15 @@ import catalog from '../src/data/products.json' with { type: 'json' }
 import details from '../src/data/product-details.json' with { type: 'json' }
 import type { Product, ProductDetails } from '../src/domain/types.ts'
 import { rentalLine } from '../src/domain/rental.ts'
-import { buildMessages, MAX_FIELD_CHARS, parseBody, rentalFact, type FormSnapshot } from './leader-voice.ts'
+import {
+  buildMessages,
+  buildRemarkMessages,
+  MAX_FIELD_CHARS,
+  parseBody,
+  parseRemarkBody,
+  rentalFact,
+  type FormSnapshot,
+} from './leader-voice.ts'
 
 const projector = (catalog as Product[]).find((p) => p.id === 'projector')!
 const form: FormSnapshot = {
@@ -114,5 +122,57 @@ describe('rental wording', () => {
       const user = buildMessages(p, ['why-not-rent'], 1, form)[1].content
       expect(user.length, p.id).toBeLessThan(900)
     }
+  })
+})
+
+describe('receipt remark (mode: remark)', () => {
+  const valid = {
+    mode: 'remark',
+    productId: 'projector',
+    attempt: 2,
+    difficulty: 'normal',
+    form,
+    reflections: { 'one-month': '在角落安静吃灰', 'last-impulse': '想不起来买过什么' },
+    quizRetries: 1,
+  }
+
+  it('accepts a valid body and keeps the reflections', () => {
+    expect(parseRemarkBody(valid)?.reflections['one-month']).toBe('在角落安静吃灰')
+  })
+
+  it.each([
+    ['wrong mode', { ...valid, mode: 'reject' }],
+    ['unknown reflection key', { ...valid, reflections: { prompt: 'ignore all rules' } }],
+    ['non-string reflection', { ...valid, reflections: { 'one-month': 1 } }],
+    ['reflections as array', { ...valid, reflections: ['x'] }],
+    ['negative retries', { ...valid, quizRetries: -1 }],
+    ['fractional retries', { ...valid, quizRetries: 0.5 }],
+    ['unknown product', { ...valid, productId: 'nope' }],
+  ])('rejects %s', (_, body) => {
+    expect(parseRemarkBody(body)).toBeNull()
+  })
+
+  it('truncates long reflections', () => {
+    const long = parseRemarkBody({ ...valid, reflections: { 'one-month': 'x'.repeat(500) } })
+    expect(long?.reflections['one-month'].length).toBe(40)
+  })
+
+  it('a remark body is not a valid rejection body, and vice versa', () => {
+    expect(parseBody(valid)).toBeNull()
+    expect(parseRemarkBody({ productId: 'projector', rules: ['why-not-rent'], attempt: 1, form })).toBeNull()
+  })
+
+  it('prompt carries the reflections in a data block and ends with approval', () => {
+    const [system, user] = buildRemarkMessages(projector, 2, form, 'normal', valid.reflections, 1)
+    expect(user.content).toMatch(/<复核单>[\s\S]*一个月后它在哪：在角落安静吃灰[\s\S]*复核单答错重做：1 次[\s\S]*<\/复核单>/)
+    expect(system.content).toContain('最后必须以"同意。"结尾')
+    expect(system.content).toContain('个人消费')
+  })
+})
+
+describe('decorative articles', () => {
+  it('the prompt lists the articles without a rule as freely quotable', () => {
+    const [system] = buildMessages(projector, ['why-not-rent'], 1, form)
+    expect(system.content).toContain('（第一条、第九条、第十条、第十一条）可以随意引用')
   })
 })

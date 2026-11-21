@@ -5,10 +5,12 @@ interface Props {
   product: Product
   orderNo: string
   attempt: number
+  /** AI leader's closing remark (falls back to a fixed line offline). */
+  remark: string
   onDone: () => void
 }
 
-export function Receipt({ product, orderNo, attempt, onDone }: Props) {
+export function Receipt({ product, orderNo, attempt, remark, onDone }: Props) {
   return (
     <section className="receipt">
       <h1>采购审批回执</h1>
@@ -22,7 +24,7 @@ export function Receipt({ product, orderNo, attempt, onDone }: Props) {
         <dt>提交次数</dt>
         <dd>{attempt}</dd>
         <dt>审批意见</dt>
-        <dd>同意。请理性消费。</dd>
+        <dd className="remark">{remark}</dd>
       </dl>
       <div className="stamp" aria-label="审批专用章">
         审批

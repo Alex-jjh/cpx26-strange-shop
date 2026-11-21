@@ -98,3 +98,16 @@ progress { width: 100%; height: 12px; }
 .regs strong { color: var(--oa); }
 .topbar { gap: 8px; }
 .topbar .link:first-child { margin-right: auto; }
+
+.quiz .question { margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; }
+.quiz .question.wrong { border-color: var(--reject); background: var(--reject-bg); }
+.quiz .question.missing { border-color: var(--price); }
+.quiz legend { font-weight: 600; padding: 0 4px; }
+.quiz legend .tag { margin-left: 6px; }
+.quiz .option {
+  display: flex; gap: 8px; align-items: center; margin: 6px 0; padding: 10px;
+  border: 1px solid var(--border); border-radius: 8px; background: #fff; cursor: pointer;
+}
+.quiz .option.chosen { border-color: var(--oa); background: var(--oa-bg); }
+.quiz .explain { color: var(--reject); font-size: 14px; }
+.receipt .remark { white-space: pre-line; }
