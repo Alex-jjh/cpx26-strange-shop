@@ -49,6 +49,8 @@ export type RuleId =
   | 'why-not-rent'
   | 'first-use-too-far'
   | 'alternatives-missing'
+  | 'perfunctory-answer'
+  | 'first-submission'
 
 export interface Finding {
   rule: RuleId

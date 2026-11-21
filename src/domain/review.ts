@@ -2,13 +2,22 @@ import { totalCost } from './cost'
 import type { Application, Decision, Difficulty, Finding, Product } from './types'
 
 // The AI leader's veto is decided HERE, by rules, so the demo path is deterministic.
-// The LLM only rewrites the findings in the leader's voice (see src/llm/leaderVoice.ts).
+// The LLM only rewrites the findings in the leader's voice (see api/leader-voice.ts).
 
-const MIN_PURPOSE_CHARS = 10
+export const MIN_PURPOSE_CHARS = 10
+export const MIN_ANSWER_CHARS = 8
 const MAX_DAYS_TO_FIRST_USE = 14
-const MIN_JUSTIFICATION_CHARS = 4
+/** How many of rent / borrow / existing must be argued properly, per difficulty. */
+const ALTERNATIVES_NEEDED: Record<Difficulty, number> = { normal: 1, hard: 2 }
 
-const filled = (s: string) => s.trim().length >= MIN_JUSTIFICATION_CHARS
+const ALTERNATIVE_FIELDS = [
+  { key: 'vsRent', label: '为什么不租' },
+  { key: 'vsBorrow', label: '为什么不借' },
+  { key: 'vsExisting', label: '为什么现有的东西不行' },
+] as const
+
+/** Ignores whitespace and punctuation, so "没人给我。" and "没人 给我" count as the same answer. */
+const normalise = (s: string) => s.replace(/[\s\p{P}\p{S}]/gu, '')
 
 function daysBetween(fromIso: string, toIso: string): number {
   return Math.round((Date.parse(toIso) - Date.parse(fromIso)) / 86_400_000)
@@ -19,6 +28,7 @@ export function review(
   product: Product,
   difficulty: Difficulty,
   todayIso: string,
+  attempt: number,
 ): Decision {
   const findings: Finding[] = []
 
@@ -38,8 +48,34 @@ export function review(
     })
   }
 
-  if (app.frequency === 'once' && product.alternatives.rent && !filled(app.vsRent)) {
-    findings.push({ rule: 'why-not-rent', message: '只用一次，为什么不租？' })
+  // Alternative answers: an answer counts only if it is long enough and not a copy of another one.
+  const answers = ALTERNATIVE_FIELDS.map((f) => ({ ...f, text: normalise(app[f.key]) }))
+  const isDuplicate = (a: (typeof answers)[number]) =>
+    a.text !== '' && answers.some((b) => b.key !== a.key && b.text === a.text)
+  const isSubstantive = (a: (typeof answers)[number]) => a.text.length >= MIN_ANSWER_CHARS && !isDuplicate(a)
+
+  const perfunctory = answers.filter((a) => a.text !== '' && !isSubstantive(a))
+  if (perfunctory.length > 0) {
+    findings.push({
+      rule: 'perfunctory-answer',
+      message: `${perfunctory.map((a) => `「${a.label}」`).join('')}写得太敷衍：每项不少于 ${MIN_ANSWER_CHARS} 个字，且不能互相照抄。`,
+    })
+  }
+
+  const rent = answers.find((a) => a.key === 'vsRent')!
+  if ((app.frequency === 'once' || app.frequency === 'monthly') && product.alternatives.rent && !isSubstantive(rent)) {
+    findings.push({
+      rule: 'why-not-rent',
+      message: `用得这么少（${app.frequency === 'once' ? '只用一次' : '每月一次'}），为什么不租？请在「为什么不租」里说明。`,
+    })
+  }
+
+  const needed = ALTERNATIVES_NEEDED[difficulty]
+  if (answers.filter(isSubstantive).length < needed) {
+    findings.push({
+      rule: 'alternatives-missing',
+      message: `替代方案论证不足：租、借、用现有的，至少认真说明 ${needed} 项为什么不行。`,
+    })
   }
 
   if (difficulty === 'hard') {
@@ -47,16 +83,18 @@ export function review(
     if (!(days >= 0 && days <= MAX_DAYS_TO_FIRST_USE)) {
       findings.push({
         rule: 'first-use-too-far',
-        message: `两周内用不上，为什么现在就买？首次使用日期须在 ${MAX_DAYS_TO_FIRST_USE} 天内。`,
+        message: `首次使用日期须在今天起 ${MAX_DAYS_TO_FIRST_USE} 天内：太远说明现在不急，已经过去说明你填错了。`,
       })
     }
-    const considered = [app.vsRent, app.vsBorrow, app.vsExisting].filter(filled).length
-    if (considered < 2) {
-      findings.push({
-        rule: 'alternatives-missing',
-        message: '替代方案论证不足：租、借、用现有的，至少说明其中两项为什么不行。',
-      })
-    }
+  }
+
+  // Satire of bureaucracy: a flawless first submission is still sent back once. Deterministic,
+  // and the user is told exactly what to do (submit again unchanged).
+  if (findings.length === 0 && attempt === 1) {
+    findings.push({
+      rule: 'first-submission',
+      message: '按惯例，首次申请一律退回，以示慎重。内容无需修改，原样再提交一次即可。',
+    })
   }
 
   return findings.length === 0 ? { kind: 'approved' } : { kind: 'rejected', findings }

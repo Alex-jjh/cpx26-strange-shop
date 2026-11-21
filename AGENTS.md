@@ -21,7 +21,8 @@ npm run lint     # oxlint
 1. **Rules decide, the LLM only words.** Approve/reject is decided in `src/domain/review.ts`.
    The LLM (`api/leader-voice.ts`) only rewrites findings. Never let model output change the decision.
 2. **The demo path stays green.** `src/domain/review.test.ts` encodes the pitch demo
-   (first projector submission rejected with `total-mismatch` + `why-not-rent`, resubmission approved).
+   (first projector submission rejected with `total-mismatch` + `why-not-rent` + `alternatives-missing`,
+   resubmission on attempt 2 approved).
    If you change rules or the projector data, update those tests AND the demo script in `README.md`.
 3. **The app must work with no network.** Every LLM call falls back to the rule message.
    New network features must fail silently the same way.

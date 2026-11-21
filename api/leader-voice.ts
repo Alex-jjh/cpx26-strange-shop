@@ -21,9 +21,11 @@ const products = catalog as Product[]
 const RULE_TEXT: Record<RuleId, string> = {
   'purpose-too-short': '「采购用途」太短，少于 10 个字',
   'total-mismatch': '「申报总价」不对：没把必需配件和运费算进去',
-  'why-not-rent': '使用频率选了「只用一次」，「为什么不租？」却没给出像样的理由',
-  'first-use-too-far': '「首次使用日期」不在两周以内（要么太远，要么已经过去了）',
-  'alternatives-missing': '「为什么不租 / 不借 / 现有的东西不行」三项里，认真回答的不到两项',
+  'why-not-rent': '使用频率很低（只用一次或每月一次），商品又能租，「为什么不租？」却没给出像样的理由',
+  'first-use-too-far': '「首次使用日期」不在今天起两周以内（要么太远，要么已经过去了）',
+  'alternatives-missing': '「为什么不租 / 不借 / 现有的东西不行」认真回答的项数不够（普通档至少 1 项，难缠档至少 2 项）',
+  'perfunctory-answer': '替代方案里有回答太敷衍：少于 8 个字，或者几栏互相照抄',
+  'first-submission': '申请本身挑不出毛病，但按惯例首次申请一律退回以示慎重；告诉他内容不用改，原样再交一次',
 }
 
 export const RULE_IDS = Object.keys(RULE_TEXT) as RuleId[]
@@ -61,7 +63,7 @@ const SYSTEM_PROMPT = `你是"个人钱包审批办公室"的 AI 领导，审批
 
 硬性要求：
 1. 只针对"规则检查发现的问题"驳回，不另挑毛病。虚构的规章只能用来给这些问题撑腰，不许借规章编出新要求（比如字数以外的格式、措辞要求）。不要编造申请人以前说过什么、做过什么。
-2. 最后一句必须让人看懂具体该改哪一栏、怎么改。
+2. 最后一句必须让人看懂具体该改哪一栏、怎么改。如果给示例答案，示例本身必须满足字数要求（用途至少 10 个字，替代方案每项至少 8 个字）。
 3. 只能要求修改申请单上存在的栏目：采购用途、首次使用日期、预计使用频率、为什么不租、为什么不借、为什么现有的东西不行、申报总价。
 4. 不要提部门、岗位、公司、同事、财务、伴侣家人、报销、发票、含税、费用明细，也不要要求申请单以外的材料。
 5. 可以点名必需配件，但不要算出或说出总价数字，让他自己算。
@@ -185,13 +187,31 @@ export function OPTIONS(request: Request): Response {
   return new Response(null, { status: 204, headers: corsHeaders(request.headers.get('origin')) })
 }
 
+/**
+ * One structured log line per call (Vercel → Logs; search "leader-voice"). Includes the user's
+ * answers (already truncated) and the model output, for prompt tuning. Never logs the key or IP.
+ * Hobby plan keeps runtime logs ~1 hour; add a log drain or storage if longer history is needed.
+ */
+function logCall(entry: Record<string, unknown>): void {
+  const line = JSON.stringify({ event: 'leader-voice', ...entry })
+  if (entry.outcome === 'ok') console.log(line)
+  else console.error(line)
+}
+
 export async function POST(request: Request): Promise<Response> {
+  const started = Date.now()
   const cors = corsHeaders(request.headers.get('origin'))
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
-  if (rateLimited(ip)) return json({ error: 'rate_limited' }, 429, cors)
+
+  const reply = (status: number, body: Record<string, unknown>, entry: Record<string, unknown>) => {
+    logCall({ status, latencyMs: Date.now() - started, ...entry })
+    return json(body, status, cors)
+  }
+
+  if (rateLimited(ip)) return reply(429, { error: 'rate_limited' }, { outcome: 'rate_limited' })
 
   const key = process.env.LLM_API_KEY
-  if (!key) return json({ error: 'not_configured' }, 503, cors)
+  if (!key) return reply(503, { error: 'not_configured' }, { outcome: 'not_configured' })
 
   let parsed: ReturnType<typeof parseBody>
   try {
@@ -199,41 +219,52 @@ export async function POST(request: Request): Promise<Response> {
   } catch {
     parsed = null
   }
-  if (!parsed) return json({ error: 'bad_request' }, 400, cors)
+  if (!parsed) return reply(400, { error: 'bad_request' }, { outcome: 'bad_request' })
 
   // `||` not `??`: an env var set to "" in the Vercel UI must fall back too.
   const baseUrl = (process.env.LLM_BASE_URL || 'https://aihubmix.com/v1').trim().replace(/\/+$/, '')
   const model = (process.env.LLM_MODEL || 'qwen3-235b-a22b-2507').trim()
-
-  // Failures are logged server-side (Vercel → Logs) with the upstream body; the client only
-  // gets a coarse reason, never the upstream message.
-  const fail = (reason: string, detail?: unknown) => {
-    console.error('leader-voice upstream failure', { reason, model, baseUrl, detail })
-    return json({ error: 'upstream', reason }, 502, cors)
+  const call = {
+    productId: parsed.product.id,
+    rules: parsed.rules,
+    attempt: parsed.attempt,
+    form: parsed.form,
+    model,
+    baseUrl,
   }
+
+  // The client only gets a coarse reason, never the upstream message (that goes to the log).
+  const fail = (reason: string, detail: unknown, upstreamCalls: number) =>
+    reply(502, { error: 'upstream', reason }, { outcome: reason, detail, upstreamCalls, ...call })
 
   const messages = buildMessages(parsed.product, parsed.rules, parsed.attempt, parsed.form)
   // One overall deadline, so a retry never pushes past the client's 10s timeout.
   const signal = AbortSignal.timeout(9000)
+  let upstreamCalls = 0
 
   try {
     // Models occasionally return an empty message; one retry fixes almost all of them.
-    for (let attempt = 1; ; attempt++) {
+    while (true) {
+      upstreamCalls++
       const res = await fetch(`${baseUrl}/chat/completions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
         body: JSON.stringify({ model, messages, max_tokens: 400, temperature: 1.0 }),
         signal,
       })
-      if (!res.ok) return fail(`http_${res.status}`, (await res.text()).slice(0, 500))
+      if (!res.ok) return fail(`http_${res.status}`, (await res.text()).slice(0, 500), upstreamCalls)
       const data = (await res.json()) as {
         choices?: { finish_reason?: string; message?: { content?: string } }[]
+        usage?: { prompt_tokens?: number; completion_tokens?: number }
       }
       const text = data.choices?.[0]?.message?.content?.trim()
-      if (text) return json({ text }, 200, cors)
-      if (attempt >= 2) return fail('empty_content', data.choices?.[0]?.finish_reason)
+      if (text) {
+        return reply(200, { text }, { outcome: 'ok', upstreamCalls, usage: data.usage, text, ...call })
+      }
+      if (upstreamCalls >= 2) return fail('empty_content', data.choices?.[0]?.finish_reason, upstreamCalls)
     }
   } catch (e) {
-    return fail(e instanceof Error && e.name === 'TimeoutError' ? 'timeout' : 'network', String(e))
+    const reason = e instanceof Error && e.name === 'TimeoutError' ? 'timeout' : 'network'
+    return fail(reason, String(e), upstreamCalls)
   }
 }

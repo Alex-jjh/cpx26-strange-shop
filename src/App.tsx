@@ -21,7 +21,7 @@ export default function App() {
   async function submit(draft: Application, attempt: number) {
     setScreen({ name: 'reviewing', draft, attempt })
     const product = findProduct(draft.productId)!
-    const decision = review(draft, product, difficulty, todayIso())
+    const decision = review(draft, product, difficulty, todayIso(), attempt)
     const [text] = await Promise.all([
       decision.kind === 'rejected' ? leaderVoice(draft, decision.findings, attempt) : Promise.resolve(''),
       new Promise((r) => setTimeout(r, REVIEW_DELAY_MS)),

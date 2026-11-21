@@ -6,10 +6,11 @@ import type { Application, Decision } from './types'
 
 const TODAY = '2026-11-21'
 const projector = findProduct('projector')!
+const massageGun = findProduct('massage-gun')!
 
 const rules = (d: Decision) => (d.kind === 'rejected' ? d.findings.map((f) => f.rule) : [])
 
-// The pitch demo: first submission says "one night" and skips the rent question.
+// The pitch demo: first submission says "one game" and skips every alternative.
 const firstSubmission: Application = {
   productId: 'projector',
   purpose: '周末在家和朋友一起看一场球赛直播',
@@ -31,31 +32,75 @@ const resubmission: Application = {
 }
 
 describe('demo path (normal difficulty)', () => {
-  it('rejects the first submission with "why not rent" and a total mismatch', () => {
-    expect(rules(review(firstSubmission, projector, 'normal', TODAY))).toEqual([
+  it('rejects the first submission: total, rent and alternatives', () => {
+    expect(rules(review(firstSubmission, projector, 'normal', TODAY, 1))).toEqual([
       'total-mismatch',
       'why-not-rent',
+      'alternatives-missing',
     ])
   })
 
   it('approves the resubmission', () => {
-    expect(review(resubmission, projector, 'normal', TODAY)).toEqual({ kind: 'approved' })
+    expect(review(resubmission, projector, 'normal', TODAY, 2)).toEqual({ kind: 'approved' })
+  })
+})
+
+describe('no free pass', () => {
+  // Real submission from testing that used to be approved on attempt 3.
+  const lazy: Application = {
+    productId: 'massage-gun',
+    purpose: '我要放松肩膀',
+    firstUseDate: '2026-11-16',
+    frequency: 'monthly',
+    vsRent: '没人给我',
+    vsBorrow: '没人给我',
+    vsExisting: '没有东西触碰到我的背部。我需要使用这个设备进行身体上的放松。',
+    declaredTotal: 399,
+  }
+
+  it('rejects a short purpose and copy-pasted short answers', () => {
+    expect(rules(review(lazy, massageGun, 'normal', TODAY, 3))).toEqual(['purpose-too-short', 'perfunctory-answer'])
+  })
+
+  it('treats duplicates as perfunctory even when long enough', () => {
+    const same = '身边的朋友都没有这个东西'
+    const d = review({ ...resubmission, vsRent: same, vsBorrow: `${same}。` }, projector, 'normal', TODAY, 2)
+    expect(rules(d)).toContain('perfunctory-answer')
+  })
+
+  it('asks "why not rent" for monthly use too', () => {
+    expect(rules(review({ ...resubmission, frequency: 'monthly', vsRent: '' }, projector, 'normal', TODAY, 2))).toContain(
+      'why-not-rent',
+    )
+  })
+
+  it('requires at least one argued alternative in normal mode', () => {
+    const none = { ...resubmission, vsRent: '', vsBorrow: '', vsExisting: '' }
+    expect(rules(review(none, projector, 'normal', TODAY, 2))).toEqual(['alternatives-missing'])
+  })
+
+  it('sends a flawless first submission back once, then approves it unchanged', () => {
+    expect(rules(review(resubmission, projector, 'normal', TODAY, 1))).toEqual(['first-submission'])
+    expect(review(resubmission, projector, 'normal', TODAY, 2)).toEqual({ kind: 'approved' })
   })
 })
 
 describe('hard difficulty', () => {
   it('also approves the demo resubmission', () => {
-    expect(review(resubmission, projector, 'hard', TODAY)).toEqual({ kind: 'approved' })
+    expect(review(resubmission, projector, 'hard', TODAY, 2)).toEqual({ kind: 'approved' })
   })
 
-  it('rejects a first use more than two weeks away', () => {
-    expect(rules(review({ ...resubmission, firstUseDate: '2027-01-01' }, projector, 'hard', TODAY))).toContain(
+  it('rejects a first use more than two weeks away, or in the past', () => {
+    expect(rules(review({ ...resubmission, firstUseDate: '2027-01-01' }, projector, 'hard', TODAY, 2))).toContain(
+      'first-use-too-far',
+    )
+    expect(rules(review({ ...resubmission, firstUseDate: '2026-11-16' }, projector, 'hard', TODAY, 2))).toContain(
       'first-use-too-far',
     )
   })
 
-  it('requires at least two alternatives argued', () => {
-    expect(rules(review({ ...resubmission, vsBorrow: '' }, projector, 'hard', TODAY))).toContain(
+  it('requires at least two argued alternatives', () => {
+    expect(rules(review({ ...resubmission, vsBorrow: '' }, projector, 'hard', TODAY, 2))).toContain(
       'alternatives-missing',
     )
   })
