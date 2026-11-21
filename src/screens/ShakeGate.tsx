@@ -64,7 +64,7 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
         <img
           key={count}
           className="shake-ad-image"
-          src="/ads/shake-to-close-ad.png"
+          src="/ads/shake-to-close-ad.webp"
           alt="闲鱼奶茶优惠广告：吃喝玩乐先上闲鱼，展示优惠券与饮品"
           loading="eager"
           fetchPriority="high"
@@ -77,7 +77,7 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
         <div className="shake-ad-controls">
           <h1 id="ad-close-title">摇一摇关闭广告</h1>
           <p aria-live="polite">
-            {stage === 'idle' && '广告正在占用您的采购页面。请轻摇手机 8 次关闭。'}
+            {stage === 'idle' && `广告正在占用您的采购页面。请轻摇手机 ${SHAKES_NEEDED} 次关闭。`}
             {stage === 'requesting' && '正在申请动作权限，也可改用点击关闭。'}
             {stage === 'shake' && `再摇 ${SHAKES_NEEDED - count} 次即可关闭，请勿用力甩动手机。`}
             {stage === 'tap' && `再点 ${TAPS_NEEDED - count} 次即可关闭。`}
