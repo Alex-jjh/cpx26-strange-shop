@@ -4,14 +4,14 @@
 
 ## 一、分工：每人一块，文件不重叠
 
-| 角色 | 负责什么 | 主要改动的文件 | 分支前缀 |
-|---|---|---|---|
-| **A 数据与素材** | 10 个商品的真实价格、配件、运费、日租价；用 OneclickAMD 生成商品图和投影仪"吃灰"图 | `src/data/products.json`、`public/products/` | `data/` |
-| **B 摩擦与小游戏** | 打磨摇一摇验证；做第 4 处摩擦（如"领导出差中"排队、冷静期倒计时）；在 iPhone 和微信里实测 | `src/screens/ShakeGate.tsx`、新摩擦的页面文件、`src/device/` | `feat/` |
-| **C AI 领导与部署** | 审批规则和难度；领导话术提示词；Vercel 部署和国内访问测试；可选的驳回排行榜 | `src/domain/`、`src/llm/`、`api/` | `feat/` |
-| **D 视觉、海报与路演** | 页面视觉、回执和印章；用 Dify 的 AMD 插件做海报；路演稿和演示彩排 | `src/index.css`、`src/screens/Decision.tsx`、`Receipt.tsx`、`docs/pitch.md` | `ui/`、`docs/` |
+| 角色 | 成员 | 负责什么 | 主要改动的文件 | 分支前缀 |
+|---|---|---|---|---|---|
+| **A 数据与素材** | CrazyMike | 10 个商品的真实价格、配件、运费、日租价；用 OneclickAMD 生成商品图和投影仪"吃灰"图 | `src/data/products.json`、`public/products/` | `data/` |
+| **B 摩擦与小游戏** | mAw（ricoalyssa） | 打磨摇一摇验证；做第 4 处摩擦（如"领导出差中"排队、冷静期倒计时）；在 iPhone 和微信里实测 | `src/screens/ShakeGate.tsx`、新摩擦的页面文件、`src/device/` | `feat/` |
+| **C AI 领导与部署** | Alex | 审批规则和难度；领导话术提示词；Vercel 部署和国内访问测试；可选的驳回排行榜 | `src/domain/`、`src/llm/`、`api/` | `feat/` |
+| **D 视觉、海报与路演** | Helen | 页面视觉、回执和印章；用 Dify 的 AMD 插件做海报；路演稿和演示彩排 | `src/index.css`、`src/screens/Decision.tsx`、`Receipt.tsx`、`docs/pitch.md` | `ui/`、`docs/` |
 
-**共享文件**：`src/App.tsx`、`src/flow.ts`、`src/domain/types.ts`。改之前先在群里说一声，改完尽快合并。新增页面一般都要动 `App.tsx` 和 `flow.ts`，每次只加一个 case，冲突会很小。
+**共享文件**：`src/App.tsx`、`src/flow.ts`、`src/domain/types.ts`，由 Alex 把关。改之前先在群里说一声，PR 请 Alex 看过再合并。新增页面一般都要动 `App.tsx` 和 `flow.ts`，每次只加一个 case，冲突会很小。
 
 ## 二、分支流程
 
@@ -50,7 +50,7 @@ git push -u origin feat/cooldown-timer
 
 给 AI 布置任务时，这样说效果最好：
 
-> 我负责 B（摩擦与小游戏）。任务：在提交审批后加一个"冷静期"页面，倒计时 30 秒才能继续。
+> 我是 mAw，负责 B（摩擦与小游戏）。任务：在提交审批后加一个"冷静期"页面，倒计时 30 秒才能继续。
 > 只改 `src/screens/` 下的新文件，`App.tsx` 和 `flow.ts` 里只加必要的 case。
 > 做完跑 `npm test && npm run build && npm run lint`。
 
