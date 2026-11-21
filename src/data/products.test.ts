@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { products } from './catalog'
+import { displayImage } from './images'
 
 // Guards for hand-collected product data (role A). CI runs these on every PR.
+
+const displayFiles = new Set(
+  Object.keys(import.meta.glob(['../../public/products/thumb/*', '../../public/products/large/*'], { eager: false })).map(
+    (p) => p.replace('../../public', ''),
+  ),
+)
 
 const imageFiles = new Set(
   Object.keys(import.meta.glob('../../public/products/*', { eager: false })).map((p) =>
@@ -30,4 +37,14 @@ describe.each(products)('product $id', (p) => {
     expect(imageFiles).toContain(p.images.unboxed)
     if (p.images.dusty) expect(imageFiles).toContain(p.images.dusty)
   })
+})
+
+describe('display images (npm run images)', () => {
+  it.each(products.flatMap((p) => [p.images.unboxed, p.images.dusty].filter((x): x is string => !!x)))(
+    '%s has thumb and large WebP copies',
+    (src) => {
+      expect(displayFiles).toContain(displayImage(src, 'thumb'))
+      expect(displayFiles).toContain(displayImage(src, 'large'))
+    },
+  )
 })

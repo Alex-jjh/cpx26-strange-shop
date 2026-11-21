@@ -10,7 +10,7 @@ export function ProductPage({ product, onApply }: { product: Product; onApply: (
 
   return (
     <section>
-      <ProductImage src={product.images.unboxed} label={product.category} />
+      <ProductImage src={product.images.unboxed} label={product.category} size="large" eager />
       <h1>{product.name}</h1>
       <p className="price big">¥{formatYuan(product.price)}</p>
       {product.source === null ? (
@@ -47,7 +47,7 @@ export function ProductPage({ product, onApply }: { product: Product; onApply: (
       {product.images.dusty && (
         <>
           <h2>一个月后</h2>
-          <ProductImage src={product.images.dusty} label="一个月后" />
+          <ProductImage src={product.images.dusty} label="一个月后" size="large" />
           {details?.imageNote && <p className="fineprint">{details.imageNote}</p>}
         </>
       )}

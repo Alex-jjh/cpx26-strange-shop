@@ -8,15 +8,16 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "images": "node scripts/make-images.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.6.2",
     "@capacitor/core": "^8.6.2",
     "@capacitor/haptics": "^8.0.2",
     "@capacitor/local-notifications": "^8.3.1",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "@capacitor/android": "^8.6.2"
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.6.2",
@@ -25,6 +26,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.90.0",
+    "sharp": "^0.35.5",
     "typescript": "~7.0.2",
     "vite": "^8.3.6",
     "vitest": "^5.1.1"
