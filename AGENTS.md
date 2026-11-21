@@ -27,8 +27,11 @@ npm run lint     # oxlint
 3. **The app must work with no network.** Every LLM call falls back to the rule message.
    New network features must fail silently the same way.
 4. **Secrets stay server-side.** No API key in `src/`, in `VITE_*` vars, or in git.
-   `api/leader-voice.ts` accepts only fixed rule ids + a short product name; do not add free-text
-   forwarding to the LLM (it would turn the endpoint into a public free LLM proxy).
+   `api/leader-voice.ts` is public, so keep it bounded: the product id must exist in the catalog,
+   rule ids come from a fixed list, form answers are truncated to `MAX_FIELD_CHARS` and sent as a
+   `<申请单>` data block, output is capped, requests are rate-limited. Do not add an open-ended
+   prompt/text parameter (it would turn the endpoint into a public free LLM proxy).
+   Every call is logged as one JSON line (`event: "leader-voice"`); never log the key or IP.
 5. **Device APIs only via `src/device/`.** Screens never call `navigator.vibrate`, Capacitor plugins,
    or `devicemotion` directly. Unsupported = silent no-op.
 6. **Nothing real happens.** No real payment, no shipping, no real shop APIs. Receipts say "模拟".
