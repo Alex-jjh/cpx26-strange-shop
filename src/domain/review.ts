@@ -22,8 +22,12 @@ export function review(
 ): Decision {
   const findings: Finding[] = []
 
-  if (app.purpose.trim().length < MIN_PURPOSE_CHARS) {
-    findings.push({ rule: 'purpose-too-short', message: '用途说明过于简略，请具体说明要用它做什么。' })
+  const purposeLen = app.purpose.trim().length
+  if (purposeLen < MIN_PURPOSE_CHARS) {
+    findings.push({
+      rule: 'purpose-too-short',
+      message: `采购用途不少于 ${MIN_PURPOSE_CHARS} 个字（你写了 ${purposeLen} 个字）。`,
+    })
   }
 
   const total = totalCost(product)
