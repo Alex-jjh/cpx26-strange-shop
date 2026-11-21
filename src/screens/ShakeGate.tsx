@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useRef } from 'react'
 import { CALM_DURATION_MS, onShake, onStillness, onVisibleRest, requestMotionPermission, vibrate } from '../device'
 import { gateReducer, initialGateState, SHAKES_NEEDED, TAPS_NEEDED } from './shakeGateState'
+import './ShakeGate.css'
 
 // Friction #1: demand movement, then accuse the applicant of being impulsive.
 export function ShakeGate({ onPass }: { onPass: () => void }) {
@@ -53,34 +54,63 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
   const verifying = stage === 'shake' || stage === 'tap'
   const calming = stage === 'calm' || stage === 'rest'
   const needed = stage === 'tap' ? TAPS_NEEDED : SHAKES_NEEDED
+  const showingAd = stage === 'idle' || stage === 'requesting' || verifying
+
+  if (showingAd) {
+    return (
+      <section className="shake-ad" aria-labelledby="ad-close-title">
+        <img
+          key={count}
+          className="shake-ad-image"
+          src="/ads/shake-to-close-ad.png"
+          alt="闲鱼奶茶优惠广告：吃喝玩乐先上闲鱼，展示优惠券与饮品"
+          loading="eager"
+          fetchPriority="high"
+          draggable={false}
+        />
+        <div className="shake-ad-top">
+          <span className="shake-ad-label">广告</span>
+          <span className="shake-ad-step">关闭进度 {count}/{needed}</span>
+        </div>
+        <div className="shake-ad-controls">
+          <h1 id="ad-close-title">摇一摇关闭广告</h1>
+          <p aria-live="polite">
+            {stage === 'idle' && '广告正在占用您的采购页面。请轻摇手机 8 次关闭。'}
+            {stage === 'requesting' && '正在申请动作权限，也可改用点击关闭。'}
+            {stage === 'shake' && `再摇 ${SHAKES_NEEDED - count} 次即可关闭，请勿用力甩动手机。`}
+            {stage === 'tap' && `再点 ${TAPS_NEEDED - count} 次即可关闭。`}
+          </p>
+          {notice && <p className="shake-ad-notice" role="status">{notice}</p>}
+          <progress aria-label="广告关闭进度" max={needed} value={count} />
+          {(stage === 'idle' || stage === 'requesting') && (
+            <button className="shake-ad-action" disabled={stage === 'requesting'} onClick={() => void start()}>
+              {stage === 'requesting' ? '正在请求权限…' : '开始摇一摇'}
+            </button>
+          )}
+          {stage === 'tap' && (
+            <button className="shake-ad-action" onClick={() => dispatch({ type: 'tap' })}>
+              点击关闭广告（还需 {TAPS_NEEDED - count} 次）
+            </button>
+          )}
+          {(stage === 'requesting' || stage === 'shake') && (
+            <button className="shake-ad-alternative" onClick={fallback}>无法摇动？改用点击关闭</button>
+          )}
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="center" aria-labelledby="verification-title">
-      <span className="tag">采购资格审查 · {calming || stage === 'done' ? '情绪复核' : '本人核验'}</span>
+      <span className="tag">采购资格审查 · 情绪复核</span>
       <h1 id="verification-title">{calming ? '检测到您疑似冲动消费' : stage === 'done' ? '情绪稳定，准予填表' : '请证明您是清醒的本人'}</h1>
       <div aria-live="polite" aria-atomic="true">
-        {stage === 'idle' && <p className="muted">请轻摇手机 {SHAKES_NEEDED} 次，证明这笔采购出自本人意愿。</p>}
-        {stage === 'requesting' && <p className="muted">请允许动作感应；也可以直接选择点击验证。</p>}
-        {stage === 'shake' && <p>请握稳手机、轻轻摇动，无需用力甩动。</p>}
-        {stage === 'tap' && <p>请点击 {TAPS_NEEDED} 次，充分表达您的采购意愿。</p>}
-        {stage === 'calm' && <p>检测到剧烈动作，疑似冲动消费。<br />请保持手机平稳 3 秒，证明您具备理性采购能力。</p>}
+        {stage === 'calm' && <p>广告已关闭，但检测到剧烈动作，疑似冲动消费。<br />请保持手机平稳 3 秒，证明您具备理性采购能力。</p>}
         {stage === 'rest' && <p>采购意愿过于强烈，请先冷静 3 秒。<br />保持页面打开，计时结束即可继续。</p>}
         {stage === 'done' && <p>情绪稳定。现允许您填写申请表。</p>}
         {notice && stage !== 'done' && <p className="muted">{notice}</p>}
       </div>
 
-      {(stage === 'idle' || stage === 'requesting') && (
-        <button className="primary" disabled={stage === 'requesting'} onClick={() => void start()}>
-          {stage === 'requesting' ? '正在请求动作权限…' : '开始证明'}
-        </button>
-      )}
-      {verifying && (
-        <>
-          <p className="counter">{count} / {needed}</p>
-          <progress aria-label="本人核验进度" max={needed} value={count} />
-          {stage === 'tap' && <button className="primary" onClick={() => dispatch({ type: 'tap' })}>本人确认（还需 {needed - count} 次）</button>}
-        </>
-      )}
       {calming && (
         <>
           <p className="counter">{Math.ceil((1 - progress) * 3)} 秒</p>
@@ -88,9 +118,9 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
           {stage === 'calm' && <p className="muted">容许轻微手抖，也可以将手机放在桌面上。</p>}
         </>
       )}
-      {(stage === 'requesting' || stage === 'shake' || stage === 'calm') && (
+      {stage === 'calm' && (
         <button className="link" onClick={fallback}>
-          {stage === 'calm' ? '不便保持平稳？改用普通倒计时' : '不便摇动？改用点击验证'}
+          不便保持平稳？改用普通倒计时
         </button>
       )}
       {stage === 'done' && <button className="primary" onClick={finish}>理性尚存，继续填表</button>}
