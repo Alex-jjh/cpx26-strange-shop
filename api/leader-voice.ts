@@ -86,23 +86,37 @@ export async function POST(request: Request): Promise<Response> {
     '用 2 到 3 句话写驳回意见：语气像公司 OA 审批，带一点讽刺，但要让人知道具体该补什么。不要加称呼和落款。',
   ].join('\n')
 
+  // `||` not `??`: an env var set to "" in the Vercel UI must fall back too.
+  const baseUrl = (process.env.LLM_BASE_URL || 'https://aihubmix.com/v1').trim().replace(/\/+$/, '')
+  const model = (process.env.LLM_MODEL || 'deepseek-v4.1-flash').trim()
+
+  // Failures are logged server-side (Vercel → Logs) with the upstream body; the client only
+  // gets a coarse reason, never the upstream message.
+  const fail = (reason: string, detail?: unknown) => {
+    console.error('leader-voice upstream failure', { reason, model, baseUrl, detail })
+    return json({ error: 'upstream', reason }, 502, cors)
+  }
+
   try {
-    const res = await fetch(`${process.env.LLM_BASE_URL ?? 'https://aihubmix.com/v1'}/chat/completions`, {
+    const res = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({
-        model: process.env.LLM_MODEL ?? 'deepseek-v4.1-flash',
+        model,
         messages: [{ role: 'user', content: prompt }],
-        max_tokens: 200,
+        // Headroom for reasoning models, which spend tokens before writing `content`.
+        max_tokens: 800,
         temperature: 0.8,
       }),
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(9000),
     })
-    if (!res.ok) return json({ error: 'upstream' }, 502, cors)
-    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] }
+    if (!res.ok) return fail(`http_${res.status}`, (await res.text()).slice(0, 500))
+    const data = (await res.json()) as {
+      choices?: { finish_reason?: string; message?: { content?: string } }[]
+    }
     const text = data.choices?.[0]?.message?.content?.trim()
-    return text ? json({ text }, 200, cors) : json({ error: 'upstream' }, 502, cors)
-  } catch {
-    return json({ error: 'upstream' }, 502, cors)
+    return text ? json({ text }, 200, cors) : fail('empty_content', data.choices?.[0]?.finish_reason)
+  } catch (e) {
+    return fail(e instanceof Error && e.name === 'TimeoutError' ? 'timeout' : 'network', String(e))
   }
 }

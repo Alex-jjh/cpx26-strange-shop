@@ -4,7 +4,7 @@ import type { Finding } from '../domain/types'
 // Any failure (offline, no key, timeout) falls back to the rule messages, so the demo never stalls.
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? ''
-const TIMEOUT_MS = 6000
+const TIMEOUT_MS = 10_000 // just above the server-side upstream timeout (9s)
 
 export async function leaderVoice(productName: string, findings: Finding[], attempt: number): Promise<string> {
   const fallback = findings.map((f) => f.message).join('\n')
