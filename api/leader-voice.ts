@@ -91,7 +91,7 @@ export async function POST(request: Request): Promise<Response> {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
       body: JSON.stringify({
-        model: process.env.LLM_MODEL ?? 'gpt-4o-mini',
+        model: process.env.LLM_MODEL ?? 'deepseek-v4.1-flash',
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 200,
         temperature: 0.8,
