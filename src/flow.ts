@@ -21,14 +21,15 @@ export type Screen =
   | { name: 'regulations'; back: Screen }
 
 export function emptyApplication(productId: string): Application {
+  const blank = { choice: '', note: '' }
   return {
     productId,
-    purpose: '',
-    firstUseDate: '',
+    purpose: { ...blank },
+    firstUse: '',
     frequency: 'once',
-    vsRent: '',
-    vsBorrow: '',
-    vsExisting: '',
+    vsRent: { ...blank },
+    vsBorrow: { ...blank },
+    vsExisting: { ...blank },
     declaredTotal: null,
   }
 }

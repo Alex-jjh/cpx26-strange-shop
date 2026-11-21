@@ -2,38 +2,38 @@ import { describe, expect, it } from 'vitest'
 import { findProduct, products } from '../data/catalog'
 import { formatYuan, totalCost } from './cost'
 import { review } from './review'
-import type { Application, Decision } from './types'
+import type { Application, Choice, Decision } from './types'
 
-const TODAY = '2026-11-21'
 const projector = findProduct('projector')!
 const massageGun = findProduct('massage-gun')!
 
 const rules = (d: Decision) => (d.kind === 'rejected' ? d.findings.map((f) => f.rule) : [])
+const pick = (choice: string, note = ''): Choice => ({ choice, note })
+const none = pick('')
 
-// The pitch demo: first submission says "one game" and skips every alternative.
+// The pitch demo: first submission is "with friends, one game" and skips every alternative.
 const firstSubmission: Application = {
   productId: 'projector',
-  purpose: '周末在家和朋友一起看一场球赛直播',
-  firstUseDate: '2026-11-28',
+  purpose: pick('with-others'),
+  firstUse: 'this-week',
   frequency: 'once',
-  vsRent: '',
-  vsBorrow: '',
-  vsExisting: '',
+  vsRent: none,
+  vsBorrow: none,
+  vsExisting: none,
   declaredTotal: projector.price,
 }
 
 const resubmission: Application = {
   ...firstSubmission,
-  purpose: '每周五家庭电影夜，并用于周末看球赛直播',
   frequency: 'weekly',
-  vsRent: '每周都用，租一个月就超过买的价格',
-  vsBorrow: '朋友的投影仪只能借一晚',
+  vsRent: pick('long-term'),
+  vsBorrow: pick('nobody-has'),
   declaredTotal: totalCost(projector),
 }
 
 describe('demo path (normal difficulty)', () => {
   it('rejects the first submission: total, rent and alternatives', () => {
-    expect(rules(review(firstSubmission, projector, 'normal', TODAY, 1))).toEqual([
+    expect(rules(review(firstSubmission, projector, 'normal', 1))).toEqual([
       'total-mismatch',
       'why-not-rent',
       'alternatives-missing',
@@ -41,68 +41,90 @@ describe('demo path (normal difficulty)', () => {
   })
 
   it('approves the resubmission', () => {
-    expect(review(resubmission, projector, 'normal', TODAY, 2)).toEqual({ kind: 'approved' })
+    expect(review(resubmission, projector, 'normal', 2)).toEqual({ kind: 'approved' })
   })
 })
 
-describe('no free pass', () => {
-  // Real submission from testing that used to be approved on attempt 3.
-  const lazy: Application = {
-    productId: 'massage-gun',
-    purpose: '我要放松肩膀',
-    firstUseDate: '2026-11-16',
-    frequency: 'monthly',
-    vsRent: '没人给我',
-    vsBorrow: '没人给我',
-    vsExisting: '没有东西触碰到我的背部。我需要使用这个设备进行身体上的放松。',
-    declaredTotal: massageGun.price,
-  }
-
-  it('rejects a short purpose and copy-pasted short answers', () => {
-    expect(rules(review(lazy, massageGun, 'normal', TODAY, 3))).toEqual(['purpose-too-short', 'perfunctory-answer'])
+describe('purpose', () => {
+  it.each([
+    ['unanswered', none],
+    ['an excuse ("别人都有了")', pick('everyone')],
+    ['an excuse ("先买来试试")', pick('try')],
+    ['"其他" with a short note', pick('other', '放松肩膀')],
+  ])('rejects %s', (_, purpose) => {
+    expect(rules(review({ ...resubmission, purpose }, projector, 'normal', 2))).toEqual(['purpose-unclear'])
   })
 
-  it('treats duplicates as perfunctory even when long enough', () => {
+  it('accepts "其他" with a 10+ character note', () => {
+    const purpose = pick('other', '久坐之后放松肩颈肌肉用')
+    expect(review({ ...resubmission, purpose }, projector, 'normal', 2)).toEqual({ kind: 'approved' })
+  })
+
+  it('names the excuse in the message', () => {
+    const d = review({ ...resubmission, purpose: pick('everyone') }, projector, 'normal', 2)
+    expect(d.kind === 'rejected' && d.findings[0].message).toContain('「别人都有了」不是用途')
+  })
+})
+
+describe('alternatives', () => {
+  it('"就是想要" is perfunctory, and does not count as an argument', () => {
+    const d = review({ ...resubmission, vsBorrow: pick('want-own'), vsRent: none }, projector, 'normal', 2)
+    expect(rules(d)).toEqual(['perfunctory-answer', 'alternatives-missing'])
+  })
+
+  it('"没想过" is not perfunctory, but does not count either', () => {
+    const d = review({ ...resubmission, vsRent: pick('never-thought'), vsBorrow: none }, projector, 'normal', 2)
+    expect(rules(d)).toEqual(['alternatives-missing'])
+  })
+
+  it('copy-pasted "其他" notes are perfunctory', () => {
     const same = '身边的朋友都没有这个东西'
-    const d = review({ ...resubmission, vsRent: same, vsBorrow: `${same}。` }, projector, 'normal', TODAY, 2)
-    expect(rules(d)).toContain('perfunctory-answer')
+    const app = { ...resubmission, vsRent: pick('other', same), vsBorrow: pick('other', `${same}。`) }
+    expect(rules(review(app, projector, 'normal', 2))).toContain('perfunctory-answer')
+  })
+
+  it('a short "其他" note is perfunctory', () => {
+    expect(rules(review({ ...resubmission, vsExisting: pick('other', '没人给我') }, projector, 'normal', 2))).toContain(
+      'perfunctory-answer',
+    )
   })
 
   it('asks "why not rent" for monthly use too', () => {
-    expect(rules(review({ ...resubmission, frequency: 'monthly', vsRent: '' }, projector, 'normal', TODAY, 2))).toContain(
+    expect(rules(review({ ...resubmission, frequency: 'monthly', vsRent: none }, projector, 'normal', 2))).toContain(
       'why-not-rent',
     )
   })
 
-  it('requires at least one argued alternative in normal mode', () => {
-    const none = { ...resubmission, vsRent: '', vsBorrow: '', vsExisting: '' }
-    expect(rules(review(none, projector, 'normal', TODAY, 2))).toEqual(['alternatives-missing'])
+  it('does not ask "why not rent" for a product nobody rents out', () => {
+    const app: Application = {
+      ...resubmission,
+      productId: 'massage-gun',
+      frequency: 'once',
+      vsRent: none,
+      declaredTotal: massageGun.price,
+    }
+    expect(rules(review(app, massageGun, 'normal', 2))).not.toContain('why-not-rent')
   })
+})
 
+describe('first submission', () => {
   it('sends a flawless first submission back once, then approves it unchanged', () => {
-    expect(rules(review(resubmission, projector, 'normal', TODAY, 1))).toEqual(['first-submission'])
-    expect(review(resubmission, projector, 'normal', TODAY, 2)).toEqual({ kind: 'approved' })
+    expect(rules(review(resubmission, projector, 'normal', 1))).toEqual(['first-submission'])
+    expect(review(resubmission, projector, 'normal', 2)).toEqual({ kind: 'approved' })
   })
 })
 
 describe('hard difficulty', () => {
   it('also approves the demo resubmission', () => {
-    expect(review(resubmission, projector, 'hard', TODAY, 2)).toEqual({ kind: 'approved' })
+    expect(review(resubmission, projector, 'hard', 2)).toEqual({ kind: 'approved' })
   })
 
-  it('rejects a first use more than two weeks away, or in the past', () => {
-    expect(rules(review({ ...resubmission, firstUseDate: '2027-01-01' }, projector, 'hard', TODAY, 2))).toContain(
-      'first-use-too-far',
-    )
-    expect(rules(review({ ...resubmission, firstUseDate: '2026-11-16' }, projector, 'hard', TODAY, 2))).toContain(
-      'first-use-too-far',
-    )
+  it.each(['month', 'unsure', ''] as const)('rejects first use "%s"', (firstUse) => {
+    expect(rules(review({ ...resubmission, firstUse }, projector, 'hard', 2))).toContain('first-use-too-far')
   })
 
-  it('requires at least two argued alternatives', () => {
-    expect(rules(review({ ...resubmission, vsBorrow: '' }, projector, 'hard', TODAY, 2))).toContain(
-      'alternatives-missing',
-    )
+  it('requires two argued alternatives', () => {
+    expect(rules(review({ ...resubmission, vsBorrow: none }, projector, 'hard', 2))).toContain('alternatives-missing')
   })
 })
 
@@ -123,7 +145,7 @@ describe('catalog', () => {
 
 describe('citations', () => {
   it('rule messages cite their article of 《个人钱包管理暂行办法》', () => {
-    const d = review({ ...firstSubmission, purpose: '看球' }, projector, 'normal', TODAY, 1)
+    const d = review({ ...firstSubmission, purpose: none }, projector, 'normal', 1)
     expect(d.kind === 'rejected' && d.findings[0].message).toMatch(/^依据第二条（用途）：/)
   })
 })
@@ -136,7 +158,6 @@ describe('money', () => {
   })
 
   it('accepts the decimal total the user types for the demo', () => {
-    const d = review({ ...resubmission, declaredTotal: 2728.9 }, projector, 'normal', TODAY, 2)
-    expect(d).toEqual({ kind: 'approved' })
+    expect(review({ ...resubmission, declaredTotal: 2728.9 }, projector, 'normal', 2)).toEqual({ kind: 'approved' })
   })
 })

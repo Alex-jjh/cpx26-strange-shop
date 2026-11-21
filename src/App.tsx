@@ -3,7 +3,7 @@ import { findDetails, findProduct } from './data/catalog'
 import { notify, vibrate } from './device'
 import { review } from './domain/review'
 import type { Application, Difficulty } from './domain/types'
-import { emptyApplication, newOrderNo, todayIso, type Screen } from './flow'
+import { emptyApplication, newOrderNo, type Screen } from './flow'
 import { leaderRemark, leaderVoice } from './llm/leaderVoice'
 import { Approved, Rejected, Remarking, Reviewing, Withdrawn } from './screens/Decision'
 import { ProcurementForm } from './screens/ProcurementForm'
@@ -24,7 +24,7 @@ export default function App() {
   async function submit(draft: Application, attempt: number) {
     setScreen({ name: 'reviewing', draft, attempt })
     const product = findProduct(draft.productId)!
-    const decision = review(draft, product, difficulty, todayIso(), attempt)
+    const decision = review(draft, product, difficulty, attempt)
     const [text] = await Promise.all([
       decision.kind === 'rejected' ? leaderVoice(draft, decision.findings, attempt, difficulty) : Promise.resolve(''),
       new Promise((r) => setTimeout(r, REVIEW_DELAY_MS)),

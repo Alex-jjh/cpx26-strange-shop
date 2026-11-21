@@ -30,21 +30,29 @@ export type UsageFrequency = 'once' | 'monthly' | 'weekly' | 'daily'
 export type Difficulty = 'normal' | 'hard'
 
 /** The "procurement PRD" the user fills in. */
+export type FirstUse = 'this-week' | 'two-weeks' | 'month' | 'unsure'
+
+/** One answer on the form: a chosen option id ('' = not answered) and a note, used only for "other". */
+export interface Choice {
+  choice: string
+  note: string
+}
+
+/** The "procurement PRD" the user fills in, mostly by tapping (see formOptions.ts). */
 export interface Application {
   productId: string
-  purpose: string
-  /** ISO date (YYYY-MM-DD). */
-  firstUseDate: string
+  purpose: Choice
+  firstUse: FirstUse | ''
   frequency: UsageFrequency
-  /** Why not rent / borrow / use what you already have. Empty = not considered. */
-  vsRent: string
-  vsBorrow: string
-  vsExisting: string
+  /** Why not rent / borrow / use what you already have. */
+  vsRent: Choice
+  vsBorrow: Choice
+  vsExisting: Choice
   declaredTotal: number | null
 }
 
 export type RuleId =
-  | 'purpose-too-short'
+  | 'purpose-unclear'
   | 'total-mismatch'
   | 'why-not-rent'
   | 'first-use-too-far'

@@ -1,3 +1,4 @@
+import { formAsText } from '../domain/formOptions'
 import type { Application, Difficulty, Finding } from '../domain/types'
 
 // The decision is already made by rules; this only asks the server for the leader's wording.
@@ -23,14 +24,7 @@ export async function leaderVoice(
         rules: findings.map((f) => f.rule),
         attempt,
         difficulty,
-        form: {
-          purpose: draft.purpose,
-          frequency: draft.frequency,
-          vsRent: draft.vsRent,
-          vsBorrow: draft.vsBorrow,
-          vsExisting: draft.vsExisting,
-          declaredTotal: draft.declaredTotal,
-        },
+        form: formAsText(draft),
       }),
       signal: AbortSignal.timeout(TIMEOUT_MS),
     })
@@ -64,14 +58,7 @@ export async function leaderRemark(
         productId: draft.productId,
         attempt,
         difficulty,
-        form: {
-          purpose: draft.purpose,
-          frequency: draft.frequency,
-          vsRent: draft.vsRent,
-          vsBorrow: draft.vsBorrow,
-          vsExisting: draft.vsExisting,
-          declaredTotal: draft.declaredTotal,
-        },
+        form: formAsText(draft),
         reflections,
         quizRetries,
       }),

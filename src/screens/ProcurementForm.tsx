@@ -1,15 +1,18 @@
 import { useState, type FormEvent } from 'react'
-import type { Application, Product, UsageFrequency } from '../domain/types'
+import {
+  BORROW_OPTIONS,
+  EXISTING_OPTIONS,
+  FIRST_USE_OPTIONS,
+  FREQUENCY_OPTIONS,
+  PURPOSE_OPTIONS,
+  RENT_OPTIONS,
+  findOption,
+  type ChoiceOption,
+} from '../domain/formOptions'
+import type { Application, Choice, FirstUse, Product, UsageFrequency } from '../domain/types'
 
-// Friction #2: the procurement PRD. Useful friction — it makes the buyer think about
-// purpose, timing, alternatives and the true total before ordering.
-
-const FREQUENCIES: { value: UsageFrequency; label: string }[] = [
-  { value: 'once', label: '只用一次' },
-  { value: 'monthly', label: '每月' },
-  { value: 'weekly', label: '每周' },
-  { value: 'daily', label: '每天' },
-]
+// Friction #2: the procurement form. Useful friction — it makes the buyer think about purpose,
+// timing, alternatives and the true total. Multiple choice; only "其他" asks for a written note.
 
 interface Props {
   product: Product
@@ -17,6 +20,8 @@ interface Props {
   attempt: number
   onSubmit: (draft: Application) => void
 }
+
+type ChoiceKey = 'purpose' | 'vsRent' | 'vsBorrow' | 'vsExisting'
 
 export function ProcurementForm({ product, initial, attempt, onSubmit }: Props) {
   const [draft, setDraft] = useState(initial)
@@ -27,49 +32,51 @@ export function ProcurementForm({ product, initial, attempt, onSubmit }: Props) 
     onSubmit(draft)
   }
 
+  const choiceGroup = (key: ChoiceKey, title: string, options: ChoiceOption[], notePlaceholder: string) => (
+    <ChoiceGroup
+      name={key}
+      title={title}
+      options={options}
+      value={draft[key]}
+      notePlaceholder={notePlaceholder}
+      onChange={(v) => set(key, v)}
+    />
+  )
+
   return (
-    <form className="form" onSubmit={handle}>
+    <form className="form choices" onSubmit={handle}>
       <h1>采购申请单</h1>
       <p className="muted">
         申请物品：{product.name} · 第 {attempt} 次提交
       </p>
+      <p className="fineprint left">点选即可。只有选「其他」时才需要写说明。</p>
 
-      <label>
-        采购用途
-        <textarea value={draft.purpose} onChange={(e) => set('purpose', e.target.value)} placeholder="具体要用它做什么？" />
-      </label>
-      <label>
-        首次使用日期
-        <input type="date" value={draft.firstUseDate} onChange={(e) => set('firstUseDate', e.target.value)} />
-      </label>
-      <label>
-        预计使用频率
-        <select value={draft.frequency} onChange={(e) => set('frequency', e.target.value as UsageFrequency)}>
-          {FREQUENCIES.map((f) => (
-            <option key={f.value} value={f.value}>
-              {f.label}
-            </option>
-          ))}
-        </select>
-      </label>
+      {choiceGroup('purpose', '采购用途', PURPOSE_OPTIONS, '具体要用它做什么？（不少于 10 个字）')}
 
       <fieldset>
-        <legend>替代方案论证</legend>
-        <label>
-          为什么不租？
-          <textarea value={draft.vsRent} onChange={(e) => set('vsRent', e.target.value)} />
-        </label>
-        <label>
-          为什么不借？
-          <textarea value={draft.vsBorrow} onChange={(e) => set('vsBorrow', e.target.value)} />
-        </label>
-        <label>
-          为什么现有的东西不行？
-          <textarea value={draft.vsExisting} onChange={(e) => set('vsExisting', e.target.value)} />
-        </label>
+        <legend>首次使用</legend>
+        <div className="chips">
+          {FIRST_USE_OPTIONS.map((o) => (
+            <Chip key={o.id} name="firstUse" label={o.label} checked={draft.firstUse === o.id} onChange={() => set('firstUse', o.id as FirstUse)} />
+          ))}
+        </div>
       </fieldset>
 
-      <label>
+      <fieldset>
+        <legend>预计使用频率</legend>
+        <div className="chips">
+          {FREQUENCY_OPTIONS.map((o) => (
+            <Chip key={o.id} name="frequency" label={o.label} checked={draft.frequency === o.id} onChange={() => set('frequency', o.id as UsageFrequency)} />
+          ))}
+        </div>
+      </fieldset>
+
+      <h2>替代方案论证</h2>
+      {choiceGroup('vsRent', '为什么不租？', RENT_OPTIONS, '为什么不租？（不少于 8 个字）')}
+      {choiceGroup('vsBorrow', '为什么不借？', BORROW_OPTIONS, '为什么不借？（不少于 8 个字）')}
+      {choiceGroup('vsExisting', '为什么现有的东西不行？', EXISTING_OPTIONS, '现有的为什么不行？（不少于 8 个字）')}
+
+      <label className="total">
         申报总价（元，含必需配件与运费）
         <input
           type="number"
@@ -85,5 +92,45 @@ export function ProcurementForm({ product, initial, attempt, onSubmit }: Props) 
         提交领导审批
       </button>
     </form>
+  )
+}
+
+function Chip({ name, label, checked, onChange }: { name: string; label: string; checked: boolean; onChange: () => void }) {
+  return (
+    <label className={checked ? 'chip chosen' : 'chip'}>
+      <input type="radio" name={name} checked={checked} onChange={onChange} />
+      {label}
+    </label>
+  )
+}
+
+interface GroupProps {
+  name: string
+  title: string
+  options: ChoiceOption[]
+  value: Choice
+  notePlaceholder: string
+  onChange: (value: Choice) => void
+}
+
+function ChoiceGroup({ name, title, options, value, notePlaceholder, onChange }: GroupProps) {
+  const isOther = findOption(options, value.choice)?.kind === 'other'
+  return (
+    <fieldset>
+      <legend>{title}</legend>
+      <div className="chips">
+        {options.map((o) => (
+          <Chip key={o.id} name={name} label={o.label} checked={value.choice === o.id} onChange={() => onChange({ ...value, choice: o.id })} />
+        ))}
+      </div>
+      {isOther && (
+        <textarea
+          aria-label={`${title}（其他）`}
+          value={value.note}
+          placeholder={notePlaceholder}
+          onChange={(e) => onChange({ ...value, note: e.target.value })}
+        />
+      )}
+    </fieldset>
   )
 }

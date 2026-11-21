@@ -6,12 +6,12 @@ import type { Application } from './types'
 const projector = findProduct('projector')!
 const app: Application = {
   productId: 'projector',
-  purpose: '每周五家庭电影夜，并用于周末看球赛直播',
-  firstUseDate: '2026-11-28',
+  purpose: { choice: 'with-others', note: '' },
+  firstUse: 'this-week',
   frequency: 'weekly',
-  vsRent: '每周都用，租一个月就超过买的价格',
-  vsBorrow: '朋友的投影仪只能借一晚',
-  vsExisting: '',
+  vsRent: { choice: 'long-term', note: '' },
+  vsBorrow: { choice: 'nobody-has', note: '' },
+  vsExisting: { choice: '', note: '' },
   declaredTotal: 2728.9,
 }
 const quizFor = (id: string, a: Partial<Application> = {}, difficulty: 'normal' | 'hard' = 'normal') =>
