@@ -1,22 +1,65 @@
 // Vercel serverless function: rewrites rule findings in the "AI leader" voice.
 //
 // Public, unauthenticated by design (judges scan a QR code). It is NOT a general LLM proxy:
-// the client sends only rule ids from a fixed list plus a short product name, and the prompt
-// is built here. The API key lives only in server env vars.
+// the client sends only a catalog product id and rule ids from a fixed list — no free text —
+// and the prompt is built here from the server's own copy of the catalog (see ./_prompt.ts).
+// The API key lives only in server env vars.
 //
 // Env: LLM_API_KEY (required), LLM_BASE_URL (OpenAI-compatible, e.g. https://aihubmix.com/v1),
 //      LLM_MODEL, ALLOWED_ORIGINS (comma-separated, for the Capacitor app / preview URLs).
 
-const RULE_TEXT: Record<string, string> = {
-  'purpose-too-short': '用途说明太简略',
-  'total-mismatch': '申报总价没算配件和运费',
-  'why-not-rent': '只用一次却不考虑租',
-  'first-use-too-far': '两周内都用不上',
-  'alternatives-missing': '没论证租、借、用现有物品为什么不行',
+import catalog from '../src/data/products.json' with { type: 'json' }
+import type { Product, RuleId } from '../src/domain/types.ts'
+
+const products = catalog as Product[]
+
+// --- Prompt ---
+// Framing: this is PERSONAL shopping. There is no company — the app only borrows the tone of a
+// corporate OA approval as satire. The leader may only ask for fields that exist on the form,
+// and it cannot see what the user typed (the client sends rule ids only), so it must not quote it.
+
+const RULE_TEXT: Record<RuleId, string> = {
+  'purpose-too-short': '「采购用途」写得太简略，看不出要用它做什么',
+  'total-mismatch': '「申报总价」不对：没把必需配件和运费算进去',
+  'why-not-rent': '使用频率填了「只用一次」，却没在「为什么不租？」里说明理由',
+  'first-use-too-far': '「首次使用日期」在两周以后，现在买为时过早',
+  'alternatives-missing': '「为什么不租 / 不借 / 现有的东西不行」三项里，至少要认真回答两项',
 }
 
+export const RULE_IDS = Object.keys(RULE_TEXT) as RuleId[]
+
+const FORM_FIELDS = '采购用途、首次使用日期、预计使用频率、为什么不租、为什么不借、为什么现有的东西不行、申报总价'
+
+export function buildPrompt(product: Product, rules: RuleId[], attempt: number): string {
+  const required = product.accessories.filter((a) => a.required)
+  const facts = [
+    `商品：${product.name}，标价 ${product.price} 元。`,
+    required.length
+      ? `必需配件：${required.map((a) => a.name).join('、')}；运费 ${product.shipping} 元。可选配件不计入总价。`
+      : `没有必需配件；运费 ${product.shipping} 元。`,
+    product.alternatives.rent ? `可以租：${product.alternatives.rent.where}，每天 ${product.alternatives.rent.pricePerDay} 元。` : '',
+  ].filter(Boolean)
+
+  return [
+    '你是用户给自己的钱包请来的"AI 领导"。这是个人消费：用户自己花钱给自己买东西，没有公司、部门、岗位、报销或发票。',
+    '你故意模仿公司 OA 审批的官腔来讽刺冲动消费，但审的是个人购物。',
+    '',
+    ...facts,
+    `这是第 ${attempt} 次提交。规则检查发现以下问题：`,
+    ...[...new Set(rules)].map((r) => `- ${RULE_TEXT[r]}`),
+    '',
+    '写 2 到 3 句驳回意见，要求：',
+    '1. 语气是一本正经的 OA 官腔，带一点讽刺，但要让人明白具体该补什么。',
+    `2. 只能要求补充申请单上真实存在的栏目：${FORM_FIELDS}。不要提部门、岗位、公司、报销、发票、含税、费用明细。`,
+    '3. 只针对上面列出的问题，不要另外挑毛病。',
+    '4. 你看不到申请人填写的内容，不要引用、复述或猜测他写了什么。',
+    '5. 可以点名必需配件，但不要算出或说出总价数字，让他自己算。',
+    '6. 不要称呼、不要落款，直接输出意见正文。',
+  ].join('\n')
+}
+
+// --- Handler ---
 const CAPACITOR_ORIGINS = ['https://localhost', 'capacitor://localhost']
-const MAX_PRODUCT_NAME = 40
 const MAX_ATTEMPT = 20
 
 // Best-effort per-instance limit. The hard ceiling is the provider credit, so also set a
@@ -59,32 +102,28 @@ export async function POST(request: Request): Promise<Response> {
   const key = process.env.LLM_API_KEY
   if (!key) return json({ error: 'not_configured' }, 503, cors)
 
-  let body: { productName?: unknown; rules?: unknown; attempt?: unknown }
+  let body: { productId?: unknown; rules?: unknown; attempt?: unknown }
   try {
     body = await request.json()
   } catch {
     return json({ error: 'bad_request' }, 400, cors)
   }
-  const { productName, rules, attempt } = body
+  const { productId, rules, attempt } = body
+  const product = products.find((p) => p.id === productId)
   if (
-    typeof productName !== 'string' ||
-    productName.length > MAX_PRODUCT_NAME ||
+    !product ||
     !Array.isArray(rules) ||
     rules.length === 0 ||
-    !rules.every((r) => typeof r === 'string' && r in RULE_TEXT) ||
+    !rules.every((r) => (RULE_IDS as unknown[]).includes(r)) ||
     typeof attempt !== 'number' ||
+    !Number.isInteger(attempt) ||
     attempt < 1 ||
     attempt > MAX_ATTEMPT
   ) {
     return json({ error: 'bad_request' }, 400, cors)
   }
 
-  const issues = [...new Set(rules as string[])].map((r) => `- ${RULE_TEXT[r]}`).join('\n')
-  const prompt = [
-    `你是一位一本正经、爱打官腔的部门领导，正在审批下属的个人采购申请：购买「${productName}」。`,
-    `这是第 ${attempt} 次提交。申请存在以下问题：\n${issues}`,
-    '用 2 到 3 句话写驳回意见：语气像公司 OA 审批，带一点讽刺，但要让人知道具体该补什么。不要加称呼和落款。',
-  ].join('\n')
+  const prompt = buildPrompt(product, rules as RuleId[], attempt)
 
   // `||` not `??`: an env var set to "" in the Vercel UI must fall back too.
   const baseUrl = (process.env.LLM_BASE_URL || 'https://aihubmix.com/v1').trim().replace(/\/+$/, '')
