@@ -1,5 +1,6 @@
 {
   "title": "个人钱包管理暂行办法",
+  "params": { "alternativesNeeded": { "normal": 1, "hard": 2 } },
   "articles": [
     { "no": "第一条", "text": "本办法适用于用户花自己的钱给自己买东西的一切冲动。" },
     { "no": "第二条", "title": "用途", "rule": "purpose-too-short", "text": "采购用途不少于十个字。不足十个字的，视为没想好。" },

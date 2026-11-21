@@ -24,7 +24,7 @@ export default function App() {
     const product = findProduct(draft.productId)!
     const decision = review(draft, product, difficulty, todayIso(), attempt)
     const [text] = await Promise.all([
-      decision.kind === 'rejected' ? leaderVoice(draft, decision.findings, attempt) : Promise.resolve(''),
+      decision.kind === 'rejected' ? leaderVoice(draft, decision.findings, attempt, difficulty) : Promise.resolve(''),
       new Promise((r) => setTimeout(r, REVIEW_DELAY_MS)),
     ])
     if (decision.kind === 'rejected') {

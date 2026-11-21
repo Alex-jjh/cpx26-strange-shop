@@ -3,11 +3,16 @@
 // (api/leader-voice.ts) reads the same JSON so the AI leader cites the same article numbers.
 
 import raw from './regulations.json'
-import type { Article, RuleId } from './types'
+import type { Article, Difficulty, RuleId } from './types'
 
 export type { Article }
 
-export const regulations = raw as { title: string; articles: Article[] }
+export const regulations = raw as {
+  title: string
+  /** Rule parameters shared with the server prompt. */
+  params: { alternativesNeeded: Record<Difficulty, number> }
+  articles: Article[]
+}
 
 export function articleFor(rule: RuleId): Article {
   const a = regulations.articles.find((x) => x.rule === rule)

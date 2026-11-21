@@ -58,6 +58,7 @@ describe('parseBody', () => {
     ['bad frequency', { ...valid, form: { ...form, frequency: 'hourly' } }],
     ['non-string field', { ...valid, form: { ...form, vsRent: 42 } }],
     ['non-number total', { ...valid, form: { ...form, declaredTotal: '2499' } }],
+    ['bad difficulty', { ...valid, difficulty: 'nightmare' }],
   ])('rejects %s', (_, body) => {
     expect(parseBody(body)).toBeNull()
   })
@@ -65,5 +66,19 @@ describe('parseBody', () => {
   it('truncates long free text', () => {
     const long = parseBody({ ...valid, form: { ...form, vsExisting: 'x'.repeat(5000) } })
     expect(long?.form.vsExisting.length).toBe(MAX_FIELD_CHARS)
+  })
+})
+
+describe('difficulty', () => {
+  it('defaults to normal when the client does not send it (older APK)', () => {
+    expect(parseBody({ productId: 'projector', rules: ['why-not-rent'], attempt: 1, form })?.difficulty).toBe('normal')
+  })
+
+  it('tells the model how many alternatives this difficulty requires', () => {
+    const normal = buildMessages(projector, ['alternatives-missing'], 1, form, 'normal')[1].content
+    const hard = buildMessages(projector, ['alternatives-missing'], 1, form, 'hard')[1].content
+    expect(normal).toContain('本档至少 1 项')
+    expect(hard).toContain('本档至少 2 项')
+    expect(hard).toContain('难缠领导')
   })
 })

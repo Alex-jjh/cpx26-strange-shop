@@ -1,5 +1,5 @@
 import { totalCost } from './cost'
-import { citation } from './regulations'
+import { citation, regulations } from './regulations'
 import type { Application, Decision, Difficulty, Finding, Product } from './types'
 
 // The AI leader's veto is decided HERE, by rules, so the demo path is deterministic.
@@ -8,8 +8,8 @@ import type { Application, Decision, Difficulty, Finding, Product } from './type
 export const MIN_PURPOSE_CHARS = 10
 export const MIN_ANSWER_CHARS = 8
 const MAX_DAYS_TO_FIRST_USE = 14
-/** How many of rent / borrow / existing must be argued properly, per difficulty. */
-const ALTERNATIVES_NEEDED: Record<Difficulty, number> = { normal: 1, hard: 2 }
+/** How many of rent / borrow / existing must be argued properly, per difficulty (regulations.json). */
+const ALTERNATIVES_NEEDED = regulations.params.alternativesNeeded
 
 const ALTERNATIVE_FIELDS = [
   { key: 'vsRent', label: '为什么不租' },

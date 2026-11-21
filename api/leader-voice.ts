@@ -11,7 +11,7 @@
 
 import catalog from '../src/data/products.json' with { type: 'json' }
 import regulations from '../src/domain/regulations.json' with { type: 'json' }
-import type { Article, Product, RuleId, UsageFrequency } from '../src/domain/types.ts'
+import type { Article, Difficulty, Product, RuleId, UsageFrequency } from '../src/domain/types.ts'
 
 const products = catalog as Product[]
 const articles = regulations.articles as Article[]
@@ -25,7 +25,7 @@ const RULE_TEXT: Record<RuleId, string> = {
   'total-mismatch': '「申报总价」不对：没把必需配件和运费算进去',
   'why-not-rent': '使用频率很低（只用一次或每月一次），商品又能租，「为什么不租？」却没给出像样的理由',
   'first-use-too-far': '「首次使用日期」不在今天起两周以内（要么太远，要么已经过去了）',
-  'alternatives-missing': '「为什么不租 / 不借 / 现有的东西不行」认真回答的项数不够（普通档至少 1 项，难缠档至少 2 项）',
+  'alternatives-missing': '「为什么不租 / 不借 / 现有的东西不行」认真回答的项数不够',
   'perfunctory-answer': '替代方案里有回答太敷衍：少于 8 个字，或者几栏互相照抄',
   'first-submission': '申请本身挑不出毛病，但按惯例首次申请一律退回以示慎重；告诉他内容不用改，原样再交一次',
 }
@@ -37,6 +37,11 @@ const FREQUENCY_TEXT: Record<UsageFrequency, string> = {
   monthly: '每月',
   weekly: '每周',
   daily: '每天',
+}
+
+const DIFFICULTY_TEXT: Record<Difficulty, string> = {
+  normal: '审批档位：普通领导。',
+  hard: '审批档位：难缠领导。比普通领导更刻薄、更爱打官腔，但同样只针对列出的问题。',
 }
 
 export const MAX_FIELD_CHARS = 200
@@ -89,6 +94,7 @@ export function buildMessages(
   rules: RuleId[],
   attempt: number,
   form: FormSnapshot,
+  difficulty: Difficulty = 'normal',
 ): { role: 'system' | 'user'; content: string }[] {
   const required = product.accessories.filter((a) => a.required)
   const facts = [
@@ -118,8 +124,12 @@ export function buildMessages(
     ...sheet,
     '</申请单>',
     '',
+    DIFFICULTY_TEXT[difficulty],
     `这是第 ${attempt} 次提交。规则检查发现的问题：`,
-    ...[...new Set(rules)].map((r) => `- ${RULE_TEXT[r]}（对应${articles.find((a) => a.rule === r)?.no ?? '无条款'}）`),
+    ...[...new Set(rules)].map((r) => {
+      const detail = r === 'alternatives-missing' ? `（本档至少 ${regulations.params.alternativesNeeded[difficulty]} 项）` : ''
+      return `- ${RULE_TEXT[r]}${detail}（对应${articles.find((a) => a.rule === r)?.no ?? '无条款'}）`
+    }),
     '',
     '请写驳回意见。',
   ].join('\n')
@@ -137,9 +147,11 @@ const FREQUENCIES = Object.keys(FREQUENCY_TEXT)
 
 export function parseBody(
   body: unknown,
-): { product: Product; rules: RuleId[]; attempt: number; form: FormSnapshot } | null {
+): { product: Product; rules: RuleId[]; attempt: number; form: FormSnapshot; difficulty: Difficulty } | null {
   if (typeof body !== 'object' || body === null) return null
-  const { productId, rules, attempt, form } = body as Record<string, unknown>
+  const { productId, rules, attempt, form, difficulty = 'normal' } = body as Record<string, unknown>
+  // Optional so an older APK build without the field still works.
+  if (difficulty !== 'normal' && difficulty !== 'hard') return null
   const product = products.find((p) => p.id === productId)
   if (!product) return null
   if (!Array.isArray(rules) || rules.length === 0 || !rules.every((r) => (RULE_IDS as unknown[]).includes(r))) return null
@@ -157,6 +169,7 @@ export function parseBody(
     rules: rules as RuleId[],
     attempt,
     form: { purpose, vsRent, vsBorrow, vsExisting, frequency: f.frequency as UsageFrequency, declaredTotal },
+    difficulty,
   }
 }
 
@@ -236,6 +249,7 @@ export async function POST(request: Request): Promise<Response> {
   const call = {
     productId: parsed.product.id,
     rules: parsed.rules,
+    difficulty: parsed.difficulty,
     attempt: parsed.attempt,
     form: parsed.form,
     model,
@@ -246,7 +260,7 @@ export async function POST(request: Request): Promise<Response> {
   const fail = (reason: string, detail: unknown, upstreamCalls: number) =>
     reply(502, { error: 'upstream', reason }, { outcome: reason, detail, upstreamCalls, ...call })
 
-  const messages = buildMessages(parsed.product, parsed.rules, parsed.attempt, parsed.form)
+  const messages = buildMessages(parsed.product, parsed.rules, parsed.attempt, parsed.form, parsed.difficulty)
   // One overall deadline, so a retry never pushes past the client's 10s timeout.
   const signal = AbortSignal.timeout(9000)
   let upstreamCalls = 0
