@@ -19,14 +19,18 @@ interface RejectedProps {
   onRevise: () => void
   onSwitch: () => void
   onWithdraw: () => void
+  onRegulations: () => void
 }
 
-export function Rejected({ text, attempt, onRevise, onSwitch, onWithdraw }: RejectedProps) {
+export function Rejected({ text, attempt, onRevise, onSwitch, onWithdraw, onRegulations }: RejectedProps) {
   return (
     <section>
       <div className="banner reject">已驳回 · 第 {attempt} 次提交</div>
       <h2>审批意见</h2>
       <p className="opinion">{text}</p>
+      <button className="link" onClick={onRegulations}>
+        查看《个人钱包管理暂行办法》
+      </button>
       <div className="actions">
         <button className="primary" onClick={onRevise}>
           补充材料，重新提交

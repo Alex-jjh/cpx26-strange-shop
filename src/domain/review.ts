@@ -1,4 +1,5 @@
 import { totalCost } from './cost'
+import { citation } from './regulations'
 import type { Application, Decision, Difficulty, Finding, Product } from './types'
 
 // The AI leader's veto is decided HERE, by rules, so the demo path is deterministic.
@@ -74,7 +75,7 @@ export function review(
   if (answers.filter(isSubstantive).length < needed) {
     findings.push({
       rule: 'alternatives-missing',
-      message: `替代方案论证不足：租、借、用现有的，至少认真说明 ${needed} 项为什么不行。`,
+      message: `租、借、用现有的，至少认真说明 ${needed} 项为什么不行。`,
     })
   }
 
@@ -93,9 +94,12 @@ export function review(
   if (findings.length === 0 && attempt === 1) {
     findings.push({
       rule: 'first-submission',
-      message: '按惯例，首次申请一律退回，以示慎重。内容无需修改，原样再提交一次即可。',
+      message: '首次申请一律退回，以示慎重。内容无需修改，原样再提交一次即可。',
     })
   }
 
-  return findings.length === 0 ? { kind: 'approved' } : { kind: 'rejected', findings }
+  if (findings.length === 0) return { kind: 'approved' }
+  // Every message cites its article of 《个人钱包管理暂行办法》, so the fallback text (no network)
+  // is as official-sounding as the AI leader.
+  return { kind: 'rejected', findings: findings.map((f) => ({ ...f, message: citation(f.rule) + f.message })) }
 }

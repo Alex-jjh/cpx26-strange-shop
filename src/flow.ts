@@ -3,6 +3,7 @@ import type { Application } from './domain/types'
 // One state machine for the whole journey:
 // shop → product → gate (mini-game) → form → reviewing → rejected ⇄ form … → approved → receipt
 // rejected also allows: switch product (→ shop) or withdraw (→ withdrawn).
+// regulations can be opened from anywhere and returns to the screen it was opened from.
 
 export type Screen =
   | { name: 'shop' }
@@ -14,6 +15,7 @@ export type Screen =
   | { name: 'approved'; draft: Application; attempt: number }
   | { name: 'receipt'; draft: Application; attempt: number; orderNo: string }
   | { name: 'withdrawn' }
+  | { name: 'regulations'; back: Screen }
 
 export function emptyApplication(productId: string): Application {
   return {

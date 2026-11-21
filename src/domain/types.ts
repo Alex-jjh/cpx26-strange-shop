@@ -61,3 +61,12 @@ export interface Finding {
 export type Decision =
   | { kind: 'approved' }
   | { kind: 'rejected'; findings: Finding[] }
+
+/** An article of 《个人钱包管理暂行办法》 (see regulations.json). */
+export interface Article {
+  no: string
+  title?: string
+  text: string
+  /** The review rule this article backs. Absent = decorative, quotable for flavour. */
+  rule?: RuleId
+}

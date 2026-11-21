@@ -119,3 +119,10 @@ describe('catalog', () => {
     expect(totalCost(projector)).toBe(2499 + 129 + 39 + 0)
   })
 })
+
+describe('citations', () => {
+  it('rule messages cite their article of 《个人钱包管理暂行办法》', () => {
+    const d = review({ ...firstSubmission, purpose: '看球' }, projector, 'normal', TODAY, 1)
+    expect(d.kind === 'rejected' && d.findings[0].message).toMatch(/^依据第二条（用途）：/)
+  })
+})

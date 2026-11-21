@@ -9,6 +9,7 @@ import { Approved, Rejected, Reviewing, Withdrawn } from './screens/Decision'
 import { ProcurementForm } from './screens/ProcurementForm'
 import { ProductPage } from './screens/ProductPage'
 import { Receipt } from './screens/Receipt'
+import { Regulations } from './screens/Regulations'
 import { ShakeGate } from './screens/ShakeGate'
 import { Shop } from './screens/Shop'
 
@@ -37,12 +38,16 @@ export default function App() {
   }
 
   const home = () => setScreen({ name: 'shop' })
+  const openRegulations = () => setScreen((s) => (s.name === 'regulations' ? s : { name: 'regulations', back: s }))
 
   return (
     <div className="app">
       <header className="topbar">
         <button className="link" onClick={home}>
           个人采购 OA
+        </button>
+        <button className="link" onClick={openRegulations}>
+          规章
         </button>
         <select value={difficulty} onChange={(e) => setDifficulty(e.target.value as Difficulty)} aria-label="领导难度">
           <option value="normal">普通领导</option>
@@ -89,6 +94,7 @@ export default function App() {
             onRevise={() => setScreen({ name: 'form', draft: screen.draft, attempt: screen.attempt + 1 })}
             onSwitch={home}
             onWithdraw={() => setScreen({ name: 'withdrawn' })}
+            onRegulations={openRegulations}
           />
         )
       case 'approved':
@@ -109,6 +115,8 @@ export default function App() {
         )
       case 'withdrawn':
         return <Withdrawn onDone={home} />
+      case 'regulations':
+        return <Regulations onBack={() => setScreen(screen.back)} />
     }
   }
 }
