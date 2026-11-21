@@ -1,0 +1,142 @@
+[
+  {
+    "id": "projector",
+    "name": "家用投影仪（示例）",
+    "category": "影音",
+    "price": 2499,
+    "images": { "unboxed": "/products/projector.png", "dusty": "/products/projector-dusty.png" },
+    "accessories": [
+      { "name": "支架", "price": 129, "required": true },
+      { "name": "HDMI 线", "price": 39, "required": true },
+      { "name": "幕布", "price": 299, "required": false }
+    ],
+    "shipping": 0,
+    "alternatives": {
+      "rent": { "pricePerDay": 59, "where": "租赁平台" },
+      "borrow": "同事或朋友可能有",
+      "existing": "家里的电视、笔记本"
+    },
+    "typicalUsage": "前两周常用，之后月均 1 次",
+    "source": null
+  },
+  {
+    "id": "massage-gun",
+    "name": "筋膜枪（示例）",
+    "category": "健身",
+    "price": 399,
+    "images": { "unboxed": "/products/massage-gun.png" },
+    "accessories": [{ "name": "替换按摩头", "price": 59, "required": false }],
+    "shipping": 0,
+    "alternatives": { "borrow": "健身房常备", "existing": "泡沫轴" },
+    "typicalUsage": "第一周天天用，一个月后放抽屉",
+    "source": null
+  },
+  {
+    "id": "treadmill",
+    "name": "家用跑步机（示例）",
+    "category": "健身",
+    "price": 1999,
+    "images": { "unboxed": "/products/treadmill.png" },
+    "accessories": [
+      { "name": "减震垫", "price": 89, "required": true },
+      { "name": "上楼费", "price": 100, "required": true }
+    ],
+    "shipping": 0,
+    "alternatives": { "rent": { "pricePerDay": 15, "where": "租赁平台" }, "existing": "小区跑道、健身房月卡" },
+    "typicalUsage": "最常见用途：晾衣架",
+    "source": null
+  },
+  {
+    "id": "air-fryer",
+    "name": "空气炸锅（示例）",
+    "category": "厨房",
+    "price": 299,
+    "images": { "unboxed": "/products/air-fryer.png" },
+    "accessories": [{ "name": "烘焙纸", "price": 19, "required": false }],
+    "shipping": 0,
+    "alternatives": { "existing": "烤箱、平底锅" },
+    "typicalUsage": "新鲜期一个月",
+    "source": null
+  },
+  {
+    "id": "coffee-machine",
+    "name": "半自动咖啡机（示例）",
+    "category": "厨房",
+    "price": 1599,
+    "images": { "unboxed": "/products/coffee-machine.png" },
+    "accessories": [
+      { "name": "磨豆机", "price": 499, "required": true },
+      { "name": "咖啡豆（首包）", "price": 89, "required": true }
+    ],
+    "shipping": 0,
+    "alternatives": { "existing": "楼下咖啡店、挂耳咖啡" },
+    "typicalUsage": "清洗太麻烦，逐渐回归挂耳",
+    "source": null
+  },
+  {
+    "id": "instant-camera",
+    "name": "拍立得（示例）",
+    "category": "数码",
+    "price": 599,
+    "images": { "unboxed": "/products/instant-camera.png" },
+    "accessories": [{ "name": "相纸 20 张", "price": 99, "required": true }],
+    "shipping": 0,
+    "alternatives": { "rent": { "pricePerDay": 25, "where": "租赁平台" }, "existing": "手机相机" },
+    "typicalUsage": "旅行时用，一年两三次",
+    "source": null
+  },
+  {
+    "id": "e-drum",
+    "name": "电子鼓（示例）",
+    "category": "乐器",
+    "price": 2299,
+    "images": { "unboxed": "/products/e-drum.png" },
+    "accessories": [
+      { "name": "鼓凳", "price": 129, "required": true },
+      { "name": "耳机", "price": 199, "required": true }
+    ],
+    "shipping": 50,
+    "alternatives": { "rent": { "pricePerDay": 30, "where": "琴行" }, "borrow": "琴行体验课" },
+    "typicalUsage": "三分钟热度",
+    "source": null
+  },
+  {
+    "id": "tent",
+    "name": "露营帐篷（示例）",
+    "category": "户外",
+    "price": 699,
+    "images": { "unboxed": "/products/tent.png" },
+    "accessories": [
+      { "name": "地垫", "price": 79, "required": true },
+      { "name": "天幕", "price": 259, "required": false }
+    ],
+    "shipping": 0,
+    "alternatives": { "rent": { "pricePerDay": 40, "where": "营地" }, "borrow": "露营群友" },
+    "typicalUsage": "一年一次",
+    "source": null
+  },
+  {
+    "id": "fitness-ring",
+    "name": "体感健身环（示例）",
+    "category": "游戏",
+    "price": 499,
+    "images": { "unboxed": "/products/fitness-ring.png" },
+    "accessories": [{ "name": "游戏主机（如没有）", "price": 2099, "required": true }],
+    "shipping": 0,
+    "alternatives": { "borrow": "朋友家有主机" },
+    "typicalUsage": "前三天每天 30 分钟",
+    "source": null
+  },
+  {
+    "id": "blender",
+    "name": "破壁机（示例）",
+    "category": "厨房",
+    "price": 459,
+    "images": { "unboxed": "/products/blender.png" },
+    "accessories": [],
+    "shipping": 0,
+    "alternatives": { "existing": "榨汁杯" },
+    "typicalUsage": "噪音太大，用过两次",
+    "source": null
+  }
+]
