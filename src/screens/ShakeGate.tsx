@@ -1,63 +1,99 @@
-import { useEffect, useState } from 'react'
-import { onShake, requestMotionPermission, vibrate } from '../device'
+import { useEffect, useReducer, useRef } from 'react'
+import { CALM_DURATION_MS, onShake, onStillness, onVisibleRest, requestMotionPermission, vibrate } from '../device'
+import { gateReducer, initialGateState, SHAKES_NEEDED, TAPS_NEEDED } from './shakeGateState'
 
-// Friction #1: a forced "human verification" mini-game, satirising shake-to-open ads and CAPTCHAs.
-// Fallback for devices without motion sensors is deliberately worse: tap 30 times.
-
-const SHAKES_NEEDED = 8
-const TAPS_NEEDED = 30
-
+// Friction #1: demand movement, then accuse the applicant of being impulsive.
 export function ShakeGate({ onPass }: { onPass: () => void }) {
-  const [mode, setMode] = useState<'idle' | 'shake' | 'tap'>('idle')
-  const [count, setCount] = useState(0)
-  const needed = mode === 'tap' ? TAPS_NEEDED : SHAKES_NEEDED
+  const [state, dispatch] = useReducer(gateReducer, initialGateState)
+  const requestId = useRef(0)
+  const starting = useRef(false)
+  const passed = useRef(false)
+  const { stage, count, progress, notice } = state
+
+  useEffect(() => () => { requestId.current += 1 }, [])
 
   useEffect(() => {
-    if (mode !== 'shake') return
-    return onShake(() => {
-      void vibrate(50)
-      setCount((c) => c + 1)
-    })
-  }, [mode])
-
-  useEffect(() => {
-    if (mode !== 'idle' && count >= needed) onPass()
-  }, [mode, count, needed, onPass])
+    if (stage === 'shake') {
+      return onShake(
+        () => { void vibrate(50); dispatch({ type: 'shake' }) },
+        () => dispatch({ type: 'fallback', notice: '未收到有效动作数据，已改为点击验证。' }),
+      )
+    }
+    if (stage === 'calm') {
+      return onStillness(
+        (ms) => dispatch({ type: 'progress', stage: 'calm', value: ms / CALM_DURATION_MS }),
+        () => dispatch({ type: 'fallback', notice: '动作感应中断，改为等待 3 秒即可。' }),
+      )
+    }
+    if (stage === 'rest') {
+      return onVisibleRest((ms) => dispatch({ type: 'progress', stage: 'rest', value: ms / CALM_DURATION_MS }))
+    }
+  }, [stage])
 
   async function start() {
-    setCount(0)
-    setMode((await requestMotionPermission()) ? 'shake' : 'tap')
+    if (starting.current || stage !== 'idle') return
+    starting.current = true
+    const id = ++requestId.current
+    dispatch({ type: 'start' })
+    const granted = await requestMotionPermission()
+    if (id === requestId.current) dispatch({ type: 'permission', granted })
   }
 
+  function fallback() {
+    requestId.current += 1
+    dispatch({ type: 'fallback', notice: stage === 'calm' ? '无需保持姿势，稍等 3 秒即可。' : '已切换到点击验证。' })
+  }
+
+  function finish() {
+    if (stage !== 'done' || passed.current) return
+    passed.current = true
+    onPass()
+  }
+
+  const verifying = stage === 'shake' || stage === 'tap'
+  const calming = stage === 'calm' || stage === 'rest'
+  const needed = stage === 'tap' ? TAPS_NEEDED : SHAKES_NEEDED
+
   return (
-    <section className="center">
-      <h1>真人验证</h1>
-      <p className="muted">为确认您是在清醒状态下购物，请完成验证。</p>
-      {mode === 'idle' && (
-        <button className="primary" onClick={() => void start()}>
-          开始验证
+    <section className="center" aria-labelledby="verification-title">
+      <span className="tag">采购资格审查 · {calming || stage === 'done' ? '情绪复核' : '本人核验'}</span>
+      <h1 id="verification-title">{calming ? '检测到您疑似冲动消费' : stage === 'done' ? '情绪稳定，准予填表' : '请证明您是清醒的本人'}</h1>
+      <div aria-live="polite" aria-atomic="true">
+        {stage === 'idle' && <p className="muted">请轻摇手机 {SHAKES_NEEDED} 次，证明这笔采购出自本人意愿。</p>}
+        {stage === 'requesting' && <p className="muted">请允许动作感应；也可以直接选择点击验证。</p>}
+        {stage === 'shake' && <p>请握稳手机、轻轻摇动，无需用力甩动。</p>}
+        {stage === 'tap' && <p>请点击 {TAPS_NEEDED} 次，充分表达您的采购意愿。</p>}
+        {stage === 'calm' && <p>检测到剧烈动作，疑似冲动消费。<br />请保持手机平稳 3 秒，证明您具备理性采购能力。</p>}
+        {stage === 'rest' && <p>采购意愿过于强烈，请先冷静 3 秒。<br />保持页面打开，计时结束即可继续。</p>}
+        {stage === 'done' && <p>情绪稳定。现允许您填写申请表。</p>}
+        {notice && stage !== 'done' && <p className="muted">{notice}</p>}
+      </div>
+
+      {(stage === 'idle' || stage === 'requesting') && (
+        <button className="primary" disabled={stage === 'requesting'} onClick={() => void start()}>
+          {stage === 'requesting' ? '正在请求动作权限…' : '开始证明'}
         </button>
       )}
-      {mode !== 'idle' && (
+      {verifying && (
         <>
-          <p className="counter">
-            {count} / {needed}
-          </p>
-          <progress max={needed} value={count} />
-          {mode === 'shake' ? (
-            <>
-              <p>请用力摇动手机</p>
-              <button className="link" onClick={() => { setCount(0); setMode('tap') }}>
-                摇不动？改用点击验证
-              </button>
-            </>
-          ) : (
-            <button className="primary" onClick={() => setCount((c) => c + 1)}>
-              点我（共需 {TAPS_NEEDED} 次）
-            </button>
-          )}
+          <p className="counter">{count} / {needed}</p>
+          <progress aria-label="本人核验进度" max={needed} value={count} />
+          {stage === 'tap' && <button className="primary" onClick={() => dispatch({ type: 'tap' })}>本人确认（还需 {needed - count} 次）</button>}
         </>
       )}
+      {calming && (
+        <>
+          <p className="counter">{Math.ceil((1 - progress) * 3)} 秒</p>
+          <progress aria-label="冷静验证进度" max={1} value={progress} />
+          {stage === 'calm' && <p className="muted">容许轻微手抖，也可以将手机放在桌面上。</p>}
+        </>
+      )}
+      {(stage === 'requesting' || stage === 'shake' || stage === 'calm') && (
+        <button className="link" onClick={fallback}>
+          {stage === 'calm' ? '不便保持平稳？改用普通倒计时' : '不便摇动？改用点击验证'}
+        </button>
+      )}
+      {stage === 'done' && <button className="primary" onClick={finish}>理性尚存，继续填表</button>}
     </section>
   )
 }
