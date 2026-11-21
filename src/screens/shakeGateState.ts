@@ -1,3 +1,5 @@
+import { CALM_DURATION_MS } from '../device/motion'
+
 export const SHAKES_NEEDED = 8
 export const TAPS_NEEDED = 30
 
@@ -48,7 +50,7 @@ export function gateReducer(state: GateState, action: GateAction): GateState {
         ...state,
         progress,
         stage: progress === 1 ? 'done' : state.stage,
-        notice: progress < state.progress ? '刚才有移动或感应中断，请重新保持平稳 3 秒。' : state.notice,
+        notice: progress < state.progress ? `刚才有移动或感应中断，请重新保持平稳 ${CALM_DURATION_MS / 1000} 秒。` : state.notice,
       }
     }
   }

@@ -3,6 +3,8 @@ import { CALM_DURATION_MS, onShake, onStillness, onVisibleRest, requestMotionPer
 import { gateReducer, initialGateState, SHAKES_NEEDED, TAPS_NEEDED } from './shakeGateState'
 
 // Friction #1: demand movement, then accuse the applicant of being impulsive.
+const CALM_SECONDS = CALM_DURATION_MS / 1000
+
 export function ShakeGate({ onPass }: { onPass: () => void }) {
   const [state, dispatch] = useReducer(gateReducer, initialGateState)
   const requestId = useRef(0)
@@ -22,7 +24,7 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
     if (stage === 'calm') {
       return onStillness(
         (ms) => dispatch({ type: 'progress', stage: 'calm', value: ms / CALM_DURATION_MS }),
-        () => dispatch({ type: 'fallback', notice: '动作感应中断，改为等待 3 秒即可。' }),
+        () => dispatch({ type: 'fallback', notice: `动作感应中断，改为等待 ${CALM_SECONDS} 秒即可。` }),
       )
     }
     if (stage === 'rest') {
@@ -41,7 +43,7 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
 
   function fallback() {
     requestId.current += 1
-    dispatch({ type: 'fallback', notice: stage === 'calm' ? '无需保持姿势，稍等 3 秒即可。' : '已切换到点击验证。' })
+    dispatch({ type: 'fallback', notice: stage === 'calm' ? `无需保持姿势，稍等 ${CALM_SECONDS} 秒即可。` : '已切换到点击验证。' })
   }
 
   function finish() {
@@ -63,8 +65,8 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
         {stage === 'requesting' && <p className="muted">请允许动作感应；也可以直接选择点击验证。</p>}
         {stage === 'shake' && <p>请握稳手机、轻轻摇动，无需用力甩动。</p>}
         {stage === 'tap' && <p>请点击 {TAPS_NEEDED} 次，充分表达您的采购意愿。</p>}
-        {stage === 'calm' && <p>检测到剧烈动作，疑似冲动消费。<br />请保持手机平稳 3 秒，证明您具备理性采购能力。</p>}
-        {stage === 'rest' && <p>采购意愿过于强烈，请先冷静 3 秒。<br />保持页面打开，计时结束即可继续。</p>}
+        {stage === 'calm' && <p>检测到剧烈动作，疑似冲动消费。<br />请保持手机平稳 {CALM_SECONDS} 秒，证明您具备理性采购能力。</p>}
+        {stage === 'rest' && <p>采购意愿过于强烈，请先冷静 {CALM_SECONDS} 秒。<br />保持页面打开，计时结束即可继续。</p>}
         {stage === 'done' && <p>情绪稳定。现允许您填写申请表。</p>}
         {notice && stage !== 'done' && <p className="muted">{notice}</p>}
       </div>
@@ -83,7 +85,7 @@ export function ShakeGate({ onPass }: { onPass: () => void }) {
       )}
       {calming && (
         <>
-          <p className="counter">{Math.ceil((1 - progress) * 3)} 秒</p>
+          <p className="counter">{Math.ceil((1 - progress) * CALM_SECONDS)} 秒</p>
           <progress aria-label="冷静验证进度" max={1} value={progress} />
           {stage === 'calm' && <p className="muted">容许轻微手抖，也可以将手机放在桌面上。</p>}
         </>

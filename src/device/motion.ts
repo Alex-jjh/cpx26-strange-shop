@@ -3,6 +3,8 @@ type MotionPermission = { requestPermission?: () => Promise<string> }
 
 const SAMPLE_GAP_MS = 1000
 const SENSOR_TIMEOUT_MS = 3000
+const SHAKE_THRESHOLD = 15 // m/s², summed change in acceleration between samples
+const SHAKE_COOLDOWN_MS = 350
 export const CALM_DURATION_MS = 3000
 
 export async function requestMotionPermission(): Promise<boolean> {
@@ -33,7 +35,7 @@ export function createShakeDetector() {
     }
     last = sample
     lastAt = now
-    if (delta > 15 && now - lastFired >= 350) {
+    if (delta > SHAKE_THRESHOLD && now - lastFired >= SHAKE_COOLDOWN_MS) {
       lastFired = now
       return true
     }
