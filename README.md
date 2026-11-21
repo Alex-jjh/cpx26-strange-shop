@@ -3,6 +3,7 @@
 把购物结账变成个人采购审批：通过真人验证、填写采购申请单、获得 AI 领导批准，才能模拟下单。
 
 团队分工和分支流程见 [docs/TEAM.md](docs/TEAM.md)；AI 助手的规则见 [AGENTS.md](AGENTS.md)。
+文献清单和论文 PDF（Git LFS）在 [paper/](paper/README.md)。
 
 ## 三处摩擦
 
