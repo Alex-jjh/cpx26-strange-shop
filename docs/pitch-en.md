@@ -35,7 +35,7 @@ speaker translates the key lines on screen; the English for each one is written 
 >
 > The way out is a **wall**. Refunds need a reason. The cancel button hides. Try to leave, and you get: "Wait! Here's a coupon."
 >
-> Slides and walls have one thing in common: neither asks you to think. The Nobel economist Richard Thaler has a word for friction that works against you: *sludge*.
+> Slides and walls have one thing in common: neither asks you to think. The Nobel economist Richard Thaler has a word for design that pushes you against your own interest, whether it makes the bad choice easy or the good one hard: *sludge*.
 
 ### 1:00 · The reverse
 
@@ -67,7 +67,7 @@ The speaker talks, a teammate taps. Pause on the four ★ moments.
 
 ### 2:35 · Why it works
 
-> Two kinds of friction. The walls are satire. The questions are the point. Psychologists call it *opportunity-cost neglect*: we forget what else the money could do, and a simple reminder makes us less likely to buy. Every question here is that reminder.
+> Two kinds of friction. The walls are satire. The questions are the point. Researchers call it *opportunity-cost neglect*: we forget what else the money could do, and a simple reminder makes us less likely to buy. Every question here is that reminder.
 >
 > And bad UX isn't bad code: rules make the decision, the AI only does the voice, and every price in the app is real.
 
@@ -113,7 +113,8 @@ Never cut the "Buy now → paperwork" moment or the "Never mind → you saved" m
 All metadata checked against Crossref; see `paper/README.md` for the full list and PDFs.
 
 - "A study in *Management Science*": Unal, M., & Park, Y.-H. (2023). Fewer Clicks, More Purchases. *Management Science*, 69(12), 7317–7334. https://doi.org/10.1287/mnsc.2023.4716
-- "Richard Thaler … *sludge*": Thaler, R. H. (2018). Nudge, not sludge. *Science*, 361(6401), 431. https://doi.org/10.1126/science.aau9241
-- "*Opportunity-cost neglect*": Frederick, S., Novemsky, N., Wang, J., Dhar, R., & Nowlis, S. (2009). Opportunity Cost Neglect. *Journal of Consumer Research*, 36(4), 553–561. https://doi.org/10.1086/599764
+- "Richard Thaler … *sludge*" (both forms: discouraging what's in your interest, encouraging what defeats you): Thaler, R. H. (2018). Nudge, not sludge. *Science*, 361(6401), 431. https://doi.org/10.1126/science.aau9241
+- "*Opportunity-cost neglect*": Frederick, S., Novemsky, N., Wang, J., Dhar, R., & Nowlis, S. (2009). Opportunity Cost Neglect. *Journal of Consumer Research*, 36(4), 553–561. Abstract
+To properly consider the opportunity costs of a purchase, consumers must actively generate the alternatives that it would displace. The current research suggests that consumers often fail to do so. Even under conditions promoting cognitive effort, various cues to consider opportunity costs reduce purchase rates and increase the choice share of more affordable options. Sensitivity to such cues varies with chronic dispositional differences in spending attitudes. We discuss the implications of these results for the marketing strategies of economy and premium brands.
 
-Before the pitch, someone should read the abstracts of these three and confirm each sentence we say about them.
+Checked against the abstracts (2026-11-22): every sentence we say about these three matches. One wording fix came out of it: Thaler's sludge covers both the slide and the wall, so the script now says that.

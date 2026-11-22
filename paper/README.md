@@ -53,6 +53,7 @@ git push -u origin docs/papers-<你的名字>   # 开 PR，Alex 合并
 - 每条的作者、年份、标题、出处、DOI 都已经用 Crossref 元数据逐条核对过，标 ✅。
 - 「讲了什么」「支撑我们哪一点」两栏是根据我对这些文献的了解写的，**没有逐篇读过原文**。上海报、写进路演稿之前，请至少打开原文摘要核对一遍结论。
 - 标 ⚠️ 的条目有额外的注意事项。
+- 标 📄 的条目，「讲了什么」已经对照摘要核对过（2026-11-22）。
 
 ---
 
@@ -67,7 +68,7 @@ git push -u origin docs/papers-<你的名字>   # 开 PR，Alex 合并
 
 | # | 文献 | 讲了什么 | 支撑我们哪一点 |
 |---|---|---|---|
-| A1 ✅ | Thaler, R. H. (2018). Nudge, not sludge. *Science*, 361(6401), 431. https://doi.org/10.1126/science.aau9241 | 区分两种行为设计：帮人做出对自己有利选择的 nudge，和增加阻力、让人做不成对自己有利的事的 sludge | **核心框架**：我们的"讽刺层"（全屏广告、摇一摇、首次一律退回）就是在夸张模仿 sludge |
+| A1 ✅📄 | Thaler, R. H. (2018). Nudge, not sludge. *Science*, 361(6401), 431. https://doi.org/10.1126/science.aau9241 | nudge 帮人做出"自己认为"更好的选择；sludge 是"为恶的助推"，有两种：**阻止你做对自己有利的事**（例：返现要寄表格、收据、条码，大多数人懒得领，却仍被返现吸引去买，他称之为 buy bait），以及**怂恿你做对自己不利的事**。正好对应我们的墙和滑梯 | **核心框架**：我们的"讽刺层"（全屏广告、摇一摇、首次一律退回）就是在夸张模仿 sludge |
 | A2 ✅ | Sunstein, C. R. (2022). Sludge audits. *Behavioural Public Policy*, 6(4), 654–673. https://doi.org/10.1017/bpp.2019.32 | 主张系统地审查、清理流程中的 sludge | 为什么要把坏摩擦"夸张给人看" |
 | A3 ✅ | Gray, C. M., Kou, Y., Battles, B., Hoggatt, J., & Toombs, A. L. (2018). The Dark (Patterns) Side of UX Design. *CHI '18*, 1–14. https://doi.org/10.1145/3173574.3174108 | 暗黑模式分类：唠叨（nagging）、阻碍（obstruction）、偷塞（sneaking）、界面干扰、强迫行为 | 全屏广告、强制小游戏分别对应"界面干扰""强迫行为"，可以在海报上直接标出 |
 | A4 ✅ | Mathur, A., Acar, G., Friedman, M. J., Lucherini, E., Mayer, J., Chetty, M., & Narayanan, A. (2019). Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites. *Proc. ACM HCI*, 3(CSCW), 1–32. https://doi.org/10.1145/3359183 | 爬取了约 1.1 万个购物网站，发现相当一部分在用暗黑模式（具体比例请核对原文） | 说明"购物页面在操纵你"不是我们编的，是规模化的现实 |
@@ -86,7 +87,7 @@ git push -u origin docs/papers-<你的名字>   # 开 PR，Alex 合并
 
 | # | 文献 | 讲了什么 | 支撑我们哪一点 |
 |---|---|---|---|
-| C1 ✅ | Unal, M., & Park, Y.-H. (2023). Fewer Clicks, More Purchases. *Management Science*, 69(12), 7317–7334. https://doi.org/10.1287/mnsc.2023.4716 | 线上零售准实验：用户开通一键购买后，购买更频繁、件数更多（会议纪要 [1]） | **问题陈述**：去掉摩擦会让人买更多，所以我们要把摩擦放回来 |
+| C1 ✅📄 | Unal, M., & Park, Y.-H. (2023). Fewer Clicks, More Purchases. *Management Science*, 69(12), 7317–7334. https://doi.org/10.1287/mnsc.2023.4716 | 一家线上零售商 35 个月的准实验数据：用户开通一键购买后，购买更频繁、件数更多；效应持续，且因人而异；机制是访问和浏览更多、跨品类买得更多（会议纪要 [1]） | **问题陈述**：去掉摩擦会让人买更多，所以我们要把摩擦放回来 |
 | C2 ✅ | Moser, C., Schoenebeck, S. Y., & Resnick, P. (2019). Impulse Buying: Design Practices and Consumer Needs. *CHI '19*, 1–15. https://doi.org/10.1145/3290605.3300472 | 分析购物网站中助长冲动购物的设计，并调查消费者想要什么样的自控支持 | HCI 领域研究"冲动购物 × 界面设计"的直接对口文献 |
 | C3 ⚠️ | Moser, C. 的博士论文 *Impulse Buying: Designing for Self-Control with E-commerce*（University of Michigan, UMSI） | 会议纪要 [2] 引用：列出买与不买的理由能降低自报冲动和购买意愿；十分钟等待没有显著减少实际冲动购买 | **Crossref 查不到学位论文，元数据和结论都未核对**，请到密歇根大学的 Deep Blue 仓库找原文。Crossref 上能查到她 2018 年的一篇 CHI 扩展摘要：https://doi.org/10.1145/3170427.3173026 |
 | C4 ✅ | Rook, D. W. (1987). The Buying Impulse. *Journal of Consumer Research*, 14(2), 189–199. https://doi.org/10.1086/209105 | 冲动购买的经典定义：突然、强烈、持续的立刻要买的冲动 | 定义我们要对抗的对象 |
@@ -97,7 +98,7 @@ git push -u origin docs/papers-<你的名字>   # 开 PR，Alex 合并
 
 | # | 文献 | 讲了什么 | 对应 App 里的哪个设计 |
 |---|---|---|---|
-| D1 ✅ | Frederick, S., Novemsky, N., Wang, J., Dhar, R., & Nowlis, S. (2009). Opportunity Cost Neglect. *Journal of Consumer Research*, 36(4), 553–561. https://doi.org/10.1086/599764 | 人们做购买决定时常常忽略机会成本；只要提醒一句"这笔钱也可以用在别处"，购买意愿就会下降 | **「为什么不租 / 不借 / 现有的东西不行」**三栏，以及第五条（替代方案） |
+| D1 ✅📄 | Frederick, S., Novemsky, N., Wang, J., Dhar, R., & Nowlis, S. (2009). Opportunity Cost Neglect. *Journal of Consumer Research*, 36(4), 553–561. https://doi.org/10.1086/599764 | 要考虑机会成本，消费者得自己主动想出"这笔钱还能干什么"，但他们常常不想；各种提醒线索会降低购买率，并让人更倾向便宜的选项（即使在鼓励认真思考的条件下也成立） | **「为什么不租 / 不借 / 现有的东西不行」**三栏，以及第五条（替代方案） |
 | D2 ✅ | Lord, C. G., Lepper, M. R., & Preston, E. (1984). Considering the Opposite: A Corrective Strategy for Social Judgment. *Journal of Personality and Social Psychology*, 47(6), 1231–1243. https://doi.org/10.1037/0022-3514.47.6.1231 | "反向思考"能减少判断偏差 | 要求为"不买"的选项写理由 |
 | D3 ✅ | Thaler, R. (1985). Mental Accounting and Consumer Choice. *Marketing Science*, 4(3), 199–214. https://doi.org/10.1287/mksc.4.3.199 | 心理账户：人们按类别给钱记账，同一笔钱换个框架感受就不同 | 复核单把"2728.90 元"换算成"租满 273 天才回本""每用一次约 X 元" |
 | D4 ✅ | Prelec, D., & Loewenstein, G. (1998). The Red and the Black: Mental Accounting of Savings and Debt. *Marketing Science*, 17(1), 4–28. https://doi.org/10.1287/mksc.17.1.4 | "付款之痛"，以及付款和消费在心理上的耦合 | 单次成本题；也能用来讽刺复核单里的选项"0 元（花呗分期，不算花钱）" |
