@@ -5,7 +5,8 @@ Read this before changing anything. Team workflow (roles, branches) is in `docs/
 ## What this is
 
 CPX 2026 hackathon, Track 2 (Reverse UX). A mobile-first web app that turns checkout into a
-"personal procurement OA": verify → fill a procurement form → AI leader approves or rejects →
+"Strange Shop 奇怪小店": a normal-looking shop whose 立即购买 turns into a procurement request:
+verify → fill a procurement form → AI leader approves or rejects →
 simulated order → receipt. Vite + React + TypeScript, Vercel function in `api/`, Capacitor for Android.
 
 ## Commands (all three must pass before every commit)

@@ -19,6 +19,7 @@
 /* ---------- Topbar: friendly store header ---------- */
 .world-shop .topbar { border-bottom: 1px solid var(--line); }
 .world-shop .topbar .brand { font-size: var(--fs-lead); font-weight: 800; letter-spacing: 0.04em; padding-left: 0; }
+.world-shop .topbar .brand-en { font-size: var(--fs-caption); font-weight: 600; letter-spacing: 0.02em; opacity: 0.75; }
 .world-shop .topbar .link:not(.brand) { color: var(--muted); font-size: var(--fs-small); font-weight: 400; }
 .world-shop .topbar select {
   color: var(--muted); font-size: var(--fs-small); background: var(--page-bg);

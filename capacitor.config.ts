@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
   appId: 'com.cpx26.strangeshop',
-  appName: '个人采购OA',
+  appName: '奇怪小店',
   webDir: 'dist',
 }
 

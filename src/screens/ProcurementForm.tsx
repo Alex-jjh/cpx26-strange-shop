@@ -66,7 +66,7 @@ export function ProcurementForm({ product, initial, attempt, docNo, onSubmit }: 
 
         <fieldset>
           <legend>首次使用</legend>
-          <div className="chips">
+          <div className="chips short">
             {FIRST_USE_OPTIONS.map((o) => (
               <Chip key={o.id} name="firstUse" label={o.label} checked={draft.firstUse === o.id} onChange={() => set('firstUse', o.id as FirstUse)} />
             ))}
@@ -75,7 +75,7 @@ export function ProcurementForm({ product, initial, attempt, docNo, onSubmit }: 
 
         <fieldset>
           <legend>预计使用频率</legend>
-          <div className="chips">
+          <div className="chips short">
             {FREQUENCY_OPTIONS.map((o) => (
               <Chip key={o.id} name="frequency" label={o.label} checked={draft.frequency === o.id} onChange={() => set('frequency', o.id as UsageFrequency)} />
             ))}
@@ -104,9 +104,12 @@ export function ProcurementForm({ product, initial, attempt, docNo, onSubmit }: 
         </label>
       </div>
 
-      <button className="primary" type="submit">
-        提交领导审批
-      </button>
+      {/* Sticky, so the presenter can submit without scrolling to the very bottom. */}
+      <div className="form-submit">
+        <button className="primary" type="submit">
+          提交领导审批
+        </button>
+      </div>
     </form>
   )
 }

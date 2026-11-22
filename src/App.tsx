@@ -64,7 +64,13 @@ export default function App() {
     <div className={`app world-${world}`}>
       <header className="topbar">
         <button className={world === 'shop' ? 'link brand' : 'link'} onClick={home}>
-          {world === 'shop' ? '奇怪小店' : '个人钱包审批办公室'}
+          {world === 'shop' ? (
+            <>
+              奇怪小店 <small className="brand-en">Strange Shop</small>
+            </>
+          ) : (
+            '奇怪小店 · 审批办公室'
+          )}
         </button>
         <button className="link" onClick={openRegulations}>
           规章

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { vibrate } from '../device'
 import { buildQuiz, gradeQuiz, reflections } from '../domain/quiz'
 import type { Application, Difficulty, Product, ProductDetails } from '../domain/types'
@@ -34,6 +34,12 @@ export function Quiz({ product, details, draft, difficulty, docNo, onPass }: Pro
     }
     setResult(graded)
   }
+
+  // After a failed submit the button is at the bottom; bring the first problem into view.
+  useEffect(() => {
+    const first = result?.wrong[0] ?? result?.unanswered[0]
+    if (first) document.getElementById(`q-${first.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [result, retries])
 
   const isWrong = (id: string) => result?.wrong.some((q) => q.id === id)
   const isMissing = (id: string) => result?.unanswered.some((q) => q.id === id)
