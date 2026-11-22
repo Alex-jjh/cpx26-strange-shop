@@ -18,6 +18,23 @@ import { Shop } from './screens/Shop'
 const REVIEW_DELAY_MS = 2500 // "领导审阅中" — part of the friction
 const REMARK_DELAY_MS = 1500 // "领导批示中"
 
+/** The product being applied for, on OA screens where 不买了 is offered (before the order is placed). */
+function exitableProduct(screen: Screen): string | null {
+  switch (screen.name) {
+    case 'converted':
+    case 'gate':
+      return screen.productId
+    case 'form':
+    case 'reviewing':
+    case 'rejected':
+    case 'approved':
+    case 'quiz':
+      return screen.draft.productId
+    default:
+      return null
+  }
+}
+
 /** Shop list + product page are the shop world ("the slide"); everything else is the OA world. */
 function worldOf(screen: Screen): 'shop' | 'oa' {
   return screen.name === 'shop' || screen.name === 'product' ? 'shop' : 'oa'
@@ -59,6 +76,7 @@ export default function App() {
 
   // The regulations page is OA-world; the topbar follows the screen you are looking at.
   const world = worldOf(screen)
+  const exitProduct = exitableProduct(screen)
 
   return (
     <div className={`app world-${world}`}>
@@ -80,6 +98,15 @@ export default function App() {
           <option value="hard">难缠领导</option>
         </select>
       </header>
+      {exitProduct && (
+        // The reverse of a shopping app: buying needs approval, leaving needs nothing. No "are you sure?".
+        <div className="exit-bar">
+          <span>不想买了？随时可以走，没有挽留。</span>
+          <button className="exit" onClick={() => setScreen({ name: 'withdrawn', productId: exitProduct })}>
+            不买了
+          </button>
+        </div>
+      )}
       <main>{render()}</main>
     </div>
   )
@@ -130,7 +157,7 @@ export default function App() {
             docNo={screen.docNo}
             onRevise={() => setScreen({ name: 'form', docNo: screen.docNo, draft: screen.draft, attempt: screen.attempt + 1 })}
             onSwitch={home}
-            onWithdraw={() => setScreen({ name: 'withdrawn' })}
+            onWithdraw={() => setScreen({ name: 'withdrawn', productId: screen.draft.productId })}
             onRegulations={openRegulations}
           />
         )
@@ -167,7 +194,7 @@ export default function App() {
           />
         )
       case 'withdrawn':
-        return <Withdrawn onDone={home} />
+        return <Withdrawn product={screen.productId ? findProduct(screen.productId) : undefined} onDone={home} />
       case 'regulations':
         return <Regulations onBack={() => setScreen(screen.back)} />
     }

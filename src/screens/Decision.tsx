@@ -96,12 +96,19 @@ export function Approved({ product, docNo, onCheckout }: ApprovedProps) {
   )
 }
 
-export function Withdrawn({ onDone }: { onDone: () => void }) {
+export function Withdrawn({ product, onDone }: { product?: Product; onDone: () => void }) {
   return (
-    <section className="doc center">
+    <section className="doc center withdrawn">
       <p className="doc-org">个人钱包审批办公室</p>
       <h1>申请已撤回</h1>
-      <p className="muted">恭喜您省下了这笔钱。</p>
+      {product && (
+        <p className="saved">
+          本次省下 <strong>¥{formatYuan(totalCost(product))}</strong>
+          <span className="muted">（{product.name}，含必需配件与运费）</span>
+        </p>
+      )}
+      <p>恭喜你，什么都没买。</p>
+      <p className="muted">没有挽留，没有优惠券，也没有「再考虑一下」。</p>
       <button className="primary" onClick={onDone}>
         返回首页
       </button>

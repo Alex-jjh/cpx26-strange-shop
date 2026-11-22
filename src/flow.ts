@@ -7,7 +7,8 @@ import type { Application } from './domain/types'
 // product, shop = shop world ("the slide"); every other screen = OA world (see worldOf in App.tsx).
 // The 文号 (docNo) is created on converted and carried by every later OA screen.
 // converted also allows: back to product.
-// rejected also allows: switch product (→ shop) or withdraw (→ withdrawn).
+// rejected also allows: switch product (→ shop).
+// 不买了 (withdraw) is one tap from any OA screen before the order (→ withdrawn): buying is hard, not buying is free.
 // regulations can be opened from anywhere and returns to the screen it was opened from.
 
 export type Screen =
@@ -22,7 +23,7 @@ export type Screen =
   | { name: 'quiz'; docNo: string; draft: Application; attempt: number }
   | { name: 'remarking'; docNo: string; draft: Application; attempt: number }
   | { name: 'receipt'; docNo: string; draft: Application; attempt: number; orderNo: string; remark: string }
-  | { name: 'withdrawn' }
+  | { name: 'withdrawn'; productId?: string }
   | { name: 'regulations'; back: Screen }
 
 export function emptyApplication(productId: string): Application {
