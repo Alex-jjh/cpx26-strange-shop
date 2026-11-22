@@ -1,7 +1,7 @@
 # Pitch (English, 3 minutes): Strange Shop 奇怪小店
 
-Same story as the Chinese script (`docs/pitch.md`), cut to three minutes. About 450 spoken words,
-roughly 160 words a minute, plus the time the demo taps take. The app's UI is in Chinese, so the
+Same story as the Chinese script (`docs/pitch.md`), cut to three minutes. About 430 spoken words
+(roughly 2:40 at 160 words a minute), leaving about 20 seconds for the demo taps. The app's UI is in Chinese, so the
 speaker translates the key lines on screen; the English for each one is written into the script.
 
 **The one line:** Shopping apps push you one way: toward "buy". We flipped the direction.
@@ -25,25 +25,23 @@ speaker translates the key lines on screen; the English for each one is written 
 >
 > *(Show the "one month later" photo of the dusty projector.)*
 >
-> Here's the thing: buying online now takes about one second.
+> Buying online now takes about one second.
 
 ### 0:20 · One direction
 
-> Shopping apps are built to push you one way: toward "buy".
+> Shopping apps push you one way: toward "buy".
 >
-> The way in is a **slide**. One-click checkout. Buy now, pay later. A study in *Management Science* found that once shoppers switched on one-click buying, they bought more often, and they bought more stuff.
+> The way in is a **slide**: one-click checkout, buy now, pay later. A study in *Management Science* found that once shoppers turned on one-click buying, they bought more often, and they bought more.
 >
-> The way out is a **wall**. Want a refund? Give us a reason. Want to cancel? Good luck finding the button. Trying to leave? "Wait! Here's a coupon."
+> The way out is a **wall**. Refunds need a reason. The cancel button hides. Try to leave, and you get: "Wait! Here's a coupon."
 >
-> Slides and walls have one thing in common: neither one asks you to think. The Nobel-winning economist Richard Thaler has a name for friction that works against you. He calls it *sludge*.
+> Slides and walls have one thing in common: neither asks you to think. The Nobel economist Richard Thaler has a word for friction that works against you: *sludge*.
 
 ### 1:00 · The reverse
 
-> This track is called Reverse UX. Most people read that as: take something easy, and make it painful.
+> This track is Reverse UX. Most teams take something easy and make it painful. We reversed the **direction**.
 >
-> We reversed something else. We reversed the **direction**.
->
-> Meet Strange Shop. It looks like any online store. But the moment you tap "Buy now", your purchase turns into a procurement request, and your wallet gets a manager.
+> Meet Strange Shop. It looks like any online store. But tap "Buy now", and your purchase becomes a procurement request. Your wallet just got a manager.
 >
 > On the way to buying, we put **questions**. On the way out, we put **nothing**.
 
@@ -55,23 +53,23 @@ The speaker talks, a teammate taps. Pause on the four ★ moments.
 >
 > ★ And the slide stops. Orange turns into paperwork: *"Your purchase has been converted into a procurement request."*
 >
-> First, we let you hit the platform's wall, on purpose: a full-screen ad you have to shake to close. Then the app accuses you of being too impulsive and makes you hold still for three seconds.
+> First, a wall, on purpose: an ad you have to shake to close, then three seconds to calm down.
 >
-> Now the form. It's all multiple choice, and we pick the honest answers. Why buy it? *"Everyone else has one."* Why not rent? *"Never thought about it."*
+> The form is all multiple choice. Why buy it? *"Everyone else has one."* Why not rent? *"Never thought about it."*
 >
-> ★ Rejected. *"'Everyone else has one' is not a reason. It's an excuse."* Oh, and a similar projector rents for ten yuan a day.
+> ★ Rejected: *"'Everyone else has one' is not a reason. It's an excuse."* And a similar projector rents for ten yuan a day.
 >
-> We fix the answers and get approved. But before checkout there's one last check: *how many days of renting would cost the same as buying it?* We guess… wrong. ★ It's **273 days**.
+> We fix it and get approved. One last check before checkout: how many days of renting cost the same as buying? We guess wrong. ★ It's **273 days**.
 >
-> Then the manager signs off. *(Read the AI's remark off the screen. For example: "I appreciate your honesty that it'll end up gathering dust. Approved.")*
+> The manager signs off. *(Read the AI's remark off the screen, e.g. "I appreciate your honesty that it'll end up gathering dust. Approved.")*
 >
 > Now the other half. Same projector, **Buy now**, and this time: *"Never mind."* ★ One tap. No "are you sure?", no coupon. Just: *"You saved 2,728 yuan."*
 
 ### 2:35 · Why it works
 
-> So there are two kinds of friction here. The walls are satire: we exaggerate what apps already do to you. The questions are the real point. Psychologists call it *opportunity-cost neglect*: we forget what else that money could do, and simply being reminded makes us less likely to buy. Every question in Strange Shop is that reminder.
+> Two kinds of friction. The walls are satire. The questions are the point. Psychologists call it *opportunity-cost neglect*: we forget what else the money could do, and a simple reminder makes us less likely to buy. Every question here is that reminder.
 >
-> And bad UX isn't bad code. Rules make the decision, the AI only does the voice, and every price and rental in the app is real.
+> And bad UX isn't bad code: rules make the decision, the AI only does the voice, and every price in the app is real.
 
 ### 2:50 · Close
 
@@ -89,7 +87,7 @@ The speaker talks, a teammate taps. Pause on the four ★ moments.
 
 Cut in this order:
 
-1. The ad-and-calm sentence in the demo: replace it with "There's an ad wall and a three-second cool-down first; we'll skip those."
+1. The ad-and-calm sentence in the demo: say "There's an ad wall and a cool-down first; we'll skip those", and the teammate skips ahead.
 2. The Thaler sentence at the end of "One direction".
 3. The manager's remark: go straight from 273 days to "Now the other half."
 
