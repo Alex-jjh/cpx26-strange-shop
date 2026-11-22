@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { vibrate } from '../device'
 import { buildQuiz, gradeQuiz, reflections } from '../domain/quiz'
 import type { Application, Difficulty, Product, ProductDetails } from '../domain/types'
+import { DocHead } from './DocHead'
 
 // Friction #4 (useful): a multiple-choice 复核单 between approval and the simulated order.
 // Graded questions are checked by rules; reflective answers go to the AI leader's closing remark.
@@ -11,10 +12,11 @@ interface Props {
   details: ProductDetails | undefined
   draft: Application
   difficulty: Difficulty
+  docNo?: string
   onPass: (reflections: Record<string, string>, retries: number) => void
 }
 
-export function Quiz({ product, details, draft, difficulty, onPass }: Props) {
+export function Quiz({ product, details, draft, difficulty, docNo, onPass }: Props) {
   const quiz = useMemo(() => buildQuiz(product, details, draft, difficulty), [product, details, draft, difficulty])
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [result, setResult] = useState<ReturnType<typeof gradeQuiz> | null>(null)
@@ -37,17 +39,21 @@ export function Quiz({ product, details, draft, difficulty, onPass }: Props) {
   const isMissing = (id: string) => result?.unanswered.some((q) => q.id === id)
 
   return (
-    <section className="quiz">
-      <span className="tag">下单前复核 · 第 {retries + 1} 次作答</span>
-      <h1>采购复核单</h1>
+    <section className="doc quiz">
+      <DocHead title="采购复核单" docNo={docNo} rows={[['复核状态', `下单前复核 · 第 ${retries + 1} 次作答`]]} />
       <p className="muted">审批已通过，但下单前须完成复核。选择即可，无需手写；答完后由 AI 领导出具批示。</p>
 
       {quiz.map((q, i) => (
-        <fieldset key={q.id} className={isWrong(q.id) ? 'question wrong' : isMissing(q.id) ? 'question missing' : 'question'}>
-          <legend>
+        <div
+          key={q.id}
+          role="radiogroup"
+          aria-labelledby={`q-${q.id}`}
+          className={isWrong(q.id) ? 'question wrong' : isMissing(q.id) ? 'question missing' : 'question'}
+        >
+          <h2 className="doc-section" id={`q-${q.id}`}>
             {i + 1}. {q.title}
             {q.kind === 'reflective' && <span className="tag">没有标准答案</span>}
-          </legend>
+          </h2>
           <p>{q.prompt}</p>
           {q.options.map((o) => (
             <label key={o.id} className={answers[q.id] === o.id ? 'option chosen' : 'option'}>
@@ -63,7 +69,7 @@ export function Quiz({ product, details, draft, difficulty, onPass }: Props) {
           ))}
           {isWrong(q.id) && <p className="explain">答错了。{q.explain}</p>}
           {isMissing(q.id) && <p className="explain">此题未作答。</p>}
-        </fieldset>
+        </div>
       ))}
 
       <button className="primary" onClick={submit}>

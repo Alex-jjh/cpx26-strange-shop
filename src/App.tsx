@@ -3,9 +3,10 @@ import { findDetails, findProduct } from './data/catalog'
 import { notify, vibrate } from './device'
 import { review } from './domain/review'
 import type { Application, Difficulty } from './domain/types'
-import { emptyApplication, newOrderNo, type Screen } from './flow'
+import { emptyApplication, newDocNo, newOrderNo, type Screen } from './flow'
 import { leaderRemark, leaderVoice } from './llm/leaderVoice'
 import { Approved, Rejected, Remarking, Reviewing, Withdrawn } from './screens/Decision'
+import { Converted } from './screens/Converted'
 import { ProcurementForm } from './screens/ProcurementForm'
 import { ProductPage } from './screens/ProductPage'
 import { Quiz } from './screens/Quiz'
@@ -17,12 +18,17 @@ import { Shop } from './screens/Shop'
 const REVIEW_DELAY_MS = 2500 // "领导审阅中" — part of the friction
 const REMARK_DELAY_MS = 1500 // "领导批示中"
 
+/** Shop list + product page are the shop world ("the slide"); everything else is the OA world. */
+function worldOf(screen: Screen): 'shop' | 'oa' {
+  return screen.name === 'shop' || screen.name === 'product' ? 'shop' : 'oa'
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'shop' })
   const [difficulty, setDifficulty] = useState<Difficulty>('normal')
 
-  async function submit(draft: Application, attempt: number) {
-    setScreen({ name: 'reviewing', draft, attempt })
+  async function submit(docNo: string, draft: Application, attempt: number) {
+    setScreen({ name: 'reviewing', docNo, draft, attempt })
     const product = findProduct(draft.productId)!
     const decision = review(draft, product, difficulty, attempt)
     const [text] = await Promise.all([
@@ -32,30 +38,33 @@ export default function App() {
     if (decision.kind === 'rejected') {
       void vibrate()
       void notify('采购申请被驳回', `「${product.name}」第 ${attempt} 次提交未通过`)
-      setScreen({ name: 'rejected', draft, attempt, text })
+      setScreen({ name: 'rejected', docNo, draft, attempt, text })
     } else {
       void notify('采购申请已批准', `「${product.name}」已解锁下单`)
-      setScreen({ name: 'approved', draft, attempt })
+      setScreen({ name: 'approved', docNo, draft, attempt })
     }
   }
 
-  async function finishQuiz(draft: Application, attempt: number, answers: Record<string, string>, retries: number) {
-    setScreen({ name: 'remarking', draft, attempt })
+  async function finishQuiz(docNo: string, draft: Application, attempt: number, answers: Record<string, string>, retries: number) {
+    setScreen({ name: 'remarking', docNo, draft, attempt })
     const [remark] = await Promise.all([
       leaderRemark(draft, attempt, difficulty, answers, retries),
       new Promise((r) => setTimeout(r, REMARK_DELAY_MS)),
     ])
-    setScreen({ name: 'receipt', draft, attempt, orderNo: newOrderNo(), remark })
+    setScreen({ name: 'receipt', docNo, draft, attempt, orderNo: newOrderNo(), remark })
   }
 
   const home = () => setScreen({ name: 'shop' })
   const openRegulations = () => setScreen((s) => (s.name === 'regulations' ? s : { name: 'regulations', back: s }))
 
+  // The regulations page is OA-world; the topbar follows the screen you are looking at.
+  const world = worldOf(screen)
+
   return (
-    <div className="app">
+    <div className={`app world-${world}`}>
       <header className="topbar">
-        <button className="link" onClick={home}>
-          个人采购 OA
+        <button className={world === 'shop' ? 'link brand' : 'link'} onClick={home}>
+          {world === 'shop' ? '奇怪小店' : '个人钱包审批办公室'}
         </button>
         <button className="link" onClick={openRegulations}>
           规章
@@ -77,13 +86,22 @@ export default function App() {
         return (
           <ProductPage
             product={findProduct(screen.productId)!}
-            onApply={() => setScreen({ name: 'gate', productId: screen.productId })}
+            onApply={() => setScreen({ name: 'converted', productId: screen.productId, docNo: newDocNo() })}
+          />
+        )
+      case 'converted':
+        return (
+          <Converted
+            product={findProduct(screen.productId)!}
+            docNo={screen.docNo}
+            onStart={() => setScreen({ name: 'gate', docNo: screen.docNo, productId: screen.productId })}
+            onBack={() => setScreen({ name: 'product', productId: screen.productId })}
           />
         )
       case 'gate':
         return (
           <ShakeGate
-            onPass={() => setScreen({ name: 'form', draft: emptyApplication(screen.productId), attempt: 1 })}
+            onPass={() => setScreen({ name: 'form', docNo: screen.docNo, draft: emptyApplication(screen.productId), attempt: 1 })}
           />
         )
       case 'form':
@@ -92,17 +110,19 @@ export default function App() {
             product={findProduct(screen.draft.productId)!}
             initial={screen.draft}
             attempt={screen.attempt}
-            onSubmit={(draft) => void submit(draft, screen.attempt)}
+            docNo={screen.docNo}
+            onSubmit={(draft) => void submit(screen.docNo, draft, screen.attempt)}
           />
         )
       case 'reviewing':
-        return <Reviewing attempt={screen.attempt} />
+        return <Reviewing attempt={screen.attempt} docNo={screen.docNo} />
       case 'rejected':
         return (
           <Rejected
             text={screen.text}
             attempt={screen.attempt}
-            onRevise={() => setScreen({ name: 'form', draft: screen.draft, attempt: screen.attempt + 1 })}
+            docNo={screen.docNo}
+            onRevise={() => setScreen({ name: 'form', docNo: screen.docNo, draft: screen.draft, attempt: screen.attempt + 1 })}
             onSwitch={home}
             onWithdraw={() => setScreen({ name: 'withdrawn' })}
             onRegulations={openRegulations}
@@ -112,7 +132,8 @@ export default function App() {
         return (
           <Approved
             product={findProduct(screen.draft.productId)!}
-            onCheckout={() => setScreen({ name: 'quiz', draft: screen.draft, attempt: screen.attempt })}
+            docNo={screen.docNo}
+            onCheckout={() => setScreen({ name: 'quiz', docNo: screen.docNo, draft: screen.draft, attempt: screen.attempt })}
           />
         )
       case 'quiz':
@@ -122,16 +143,18 @@ export default function App() {
             details={findDetails(screen.draft.productId)}
             draft={screen.draft}
             difficulty={difficulty}
-            onPass={(answers, retries) => void finishQuiz(screen.draft, screen.attempt, answers, retries)}
+            docNo={screen.docNo}
+            onPass={(answers, retries) => void finishQuiz(screen.docNo, screen.draft, screen.attempt, answers, retries)}
           />
         )
       case 'remarking':
-        return <Remarking />
+        return <Remarking docNo={screen.docNo} />
       case 'receipt':
         return (
           <Receipt
             product={findProduct(screen.draft.productId)!}
             orderNo={screen.orderNo}
+            docNo={screen.docNo}
             attempt={screen.attempt}
             remark={screen.remark}
             onDone={home}

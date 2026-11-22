@@ -1,24 +1,28 @@
 import { formatYuan, totalCost } from '../domain/cost'
 import type { Product } from '../domain/types'
+import { DocHead, Stamp } from './DocHead'
 
 // Friction #3: rejection and re-review. The user can revise, switch product, or withdraw.
+// docNo is the satirical 文号 created once on the converted screen; it is optional so screens still render without it.
 
-export function Reviewing({ attempt }: { attempt: number }) {
+export function Reviewing({ attempt, docNo }: { attempt: number; docNo?: string }) {
   return (
-    <section className="center">
+    <section className="doc center">
       <div className="spinner" aria-hidden />
       <h1>领导审阅中</h1>
       <p className="muted">第 {attempt} 次提交 · 请勿关闭页面</p>
+      {docNo && <p className="doc-no mono">文号 {docNo}</p>}
     </section>
   )
 }
 
-export function Remarking() {
+export function Remarking({ docNo }: { docNo?: string }) {
   return (
-    <section className="center">
+    <section className="doc center">
       <div className="spinner" aria-hidden />
       <h1>领导批示中</h1>
       <p className="muted">复核单已提交，正在出具审批回执</p>
+      {docNo && <p className="doc-no mono">文号 {docNo}</p>}
     </section>
   )
 }
@@ -26,17 +30,22 @@ export function Remarking() {
 interface RejectedProps {
   text: string
   attempt: number
+  docNo?: string
   onRevise: () => void
   onSwitch: () => void
   onWithdraw: () => void
   onRegulations: () => void
 }
 
-export function Rejected({ text, attempt, onRevise, onSwitch, onWithdraw, onRegulations }: RejectedProps) {
+export function Rejected({ text, attempt, docNo, onRevise, onSwitch, onWithdraw, onRegulations }: RejectedProps) {
   return (
-    <section>
-      <div className="banner reject">已驳回 · 第 {attempt} 次提交</div>
-      <h2>审批意见</h2>
+    <section className="doc">
+      <DocHead title="采购申请审批结果" docNo={docNo} rows={[['提交次数', `第 ${attempt} 次`]]} />
+      <div className="verdict">
+        <div className="banner reject">已驳回 · 第 {attempt} 次提交</div>
+        <Stamp kind="reject">驳回</Stamp>
+      </div>
+      <h2 className="doc-section">审批意见</h2>
       <p className="opinion">{text}</p>
       <button className="link" onClick={onRegulations}>
         查看《个人钱包管理暂行办法》
@@ -56,14 +65,29 @@ export function Rejected({ text, attempt, onRevise, onSwitch, onWithdraw, onRegu
   )
 }
 
-export function Approved({ product, onCheckout }: { product: Product; onCheckout: () => void }) {
+interface ApprovedProps {
+  product: Product
+  docNo?: string
+  onCheckout: () => void
+}
+
+export function Approved({ product, docNo, onCheckout }: ApprovedProps) {
   return (
-    <section>
-      <div className="banner approve">审批通过</div>
-      <h1>{product.name}</h1>
-      <p>
-        应付总额 <strong className="price">¥{formatYuan(totalCost(product))}</strong>（含必需配件与运费）
-      </p>
+    <section className="doc">
+      <DocHead title="采购申请审批结果" docNo={docNo} />
+      <div className="verdict">
+        <div className="banner approve">审批通过</div>
+        <Stamp kind="approve">同意</Stamp>
+      </div>
+      <dl className="doc-table">
+        <dt>申请物品</dt>
+        <dd>{product.name}</dd>
+        <dt>应付总额</dt>
+        <dd>
+          <strong className="price">¥{formatYuan(totalCost(product))}</strong>
+          <span className="muted">（含必需配件与运费）</span>
+        </dd>
+      </dl>
       <button className="primary" onClick={onCheckout}>
         去下单
       </button>
@@ -74,7 +98,8 @@ export function Approved({ product, onCheckout }: { product: Product; onCheckout
 
 export function Withdrawn({ onDone }: { onDone: () => void }) {
   return (
-    <section className="center">
+    <section className="doc center">
+      <p className="doc-org">个人钱包审批办公室</p>
       <h1>申请已撤回</h1>
       <p className="muted">恭喜您省下了这笔钱。</p>
       <button className="primary" onClick={onDone}>

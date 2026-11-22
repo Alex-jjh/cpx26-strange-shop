@@ -1,0 +1,140 @@
+/*
+ * Approval world ("walls and questions"): converted interstitial, ProcurementForm,
+ * Reviewing / Rejected / Approved / Remarking / Withdrawn (Decision.tsx), Quiz, Receipt, Regulations.
+ * Spec: docs/ui-design.md, section "审批世界". Active when the app root has `.world-oa`.
+ *
+ * Rules for this file:
+ *   - Every selector starts with `.world-oa`.
+ *   - Use semantic tokens from index.css (--accent, --surface, --surface-head, --line, --doc-*,
+ *     --oa, --reject, --approve, --radius-card, --sp-*, --fs-*). No ad-hoc hex colours, no orange.
+ *   - Money is plain bold black (--price-ink). Red is reserved for rejection.
+ *   - Do not restyle the ShakeGate ad / calm step (src/screens/ShakeGate.css belongs to teammate B).
+ *
+ * Components:
+ *   .doc          white "paper" on the grey page
+ *   .doc-head     document header (DocHead.tsx): org line, title, meta rows, 2px blue rule
+ *   .doc-section  form-like section header (blue left bar + grey band)
+ *   .doc-table    label/value rows with dashed separators (dl)
+ *   .stamp-slot   reserved box for a stamp; .stamp-round.reject / .approve / .seal sits inside it
+ */
+
+/* ---------- Paper ---------- */
+.world-oa .doc {
+  margin: 0 0 var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.world-oa .doc.center { text-align: center; padding-top: var(--sp-5); }
+.world-oa .doc h1 { margin: var(--sp-2) 0; }
+.world-oa .mono { font-family: var(--font-mono); }
+.world-oa .doc-org { margin: 0; font-size: var(--fs-small); color: var(--doc-muted); letter-spacing: 0.12em; }
+.world-oa .doc-no { margin: var(--sp-2) 0 0; font-size: var(--fs-caption); color: var(--doc-muted); }
+
+/* ---------- Document header ---------- */
+.world-oa .doc-head { margin-bottom: var(--sp-3); padding-bottom: var(--sp-3); border-bottom: 2px solid var(--oa); }
+.world-oa .doc-head h1 { margin: var(--sp-1) 0 var(--sp-3); color: var(--oa); }
+.world-oa .doc-meta {
+  display: grid; grid-template-columns: 5em minmax(0, 1fr); gap: var(--sp-1) var(--sp-3);
+  margin: 0; font-size: var(--fs-small);
+}
+.world-oa .doc-meta dt { color: var(--doc-muted); }
+.world-oa .doc-meta dd { margin: 0; overflow-wrap: anywhere; }
+
+/* ---------- Section header ---------- */
+.world-oa .doc-section {
+  margin: var(--sp-4) 0 var(--sp-3); padding: var(--sp-2) var(--sp-3);
+  background: var(--surface-head); border-left: 4px solid var(--oa);
+  font-size: var(--fs-lead); font-weight: 700; line-height: 1.35;
+}
+.world-oa .doc-section .tag { margin-left: var(--sp-2); font-weight: 400; }
+
+/* ---------- Label / value table ---------- */
+.world-oa .doc-table {
+  display: grid; grid-template-columns: 5em minmax(0, 1fr); gap: 0 var(--sp-3);
+  margin: var(--sp-3) 0;
+}
+.world-oa .doc-table dt,
+.world-oa .doc-table dd { margin: 0; padding: var(--sp-2) 0; border-bottom: 1px dashed var(--line); overflow-wrap: anywhere; }
+.world-oa .doc-table dt { color: var(--doc-muted); }
+.world-oa .doc-table .price { font-weight: 700; }
+.world-oa .doc-table .wide { grid-column: 1 / -1; }
+.world-oa .doc-table dt.wide { border-bottom: 0; padding-bottom: 0; }
+.world-oa .doc-table dd.wide { border-bottom: 0; }
+.world-oa .doc-table .remark {
+  margin-top: var(--sp-1); padding: var(--sp-3); white-space: pre-line;
+  background: var(--surface-head); border-left: 4px solid var(--oa);
+}
+
+/* ---------- Round stamps (always inside their own reserved box) ---------- */
+.world-oa .stamp-slot { flex: none; display: flex; justify-content: flex-end; padding: var(--sp-3); }
+.world-oa .stamp-round {
+  --stamp: var(--doc-stamp-red);
+  width: 96px; height: 96px; display: grid; place-items: center; text-align: center;
+  border: 4px double var(--stamp); border-radius: 50%; color: var(--stamp);
+  font-size: 28px; font-weight: 800; line-height: 1.2; letter-spacing: 0.08em; white-space: pre-line;
+  transform: rotate(-12deg); opacity: 0.9; background: transparent;
+}
+.world-oa .stamp-round.reject,
+.world-oa .stamp-round.seal { --stamp: var(--reject); }
+.world-oa .stamp-round.approve { --stamp: var(--approve); }
+.world-oa .stamp-round.seal { font-size: var(--fs-lead); letter-spacing: 0.04em; }
+
+/* Verdict row: banner next to its stamp */
+.world-oa .verdict { display: flex; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0; }
+.world-oa .verdict .banner { flex: 1; min-width: 0; }
+.world-oa .banner { border-radius: var(--radius-card); }
+.world-oa .opinion {
+  margin: var(--sp-2) 0 var(--sp-3); padding: var(--sp-3);
+  background: var(--surface-head); border-left: 4px solid var(--reject); border-radius: 0;
+}
+
+/* ---------- Actions ---------- */
+.world-oa .primary,
+.world-oa .secondary { border-radius: var(--radius-ctl); min-height: var(--tap); }
+.world-oa .doc .link {
+  display: block; width: 100%; min-height: var(--tap); margin-top: var(--sp-1); text-align: center;
+}
+.world-oa .doc .fineprint { margin-top: var(--sp-3); }
+
+/* ---------- Procurement form ---------- */
+.world-oa .form.choices fieldset { margin: var(--sp-3) 0 0; padding: 0; border: 0; min-width: 0; }
+.world-oa .form legend { padding: 0; font-weight: 600; font-size: var(--fs-body); color: var(--text); }
+.world-oa .chip {
+  min-height: var(--tap); border-radius: var(--radius-ctl); font-size: var(--fs-body);
+}
+.world-oa .chip.chosen { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.world-oa .form .total { margin-top: var(--sp-2); font-size: var(--fs-body); }
+.world-oa .input-unit { display: flex; align-items: center; gap: var(--sp-2); margin-top: var(--sp-1); }
+.world-oa .input-unit input { flex: 1; min-width: 0; margin-top: 0; font-size: var(--fs-body); }
+.world-oa .input-unit .unit { flex: none; font-weight: 600; color: var(--text); }
+.world-oa .form textarea { font-size: var(--fs-body); }
+
+/* ---------- Quiz (复核单) ---------- */
+.world-oa .quiz .question {
+  margin: var(--sp-3) 0 0; padding: 0 var(--sp-3) var(--sp-3);
+  border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden;
+}
+.world-oa .quiz .question .doc-section { margin: 0 calc(-1 * var(--sp-3)) var(--sp-3); }
+.world-oa .quiz .question.wrong { border-color: var(--reject); background: var(--reject-bg); }
+.world-oa .quiz .question.missing { border-color: var(--reject); }
+.world-oa .quiz .option {
+  min-height: var(--tap); margin: var(--sp-2) 0; padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-ctl); font-size: var(--fs-body);
+}
+.world-oa .quiz .option input { accent-color: var(--accent); flex: none; }
+.world-oa .quiz .option.chosen { background: var(--accent-soft); border-color: var(--accent); }
+.world-oa .quiz .explain { margin: var(--sp-2) 0 0; color: var(--reject); font-size: var(--fs-small); font-weight: 600; }
+
+/* ---------- Regulations ---------- */
+.world-oa .regs h1 { text-align: center; color: var(--oa); }
+.world-oa .regs .fineprint { margin-top: 0; }
+.world-oa .regs ol { margin: var(--sp-3) 0 0; padding: 0; list-style: none; }
+.world-oa .regs li { padding: var(--sp-3) 0; border-bottom: 1px dashed var(--line); }
+.world-oa .regs li strong { color: var(--oa); font-weight: 700; }
+
+/* ---------- Converted interstitial (the key moment; markup lives in Converted.tsx) ---------- */
+.world-oa .converted h1 { font-size: var(--fs-h1); line-height: 1.3; }
+.world-oa .doc-note { margin: var(--sp-3) 0; padding: var(--sp-3); background: var(--surface-head); border-left: 4px solid var(--oa); }

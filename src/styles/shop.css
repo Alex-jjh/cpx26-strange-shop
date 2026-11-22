@@ -1,0 +1,109 @@
+/*
+ * Shop world ("the slide"): Shop list + Product page.
+ * Spec: docs/ui-design.md, section "购物世界". Active when the app root has `.world-shop`.
+ *
+ * Rules for this file:
+ *   - Every selector starts with `.world-shop` (or a shop-only class such as `.shop-*`, `.buybar`).
+ *   - Use semantic tokens from index.css (--accent, --price-ink, --surface, --page-bg, --line,
+ *     --radius-card, --radius-ctl, --shadow-card, --sp-*, --fs-*). No ad-hoc hex colours.
+ *   - No brand names, logos or copied layouts. No fake sales counts, discounts or ratings.
+ *
+ * Planned components (class names are suggestions, implementers own them):
+ *   .shop-hero       - short banner under the topbar (shop name + one line of satirical copy)
+ *   .shop-grid/.shop-card - white product card: image, name, red price, small badges
+ *   .badge, .badge.gold   - small rounded labels (real data from catalog, or claim-free satire)
+ *   .shop-price      - price block: small "¥", big red number
+ *   .buybar          - fixed bottom buy bar with the big "立即购买" button
+ */
+
+/* ---------- Topbar: friendly store header ---------- */
+.world-shop .topbar { border-bottom: 1px solid var(--line); }
+.world-shop .topbar .brand { font-size: var(--fs-lead); font-weight: 800; letter-spacing: 0.04em; padding-left: 0; }
+.world-shop .topbar .link:not(.brand) { color: var(--muted); font-size: var(--fs-small); font-weight: 400; }
+.world-shop .topbar select {
+  color: var(--muted); font-size: var(--fs-small); background: var(--page-bg);
+  border: 1px solid var(--line); border-radius: var(--radius-ctl); padding: var(--sp-1) var(--sp-2); min-height: 32px;
+}
+
+/* ---------- Price: small yen sign + big red number ---------- */
+.world-shop .shop-price { color: var(--price-ink); font-weight: 700; margin: 0; line-height: 1.2; }
+.world-shop .shop-price small { font-size: max(0.6em, 12px); font-weight: 600; margin-right: 1px; }
+
+/* ---------- Badges ---------- */
+.world-shop .shop-badges { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin: 0; }
+.world-shop .badge {
+  display: inline-block; padding: 1px 6px; border-radius: 6px; line-height: 1.5;
+  font-size: var(--fs-caption); font-weight: 500; white-space: nowrap;
+  background: var(--accent-soft); color: var(--accent);
+}
+.world-shop .badge.gold { background: var(--shop-gold-soft); color: var(--shop-gold-ink); }
+
+/* ---------- Shop list ---------- */
+.world-shop .shop-hero {
+  padding: var(--sp-3) var(--sp-4); margin-bottom: var(--sp-3);
+  border-radius: var(--radius-card); background: var(--btn-bg); color: var(--accent-fg);
+}
+.world-shop .shop-hero h1 { margin: 0; }
+.world-shop .shop-hero p { margin: var(--sp-1) 0 0; font-size: var(--fs-small); }
+
+.world-shop .shop-tabs { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-3); }
+.world-shop .shop-tab {
+  min-height: 36px; padding: 0 var(--sp-3); font-size: var(--fs-small);
+  border: 1px solid var(--line); border-radius: var(--radius-ctl); background: var(--surface); color: var(--muted);
+}
+.world-shop .shop-tab.on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+.world-shop .shop-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3);
+}
+.world-shop .shop-grid li { display: flex; } /* cards stretch to the same height per row */
+.world-shop .shop-card {
+  width: 100%; display: flex; flex-direction: column; gap: var(--sp-1); text-align: left;
+  padding: 0 0 var(--sp-3); border: 0; overflow: hidden;
+  background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card); color: var(--text);
+}
+.world-shop .shop-card .img { border-radius: 0; }
+.world-shop .shop-card > :not(.img) { margin: 0 var(--sp-3); }
+.world-shop .shop-card .shop-name {
+  margin-top: var(--sp-2); font-size: var(--fs-small); line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  min-height: calc(2 * 1.4em); /* two lines reserved, so every card is the same height */
+}
+.world-shop .shop-card .shop-price { font-size: var(--fs-lead); }
+.world-shop .shop-card .shop-badges { margin-top: auto; padding-top: var(--sp-1); }
+
+/* ---------- Product page ---------- */
+.world-shop .shop-product { padding-bottom: 88px; } /* room for the fixed buy bar */
+.world-shop .shop-product > .img { border-radius: var(--radius-card); }
+.world-shop .shop-block {
+  margin-top: var(--sp-3); padding: var(--sp-4);
+  background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-card);
+}
+.world-shop .shop-block h1 { margin: var(--sp-2) 0; font-size: var(--fs-lead); line-height: 1.4; }
+.world-shop .shop-block h2 { margin: 0 0 var(--sp-2); }
+.world-shop .shop-block h3 { margin: var(--sp-4) 0 var(--sp-1); font-size: var(--fs-body); }
+.world-shop .shop-block > .shop-badges { margin-top: var(--sp-2); }
+.world-shop .shop-note { margin: var(--sp-1) 0 0; color: var(--muted); font-size: var(--fs-caption); }
+.world-shop .shop-list { list-style: none; margin: 0; padding: 0; }
+.world-shop .shop-list li {
+  display: flex; justify-content: space-between; gap: var(--sp-3);
+  padding: var(--sp-2) 0; border-bottom: 1px solid var(--line);
+}
+.world-shop .shop-detail .img { border-radius: var(--radius-card); }
+
+/* ---------- Fixed bottom buy bar ---------- */
+.world-shop .buybar {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 2;
+  width: min(100%, 430px);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4); padding-bottom: calc(var(--sp-2) + env(safe-area-inset-bottom));
+  background: var(--surface); border-top: 1px solid var(--line);
+}
+.world-shop .buybar-total { display: flex; flex-direction: column; min-width: 0; }
+.world-shop .buybar .shop-price { font-size: var(--fs-h1); }
+.world-shop .buy-btn {
+  flex: 1; max-width: 220px; height: 48px; border: 0; border-radius: var(--radius-ctl);
+  background: var(--btn-bg); color: var(--accent-fg); font-size: var(--fs-lead); font-weight: 700;
+}
+.world-shop .buy-btn:active { filter: brightness(0.92); }

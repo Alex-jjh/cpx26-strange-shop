@@ -7,55 +7,89 @@ import { ProductImage } from './ProductImage'
 export function ProductPage({ product, onApply }: { product: Product; onApply: () => void }) {
   const details = findDetails(product.id)
   const rental = rentalLine(details?.rental ?? null)
+  const requiredCount = product.accessories.filter((a) => a.required).length
 
   return (
-    <section>
+    <section className="shop-product">
       <ProductImage src={product.images.unboxed} label={product.category} size="large" eager />
-      <h1>{product.name}</h1>
-      <p className="price big">¥{formatYuan(product.price)}</p>
-      {product.source === null ? (
-        <p className="tag">示例价格，待采集真实数据</p>
-      ) : (
-        <p className="fineprint left">
-          {details?.quoteLabel ?? '报价'} · 采集于 {product.source.capturedAt}
-          {details?.priceNote && <> · {details.priceNote}</>}
+
+      <div className="shop-block">
+        <p className="price big shop-price">
+          <small>¥</small>
+          {formatYuan(product.price)}
         </p>
-      )}
+        {product.source === null ? (
+          <p className="shop-note">示例价格，待采集真实数据</p>
+        ) : (
+          <p className="shop-note">
+            {details?.quoteLabel ?? '报价'} · 采集于 {product.source.capturedAt}
+            {details?.priceNote && <> · {details.priceNote}</>}
+          </p>
+        )}
+        {details?.scenario && <p className="shop-note">核算场景：{details.scenario}</p>}
 
-      <h2>配件</h2>
-      {product.accessories.length === 0 ? (
-        <p className="muted">无</p>
-      ) : (
-        <ul className="plain">
-          {product.accessories.map((a) => (
-            <li key={a.name}>
-              {a.name} ¥{formatYuan(a.price)} {a.required && <span className="tag">必需</span>}
-            </li>
-          ))}
-        </ul>
-      )}
-      <p className="muted">运费 ¥{formatYuan(product.shipping)}</p>
-      {details?.scenario && <p className="fineprint left">核算场景：{details.scenario}</p>}
+        <h1>{product.name}</h1>
+        <p className="shop-badges">
+          {product.source === null ? (
+            <span className="badge">示例价</span>
+          ) : (
+            details?.quoteLabel && <span className="badge">{details.quoteLabel}</span>
+          )}
+          <span className="badge">{product.category}</span>
+          {requiredCount > 0 && <span className="badge">必需配件 {requiredCount} 件</span>}
+          <span className="badge gold">{product.shipping === 0 ? '包邮' : `运费 ¥${formatYuan(product.shipping)}`}</span>
+        </p>
+      </div>
 
-      {rental && (
-        <>
-          <h2>替代方案</h2>
-          <p>{rental}</p>
-        </>
-      )}
+      <div className="shop-block shop-detail">
+        <h2>商品详情</h2>
 
-      {product.images.dusty && (
-        <>
-          <h2>一个月后</h2>
-          <ProductImage src={product.images.dusty} label="一个月后" size="large" />
-          {details?.imageNote && <p className="fineprint">{details.imageNote}</p>}
-        </>
-      )}
+        <h3>配件</h3>
+        {product.accessories.length === 0 ? (
+          <p className="muted">无</p>
+        ) : (
+          <ul className="shop-list">
+            {product.accessories.map((a) => (
+              <li key={a.name}>
+                <span>
+                  {a.name} {a.required && <span className="badge">必需</span>}
+                </span>
+                <span>¥{formatYuan(a.price)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <p className="muted">运费 ¥{formatYuan(product.shipping)}</p>
 
-      <button className="primary" onClick={onApply}>
-        申请采购
-      </button>
-      <p className="fineprint">本页面不提供“立即购买”。</p>
+        {rental && (
+          <>
+            <h3>替代方案</h3>
+            <p>{rental}</p>
+          </>
+        )}
+
+        {product.images.dusty && (
+          <>
+            <h3>一个月后</h3>
+            <ProductImage src={product.images.dusty} label="一个月后" size="large" />
+            {details?.imageNote && <p className="shop-note">{details.imageNote}</p>}
+          </>
+        )}
+      </div>
+
+      <div className="buybar">
+        {/* List price only, like a real store: the true total (accessories, shipping) is the user's
+            job on the form — showing it here would give away the 第三条 rejection. */}
+        <div className="buybar-total">
+          <span className="price shop-price">
+            <small>¥</small>
+            {formatYuan(product.price)}
+          </span>
+        </div>
+        <button className="buy-btn" onClick={onApply}>
+          立即购买
+        </button>
+      </div>
     </section>
   )
 }

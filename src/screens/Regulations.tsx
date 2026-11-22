@@ -2,7 +2,7 @@ import { regulations } from '../domain/regulations'
 
 export function Regulations({ onBack }: { onBack: () => void }) {
   return (
-    <section className="regs">
+    <section className="doc regs">
       <h1>《{regulations.title}》</h1>
       <p className="fineprint">个人钱包审批办公室 发布</p>
       <ol>
@@ -16,7 +16,7 @@ export function Regulations({ onBack }: { onBack: () => void }) {
           </li>
         ))}
       </ol>
-      <button className="secondary" onClick={onBack}>
+      <button className="primary" onClick={onBack}>
         已阅，返回
       </button>
     </section>
